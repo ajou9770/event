@@ -39,13 +39,84 @@
             margin-right: 10px;
             box-shadow: 0px 3px 6px grey;
         }
+        #icon {
+  border: none;
+  width: 150px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 10px;
+  background: none;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+#icon_call {
+  border: none;
+  width: 160px;
+  height: 55px;
+  padding-top: 10px;
+  font-size: 25px;
+  color: black;
+  border-radius: 35px;
+  box-shadow: 1px 3px 3px 1px slategray;
+  background: rgb(205, 235, 223);
+  text-align: center;
+  font-weight: bold;
+}
+#icon_call a {
+  color: black;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
     </style>
 </head>
 <body>
-   <iframe src="https://script.google.com/macros/s/AKfycbyh3Gu6CT55pFbzy8JMj5ba2Yvro7dzyL4fNC9nLm1ytHCbpG5Hd1pGOzYRR7FFOejkow/exec" width="100%" height="450" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+   <iframe src="https://script.google.com/macros/s/AKfycbyh3Gu6CT55pFbzy8JMj5ba2Yvro7dzyL4fNC9nLm1ytHCbpG5Hd1pGOzYRR7FFOejkow/exec" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
    <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
    -->
-    <br>
+ <hr>
   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
+  <br><br>
+  <div style="display:inline-flex; align-content: space-around;">
+  <div onclick="callon()" id="icon_call">
+    📞상담(문의)
+    </div>
+
+<div id="icon">
+        <div
+id="kakao-talk-channel-chat-button"
+data-channel-public-id="_dfhkK"
+data-title="consult"
+data-size="small"
+data-color="yellow"
+data-shape="mobile"
+data-support-multiple-densities="true"
+></div></div>
+</div>
+<script>  
+    function callon() {
+      if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
+        document.location.href = "tel:031-219-6052"
+    } else {
+      alert("취소 되었습니다!!")
+    }
+   }                
+  </script>
+
+<script>
+      window.kakaoAsyncInit = function() {
+        Kakao.Channel.createChatButton({
+          container: '#kakao-talk-channel-chat-button',
+        });    
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'kakao-js-sdk');
+    </script>
 </body>
 </html>
