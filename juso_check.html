@@ -9,9 +9,84 @@
         iframe {
             border: none;
         }
+        #icon {
+            border: none;
+            width: 150px;
+            height: 50px;
+            font-size: 25px;
+            border-radius: 10px;
+            background: none;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+          }
+          #icon_call {
+            border: none;
+            width: 140px;
+            height: 47px;
+            padding-top: 14px;
+            font-size: 20px;
+            color: black;
+            border-radius: 35px;
+            box-shadow: 1px 3px 3px 1px slategray;
+            background: rgb(205, 235, 223);
+            text-align: center;
+            font-weight: bold;
+          }
+          #icon_call a {
+            color: black;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+          }
+          .space_around {
+                    display: flex;
+                    justify-content: space-around;
+          }
     </style>
 </head>
 <body>
     <iframe src="https://script.google.com/macros/s/AKfycbyWZxRNppCEGmfeQqvb6If44PjYwTIVZI3gMfGoK1Tbs0yEODsscX0vKqG9hR4DEl2BQg/exec" width="100%" height="700px"></iframe>
+    <div class="space_around">
+        <div onclick="callon()" id="icon_call">
+          📞상담(문의)
+          </div>
+      
+      <div id="icon">
+              <div
+      id="kakao-talk-channel-chat-button"
+      data-channel-public-id="_dfhkK"
+      data-title="consult"
+      data-size="small"
+      data-color="yellow"
+      data-shape="mobile"
+      data-support-multiple-densities="true"
+      ></div></div>
+      </div>
+      <br>
+      <script>  
+          function callon() {
+            if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
+              document.location.href = "tel:031-219-6052"
+          } else {
+            alert("취소 되었습니다!!")
+          }
+         }                
+        </script>
+      
+      <script>
+            window.kakaoAsyncInit = function() {
+              Kakao.Channel.createChatButton({
+                container: '#kakao-talk-channel-chat-button',
+              });    
+            };
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'kakao-js-sdk');
+          </script>
 </body>
 </html>
