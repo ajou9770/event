@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1>| 가입 신청서 | </h1>
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="inputName">이름</label>
+          <input type="text" class="form-control" id="inputName" required>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" required>
+        </div>
+        <div class="form-group">
+          <label for="tel">연락처</label>
+          <input type="text" class="form-control" id="tel" pattern="010-[0-9]{4}-[0-9]{4}\s*" required>
+        </div>
+        <div class="form-group">
+        <label for="signatureCanvas">Signature</label>
+      <canvas id="signatureCanvas" style="border: 1px solid black;"></canvas>
+      </div>  
+      <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <!-- Bootstrap and jQuery JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+          var name = document.getElementById('inputName').value;
+          var email = document.getElementById('inputEmail').value;
+          var tel = document.getElementById('tel').value;
+          var sign = document.getElementById("signatureCanvas").value;
+          alert('📝제출된 항목은 아래와 같습니다. \nName: ' + name + '\nEmail: ' + email + '\nTel: ' + tel + '\nsign');
+          alert('폼을 초기화 합니다')
+          location.reload();
+        });
+      </script>
+      <script>
+        var canvas = document.getElementById('signatureCanvas');
+        var ctx = canvas.getContext('2d');
+      
+        var drawing = false;
+      
+        function startDrawing(e) {
+          drawing = true;
+          draw(e);
+        }
+      
+        function stopDrawing() {
+          drawing = false;
+          ctx.beginPath();
+        }
+      
+        function draw(e) {
+          if (!drawing) return;
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          ctx.strokeStyle = 'black';
+      
+          ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        }
+      
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mousemove', draw);
+      
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchend', stopDrawing);
+        canvas.addEventListener('touchmove', function(e) {
+          var touch = e.touches[0];
+          var me = new MouseEvent('mousemove', {
+            clientX: touch.clientX,
+            clientY: touch.clientY
+          });
+          canvas.dispatchEvent(me);
+        });
+      </script>
+      <script>
+        var form = document.getElementById('registrationForm');
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          var name = document.getElementById('inputName');
+          var email = document.getElementById('inputEmail');
+          var password = document.getElementById('inputPassword');
+      
+          // Convert signature to data URL
+          var signature = canvas.toDataURL();
+      
+          alert('Name: ' + name.value + '\nEmail: ' + email.value + '\nPassword: ' + password.value + '\nSignature: ' + signature);
+          
+          // Reset the form
+          name.value = '';
+          email.value = '';
+          password.value = '';
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+      </script>        
+  </body>
+</html>
