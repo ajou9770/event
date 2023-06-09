@@ -23,12 +23,34 @@
     });
   } );
   </script>
+  <script>
+    $( function() {
+      var availableTags = [
+        "김설호",
+        "이광수",
+        "박정원",
+        "정정순",
+        "이현상",
+        "진용기",
+        "이강숙",
+        "김인석",
+        "장영균",
+        "성남수"
+      ];
+      $( "#names" ).autocomplete({
+        source: availableTags
+      });
+    } );
+    </script>
 </head>
 <body>
- 
+    <div class="ui-widget">
+        <label for="name">이름 </label>
+        <input id="names">
+      </div>
 <div class="ui-widget">
-  <label for="tags">Tags: </label>
-  <input id="tags">
+  <label for="member">조합명</label>
+  <input id="members">
 </div>
  
 </body>
