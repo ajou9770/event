@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var availableTags = [
+      "경기도건축사",
+      "북수원신협",
+      "장안신협",
+      "동수원신협",
+      "남수원신협",
+      "경기치과신협",
+      "수원중앙신협",
+      "카톨릭중앙의료원신협",
+      "카톨릭수원교구신협",
+      "서수원신협"
+    ];
+    $( "#members" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+</head>
+<body>
+ 
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags">
+</div>
+ 
+</body>
+</html>
