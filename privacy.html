@@ -73,14 +73,45 @@
           display: flex;
           justify-content: space-around;
         }
+        #docu {
+          display: none;
+        }
     </style>
 </head>
 <body>
    <iframe src="https://script.google.com/macros/s/AKfycbyihMTIbO-IrUo1jrLLRqvEiTj-kmWXWabaYYQraOGyeHXAvpVifrLo6Spa7MUOY_KW/exec" width="100%" height="550" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
    <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
    -->
-  <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
-  <br><br>
+   <button id="open" class="btn btn-primary" onclick="opendocu()">📄개인정보제공.활용내용 보기↓ </button>
+  <button id="close" class="btn btn-info" onclick="closedocu()">📄개인정보제공.활용내용 닫기↑ </button>
+  <div id="docu">
+   <p>
+    개인정보 수집 및 이용에 대한 동의
+    
+    [아주대의료원신협]은(는) 아래와 같이 귀하의 개인정보를 수집하고 사용하고자 합니다.<br>
+    아래의 내용을 주의 깊게 읽고 동의 여부를 결정해 주시기 바랍니다.<br><br>
+    
+    1. 수집하는 개인정보<br>
+    우리는 서비스 제공을 위해 다음과 같은 개인정보를 수집하고 있습니다:<br>
+    - 이름<br>
+    - 연락처<br>
+    - 이메일 주소<br>
+    - 소속조합<br><br>
+    
+    2. 개인정보의 수집 및 이용 목적<br><br>
+    
+    귀하의 개인정보는 다음과 같은 목적으로 사용됩니다:<br>
+    - 교육과 관련한 기능 구현을 위한 샘플메세지(알림톡)발송<br>
+    - 쿠폰 발송 등 교육관련 정보 제공 및 안내<br>
+    <br>
+    3. 개인정보의 보유 및 이용 기간<br>
+    교육기간 내로 한정하되 일정기간 질의 등에 따라 활용될 수 있음.<br><br>
+    
+    4. 개인정보 수집 및 이용에 대한 동의 철회<br>
+    귀하는 개인정보의 수집 및 이용에 대한 동의를 언제든지 철회할 수 있습니다.
+    </p></div>
+  <!-- <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
+  <br> --><br><br>
   <div class="space_around">
   <div onclick="callon()" id="icon_call">
     📞상담(문의)
@@ -120,6 +151,19 @@ data-support-multiple-densities="true"
         js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
         fjs.parentNode.insertBefore(js, fjs);
       })(document, 'script', 'kakao-js-sdk');
+    </script>
+    <script>
+      function opendocu() {
+        document.getElementById("open").style.display='none';
+        document.getElementById("close").style.display='block';
+        document.getElementById("docu").style.display='block';
+        window.scrollTo(0, document.body.scrollHeight);   
+      }
+      function closedocu() {
+        document.getElementById("open").style.display='block';
+        document.getElementById("close").style.display='none';
+        document.getElementById("docu").style.display='none';
+      }
     </script>
 </body>
 </html>
