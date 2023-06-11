@@ -74,8 +74,9 @@
           display: flex;
           justify-content: space-around;
         }
-        #docu {
+        #docu, #cancel {
           display: none;
+          font-size: 15px;
         }
         #close {
           font-weight: 600;
@@ -123,7 +124,8 @@
     </p></div>
     <div class="center">
     <button id="close" class="btn btn-danger" onclick="closedocu()">✔확인 하였습니다(닫기) </button>
-    </div>
+    <small id="cancel" style="margin-top: 15px; margin-left:10px;" onclick="alert('📧이메일로 개인정보제공(활용)동의 철회요청을 진행합니다')"><a href="mailto:ajou9770@ajoucu.page?subject=개인정보제공(활용)동의철회 요청드립니다.&body=✔여기에 요청자 연락처를 기재하여 전송해 주세요">📧개인정보제공등철회요청→</a></small>  
+  </div>
     <!-- <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
   <br> --><br>
   <div class="space_around">
@@ -171,12 +173,14 @@ data-support-multiple-densities="true"
         document.getElementById("open").style.display='none';
         document.getElementById("close").style.display='block';
         document.getElementById("docu").style.display='block';
+        document.getElementById("cancel").style.display='block';
         window.scrollTo(0, document.body.scrollHeight);   
       }
       function closedocu() {
         document.getElementById("open").style.display='block';
         document.getElementById("close").style.display='none';
         document.getElementById("docu").style.display='none';
+        document.getElementById("cancel").style.display='none';
       }
     </script>
 </body>
