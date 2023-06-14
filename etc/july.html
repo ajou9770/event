@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>✈문화탐방 7월 단합대회 참가신청하기</title>
+    <style>
+        body {
+            max-width: 900px;
+            margin: 5px;
+            padding: 10px;
+        }
+        .center {
+            display: flex;
+            text-align: center;
+        }
+        iframe {
+            border-radius: 10px;
+        }
+        a {
+            font-size: medium;
+            font-weight: 600;
+        }
+        #detail, #close {
+            display: none;
+        }
+        button {
+            font-size: 15px;
+            margin-top: 10px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 10px;
+            box-shadow: 0px 3px 6px grey;
+        }
+        #icon {
+  border: none;
+  width: 150px;
+  height: 50px;
+  font-size: 25px;
+  border-radius: 10px;
+  background: none;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+#icon_call {
+  border: none;
+  width: auto;
+  height: 55px;
+  padding-top: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px;
+  color: black;
+  border-radius: 35px;
+  box-shadow: 1px 3px 3px 1px slategray;
+  background: rgb(205, 235, 223);
+  text-align: center;
+  font-weight: bold;
+}
+#icon_call a {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.space_around {
+          display: flex;
+          justify-content: space-around;
+        }
+        #docu, #cancel {
+          display: none;
+          font-size: 15px;
+        }
+        #close {
+          font-weight: 600;
+        }
+        p {
+          border: solid 1px;
+          box-shadow: opx 2x 4px grey;
+          padding: 10px;
+          border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+   <iframe src="https://script.google.com/macros/s/AKfycbxeD7ionHVTgfGOt7M4Vhr07BgA68UUkWpjGfaoflLl2D7zsIJuV1nrvR52tKhxcAWo/exec" width="100%" height="590" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+   <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
+   -->
+    <!-- <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
+  <br> -->
+    <div class="space_around">
+  <div onclick="callon()" id="icon_call">
+    📞총무에게전화하기
+    </div>
+
+</div>
+<script>  
+    function callon() {
+      if (window.confirm("☏ 총무(김설호)에게 📞전화앱으로 연결할까요?")) {
+        document.location.href = "tel:010-7118-6639"
+    } else {
+      alert("취소 되었습니다!!")
+    }
+   }                
+  </script>
+</body>
+</html>
