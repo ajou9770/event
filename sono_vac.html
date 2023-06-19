@@ -73,7 +73,24 @@
           display: flex;
           justify-content: space-around;
         }
-    </style>
+.img_july {
+  position: fixed;
+  right: 150px;
+  bottom: 300px;
+  width: 120px;
+  height: 120px;
+}
+.img_august {
+  position: fixed;
+  right: 20px;
+  bottom: 300px;
+  width: 120px;
+  height: 120px;
+}
+#cal, #hideCal {
+  display: none;
+}
+</style>
 </head>
 <body>
    <iframe src="https://script.google.com/macros/s/AKfycbwEzeAV3-lvTP1D3OriJB0_9GCHPp2ZlRahthExXURFY2IKgrvu_4FKUpdM9mITVBdr8w/exec" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
@@ -96,7 +113,24 @@ data-color="yellow"
 data-shape="mobile"
 data-support-multiple-densities="true"
 ></div></div>
+<button id="seecal" onclick="seeCal()">📅</button>
+<button id="hideCal" onclick="hideCal()">📅❌</button>
+<div id="cal">
+<img src="img/july_img.jpg" class="img_july">
+<img src="img/august_img.jpg" class="img_august">
 </div>
+<script>
+  function seeCal() {
+    document.getElementById("cal").style.display="block";
+    document.getElementById("hideCal").style.display="block";
+    document.getElementById("seecal").style.display="none";
+  }
+  function hideCal() {
+    document.getElementById("cal").style.display="none";
+    document.getElementById("seecal").style.display="block";
+    document.getElementById("hideCal").style.display="none";
+  }
+  </script>
 <script>  
     function callon() {
       if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
