@@ -43,6 +43,22 @@
                     display: flex;
                     justify-content: space-around;
           }
+          #loading-overlay {
+            position: fixed;
+            top: 0;
+           left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 배경 색상과 투명도를 조정하세요 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+          }
+         #loading-message {
+  font-size: 24px;
+  color: white;
+        }
     </style>
 </head>
 <body>
@@ -63,7 +79,16 @@
       data-support-multiple-densities="true"
       ></div></div>
       </div>
+      <div id="loading-overlay">
+        <div id="loading-message">🔄페이지를 로딩 중입니다...</div>
+      </div>
       <br>
+      <script>
+        window.addEventListener('load', function() {
+          var loadingOverlay = document.getElementById('loading-overlay');
+          loadingOverlay.style.display = 'none';
+        });
+          </script>
       <script>  
           function callon() {
             if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
