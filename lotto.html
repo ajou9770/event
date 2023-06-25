@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>추첨 프로그램</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #lotteryName {
+        font-size: large;
+        font-family: 600;
+    }
+    #resultbox {
+        display: none;
+        box-shadow: 0px 3px 6px 0px grey;
+        padding: 20px;
+        border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>| 소노호텔앤리조트 여름성수기 추첨 |</h3>
+    <hr>
+    <div class="form-group">
+      <h5 for="lotteryName">✨추첨 대상 리조트:</h5>
+      <select class="form-control" id="lotteryName">
+        <option value="⚠추첨 대상 리조트가 없습니다. 선택 후 추첨하세요">#추첨대상 리조트 선택</option>
+        <option value="쏠비치양양호텔/7.29-30/11박/트윈/233천원">쏠비치양양호텔/7.29-30/11박/트윈/233천원</option>
+        <option value="쏠비치삼척리조트/8.2-3/1박/스위트/취사/212천원">쏠비치삼척리조트/8.2-3/1박/스위트/취사/212천원</option>
+        <option value="변산리조트/8.5~7/2박/스위트/클린/543천원">변산리조트/8.5~7/2박/스위트/클린/543천원</option>
+        <!-- 추가적인 추첨명을 필요한 만큼 <option> 요소로 추가 -->
+      </select>
+    </div>
+    <div class="form-group">
+      <h5 for="lotteryParticipants">🚀추첨 대상 조합원(사번 또는 조합원번호 입력):</h5>
+      <input type="text" class="form-control" id="lotteryParticipants" placeholder="추첨대상입력">
+    </div>
+    <button class="btn btn-primary" onclick="performLottery()">🚀추첨 하기</button>
+    <br><br>
+    <button class="btn btn-secondary btn-sm" onclick="window.location.reload();">🔄다시 추첨하기</button>
+    <br><br>
+    <div id="resultbox">
+        <h4>🎉당첨을 축하드립니다~~</h4>
+    <h5 id="resortName" class="mt-4" style="color:blue;"><mark></mark></h5>
+    <h5 id="result" class="mt-4"></h5>
+    </div>
+  </div>
+  <br><br>
+  <div class="button-container">
+    <button onclick="printPage()">인쇄</button>
+  </div>
+  <br>
+  <div id="datetime"></div>
+
+  <script>
+    function updateDateTime() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth() + 1;
+      var day = now.getDate();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      var koreanDateTime = year + '년 ' + month + '월 ' + day + '일 ' + hours + '시 ' + minutes + '분 ' + seconds + '초';
+
+      var datetimeElement = document.getElementById('datetime');
+      datetimeElement.textContent = koreanDateTime;
+
+      setTimeout(updateDateTime, 1000); // 1초마다 업데이트
+    }
+
+    updateDateTime();
+  </script>
+  <script>
+    function printPage() {
+      window.print(); // 현재 페이지를 인쇄
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function performLottery() {
+      var lotteryNameSelect = document.getElementById('lotteryName');
+      var lotteryName = lotteryNameSelect.options[lotteryNameSelect.selectedIndex].value;
+
+      var participants = document.getElementById('lotteryParticipants').value;
+
+      var resortname = document.getElementById("resortName");
+      resortname.textContent ='🏕추첨대상리조트: ' + lotteryName;
+
+      document.getElementById("resultbox").style.display = "block";
+
+      if (lotteryName && participants) {
+        var participantsArr = participants.split(',');
+        var winner = getRandomItem(participantsArr);
+
+        var resultElement = document.getElementById('result');
+        resultElement.textContent ='✨당첨조합원(사번 또는 조합원번호): ' + winner;
+      }
+    }
+
+    function getRandomItem(array) {
+      var randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex].trim();
+    }
+  </script>
+</body>
+</html>
+
+
