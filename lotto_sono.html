@@ -117,18 +117,29 @@
 }
     </style>
 </head>
-<body>
-   <iframe src="https://script.google.com/macros/s/AKfycbxqRTk1yEcGVxlv-N1y6i_xVMHm3guroEIaArSVm-TR-5dkqbN2Jto9U2TWf3ToIx2m/exec" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+<div>
+   <iframe src="https://script.google.com/macros/s/AKfycbxqRTk1yEcGVxlv-N1y6i_xVMHm3guroEIaArSVm-TR-5dkqbN2Jto9U2TWf3ToIx2m/exec" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
    <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
    -->
   <!-- <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
-  <br> --><br>
+  <br> -->
+  <div class="space_around">
+  <div class="button-container">
+  <button class="btn btn-teal" onclick="window.location.reload()">🔄다시 추첨하기</button>
+  <button class="btn btn-teal" onclick="printPage()" style="margin-left: 30px;">🖨print</button>
+  </div>
+</div>
 <div id="loading-overlay">
   <div id="loading-spinner"></div>
   <div id="loading-message"><span style="padding-left: 15px;">로딩중입니다...</span>
     <br><small>✨평생어부바 신협</small>
   </div>
 </div>
+<script>
+  function printPage() {
+    window.print(); // 현재 페이지를 인쇄
+  }
+</script>
 <script>
     // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
     window.addEventListener('load', function() {
