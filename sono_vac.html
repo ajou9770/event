@@ -9,7 +9,7 @@
       href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <title>⛺소노호텔&리조트 2023하계 성수기 예약(추첨)신청</title>
+    <title>⛺소노호텔&리조트 2023하계 성수기 잔여객실 선착순 예약신청</title>
     <style>
         body {
             max-width: 900px;
@@ -94,7 +94,7 @@
   width: 80px;
   height: 50px;
 }
-#cal, #hideCal, #sonosummer{
+#cal, #hideCal {
   display: none;
 }
 #scrollToTopButton {
@@ -117,7 +117,7 @@
 }
 
 #loading-message {
-  font-size: 24px;
+  font-size: 15px;
   color: white;
 }
 #loading-spinner {
@@ -133,40 +133,21 @@
   100% { transform: rotate(360deg); }
 }
 </style>
-<script>
-// 지정한 시간이 되면 페이지 로딩시 이벤트 발생하는 script
- window.onload = function() {
-    var currentDate = new Date();
-    var targetDate = new Date(2023, 5, 29, 1); // Date and time set to June 29, 2023, 01:00:00
-  
-    if (currentDate >= targetDate) {
-      document.getElementById('sonosummer').style.display = 'none';
-      document.getElementById('end').style.display = 'block';
-    }
-  };
-  </script>
 </head>
 <body>
-  <div id="end">
-    <br><br>
-    <h3>| 여름 성수기 추첨결과 및 잔여객실 선착순 배정 안내. |</h3>
+  <div id="end" style="margin-left: 10px; padding-left: 10px;">
     <br>
-    <h4>🤷‍♀️소노호텔앤리조트 여름성수기 예약신청이 마감되었습니다. 
-    <br>✨노동조합 (정미정 선생님)참관하에 전산추첨이 진행되었으며 당첨결과는 알림톡으로 개별 안내 드릴 예정입니다.
-    <br> ⛺소노호텔앤리조트 예약알림톡은 6.30(금) 까지 별도 전송될 예정이오니 참고 바랍니다.  
-    <br> ✨잔여객실에 대한 선착순 배정은 6.30(금) 부터 진행 예정입니다 (조합 카카오톡 채널 메뉴 참조)
-  </h4></div>
-  <div id="sonosummer">
-   <iframe src="https://script.google.com/macros/s/AKfycbwEzeAV3-lvTP1D3OriJB0_9GCHPp2ZlRahthExXURFY2IKgrvu_4FKUpdM9mITVBdr8w/exec" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
-  </div>
-   <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
-   -->
+    <h3>| 소노 여름 성수기 추첨결과 안내 및 잔여객실 선착순 배정 안내. |</h3>
+    <br>
+    <h4>✨추첨은 6.29일 15시 경 노동조합 (정미정 선생님)참관하에 전산추첨이 진행되었으며 
+    <br> 당첨결과는 6. 29일 17시경 카톡 알림톡으로 개별 안내 드렸습니다.
+    <br> ⛺소노호텔앤리조트 예약알림톡 전송은 6.30(금)까지 순차적으로 진행될 예정이오니 참고 바랍니다.  
+    <br> ✨잔여객실(10객실)에 대한 신청은 ~ 7.5(수)까지 하실 수 있으며, 선착순 배정(확정)됩니다.
+    </h4>
+</div>
+   <iframe src="https://script.google.com/macros/s/AKfycbwxp_4u95RU7qu78w3vQM8k0Vbmd53xWCN-9H1--jw5Gh4G7vOvs3OGN_X9iW89IF_L/exec" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
   <!--   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button> -->
-  <br><br>
-  <!-- <a href="https://drive.google.com/file/d/1vcYjJbmmZVXIdHNUA5pe1UvMzvYD15hr/view?usp=sharing" onclick="alert('🤷‍♀️의료원 여름성수기 예약신청은 6월 26일(월) 13시까지 의료원그룹웨어(노사복지소식)에서 신청하실 수 있습니다. \n 📑의료원성수기 객실 확보 현황[PDF]으로 이동합니다.')"><button class="btn btn-info" style="margin-left: 16px;">🔎의료원 여름 성수기 확보리조트 보기 →</button>
-  </a> -->
-  
-    <div class="space_around">  
+  <div class="space_around">  
   <div onclick="callon()" id="icon_call">
     📞상담(문의)
     </div>
@@ -181,18 +162,9 @@ data-color="yellow"
 data-shape="mobile"
 data-support-multiple-densities="true"
 ></div></div>
-<div id="calbtn">
-<button class="btn btn-info" id="seecal" onclick="seeCal()">📅</button>
-<button class="btn btn-info" id="hideCal" onclick="hideCal()">📅❌</button>
-</div>
-<button class="btn btn-info" id="scrollToTopButton" onclick="scrollToTop()">⏫</button>
-<div id="cal">
-<img src="img/july_img.jpg" class="img_july">
-<img src="img/august_img.jpg" class="img_august">
-</div>
 <div id="loading-overlay">
   <div id="loading-spinner"></div>
-  <div id="loading-message"><span style="padding-left: 15px;">로딩중입니다...</span>
+  <div id="loading-message"><span style="padding-left: 15px;">잔여객실 선착순 신청화면으로 이동중입니다...</span>
     <br><small>✨평생어부바 신협</small>
   </div>
 </div>
