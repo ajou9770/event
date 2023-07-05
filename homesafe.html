@@ -51,10 +51,10 @@
 }
 #icon_call {
   border: none;
-  width: 140px;
-  height: 55px;
-  padding-top: 12px;
-  font-size: 20px;
+  width: 110px;
+  height: 40px;
+  padding-top: 10px;
+  font-size: 15px;
   color: black;
   border-radius: 35px;
   box-shadow: 1px 3px 3px 1px slategray;
@@ -72,6 +72,12 @@
           display: flex;
           justify-content: space-around;
         }
+        .img_tok {
+          width: 100px;
+          height: 42px;
+          border-radius: 30px;
+          box-shadow: 0px 3px 6px 0px grey;
+        }
     </style>
 </head>
 <body>
@@ -84,8 +90,8 @@
   <div onclick="callon()" id="icon_call">
     📞상담(문의)
     </div>
-
-<div id="icon">
+    <a href="http://pf.kakao.com/_dfhkK/chat"><img src="img/tok_img.jpg" class="img_tok"></a> 
+<!-- <div id="icon">
         <div
 id="kakao-talk-channel-chat-button"
 data-channel-public-id="_dfhkK"
@@ -94,7 +100,7 @@ data-size="small"
 data-color="yellow"
 data-shape="mobile"
 data-support-multiple-densities="true"
-></div></div>
+></div></div> -->
 </div>
 <script>  
     function callon() {

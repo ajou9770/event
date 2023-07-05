@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
-      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <title>⛺소노호텔&리조트 2023하계 성수기 잔여객실 선착순 예약신청</title>
@@ -29,7 +29,7 @@
         #detail, #close {
             display: none;
         }
-        button {
+<!--         button {
             font-size: 15px;
             margin-top: 10px;
             font-weight: 600;
@@ -38,7 +38,7 @@
             padding: 10px;
             margin-right: 10px;
             box-shadow: 0px 3px 6px grey;
-        }
+        } -->
         #icon {
   border: none;
   width: 150px;
@@ -132,6 +132,12 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.img_tok {
+  width: 100px;
+  height: 42px;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px 0px grey;
+}
 </style>
 </head>
 <body>
@@ -145,23 +151,13 @@
     <br> ✨잔여객실(10객실)에 대한 신청은 ~ 7.5(수)까지 하실 수 있으며, 선착순 배정(확정)됩니다.
     </h4>
 </div>
-   <iframe src="https://script.google.com/macros/s/AKfycbwxp_4u95RU7qu78w3vQM8k0Vbmd53xWCN-9H1--jw5Gh4G7vOvs3OGN_X9iW89IF_L/exec" width="100%" height="520" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
-  <!--   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button> -->
-  <div class="space_around">  
-  <div onclick="callon()" id="icon_call">
-    📞상담(문의)
-    </div>
-
-<div id="icon">
-        <div
-id="kakao-talk-channel-chat-button"
-data-channel-public-id="_dfhkK"
-data-title="consult"
-data-size="small"
-data-color="yellow"
-data-shape="mobile"
-data-support-multiple-densities="true"
-></div></div>
+   <iframe src="https://script.google.com/macros/s/AKfycbwxp_4u95RU7qu78w3vQM8k0Vbmd53xWCN-9H1--jw5Gh4G7vOvs3OGN_X9iW89IF_L/exec" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+  <!--   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button> -->     
+<div class="space_around"> 
+<button class="btn btn-outline-primary" type="button"><span onclick="callon()">
+  📞상담(문의)
+  </span></button> 
+<a href="http://pf.kakao.com/_dfhkK/chat"><img src="img/tok_img.jpg" class="img_tok"></a>  </div>
 <div id="loading-overlay">
   <div id="loading-spinner"></div>
   <div id="loading-message"><span style="padding-left: 15px;">잔여객실 선착순 신청화면으로 이동중입니다...</span>
