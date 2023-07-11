@@ -36,6 +36,21 @@
   font-weight: 600;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.underline {
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .underline:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      background-color: #ff6b6b;
+      height: 2px;
+    }
 </style>
 </head>
 <body>
@@ -59,7 +74,7 @@
       <li>신협 공제(보험)에 가입하세요.</li>
       <p>신협공제(보험)은 민영보험사보다 보험료가 저렴하고 보장도 알차게 받으실 수 있습니다. </p>
     </ol>
-    <h3>🤷‍♂️위의 모든 거래 실적은 매년 2월 이용고배당으로 합산되어 캐쉬백됩니다. </h3>
+    <h3 class="underline">🤷‍♂️위의 모든 거래 실적은 매년 2월 이용고배당으로 합산되어 캐쉬백됩니다. </h3>
     <hr>
     <h3>🚀도움되는 사이트</h3>
     <ul>
