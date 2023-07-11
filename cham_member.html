@@ -13,6 +13,29 @@
   a {
     text-decoration: none;
   }
+  .space_around {
+          display: flex;
+          justify-content: space-around;
+        }
+        #icon_call {
+  border: none;
+  width: 140px;
+  height: 50px;
+  padding-top: 12px;
+  font-size: 20px;
+  color: black;
+  border-radius: 35px;
+  box-shadow: 1px 3px 3px 1px slategray;
+  background: rgb(205, 235, 223);
+  text-align: center;
+  font-weight: bold;
+}
+#icon_call a {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 </style>
 </head>
 <body>
@@ -46,10 +69,46 @@
       <li><a href="https://ajou9770.github.io/notice/milecal.html">🔢이용고배당 미리보기(지급예시)→</a></li>
     </ul>
   </div>
-
+  <div class="space_around">  
+    <div onclick="callon()" id="icon_call">
+      📞상담(문의)
+      </div>
+  <div id="icon">
+          <div
+  id="kakao-talk-channel-chat-button"
+  data-channel-public-id="_dfhkK"
+  data-title="consult"
+  data-size="small"
+  data-color="yellow"
+  data-shape="mobile"
+  data-support-multiple-densities="true"
+  ></div></div>
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>  
+    function callon() {
+      if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
+        document.location.href = "tel:031-219-6052"
+    } else {
+      alert("취소 되었습니다!!")
+    }
+   }                
+  </script>
+  <script>
+    window.kakaoAsyncInit = function() {
+      Kakao.Channel.createChatButton({
+        container: '#kakao-talk-channel-chat-button',
+      });    
+    };
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, 'script', 'kakao-js-sdk');
+  </script>
 </body>
 </html>
