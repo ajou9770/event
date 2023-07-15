@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Form Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Submit Form Example</h1>
+    <form id="mmsForm">
+        <label for="userid">뿌리오 아이디:</label>
+        <input type="text" id="userid" name="userid" value="ajou9770" required>
+        <br>
+        <label for="callback">발신번호:</label>
+        <input type="text" id="callback" name="callback" value="0312196052" required>
+        <br>
+        <label for="phone">수신번호:</label>
+        <input type="text" id="phone" name="phone" required>
+        <br>
+        <label for="msg">문자내용:</label>
+        <textarea id="msg" name="msg" required></textarea>
+        <br>
+        <label for="names">이름:</label>
+        <input type="text" id="names" name="names">
+        <br>
+        <label for="appdate">예약발송:</label>
+        <input type="text" id="appdate" name="appdate">
+        <br>
+        <label for="subject">제목:</label>
+        <input type="text" id="subject" name="subject">
+        <br>
+        <label for="file1Path">포토발송:</label>
+        <input type="text" id="file1Path" name="file1Path">
+        <br>
+        <input type="submit" value="전송">
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            $('#mmsForm').submit(function(event) {
+                event.preventDefault();
+
+                var userid = $('#userid').val();
+                var callback = $('#callback').val();
+                var phone = $('#phone').val();
+                var msg = $('#msg').val();
+                var names = $('#names').val();
+                var appdate = $('#appdate').val();
+                var subject = $('#subject').val();
+                var file1Path = $('#file1Path').val();
+
+                var requestData = {
+                    userid: userid,
+                    callback: callback,
+                    phone: phone,
+                    msg: msg,
+                    names: names,
+                    appdate: appdate,
+                    subject: subject,
+                    file1Path: file1Path
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://message.ppurio.com/api/send_utf8_json.php",
+                    data: requestData,
+                    success: function(response) {
+                        console.log(response);
+                        // 여기에서 응답에 대한 처리를 수행합니다.
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+						alert("failed!!")
+                        // 에러 발생 시 처리를 수행합니다.
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
