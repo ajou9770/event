@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>🎞Video Search</title>
+    <style>
+        .max-size {
+            max-width: 400px;
+            max-height: 500px;
+        }
+        img video {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h4 class="mb-4">🎞동영상을 검색 하세요</h4>
+        <form id="searchForm" class="mb-4">
+            <div class="input-group">
+                <input class="form-control" type="text" id="searchQuery" placeholder="검색할 동영상 주제어 입력">
+                <button class="btn btn-primary" type="submit">검색</button>
+            </div>
+        </form>
+        <div id="booksContainer"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    
+    <script>    
+   $("#searchForm").submit(function (event) {
+    event.preventDefault();
+    var query = $("#searchQuery").val();
+    if (query) {
+        $.ajax({
+            method: "GET",
+            url: "https://dapi.kakao.com/v2/search/vclip",
+            data: { query: query },
+            headers: { Authorization: "KakaoAK 8c28987d6671ebc8c75c14bf66efb694" }
+        })
+        .done(function (msg) {
+            $("#booksContainer").empty();
+
+            console.log(msg);
+
+            for (var i = 0; i < 10; i++) {
+                var document = msg.documents[i];
+                var bookContainer = $("<div>").addClass("book-container mb-4");
+                var videoAuthor = $("<h5>").text("출처: " + document.author);
+                var videoTitle = $("<h5>").text("제목: " + document.title);
+                var videoUrl = $("<div>").html("<strong>동영상:</strong><br><iframe src='" +
+                document.url + "' width='100%' height='400px'></iframe><br>");
+                var videoThumbnail = $("<div>").html("<strong>썸네일:</strong><br><img class='max-size' src='" +
+                document.thumbnail + "' /><br>");
+
+                bookContainer.append(videoAuthor, videoTitle, videoUrl, videoThumbnail);
+                $("#booksContainer").append(bookContainer);
+            }
+        });
+    }
+});
+</script>
+</body>
+
+</html>
