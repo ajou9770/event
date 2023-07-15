@@ -19,11 +19,7 @@
                 <button class="btn btn-primary" type="submit">검색</button>
             </div>
         </form>
-        <h4 id="bookTitle"></h4>
-        <span id="bookAuthor"></span>
-        <p id="bookContents"></p>
-        <div id="bookThumbnail"></div>
-        <small id="bookPublisher"></small>
+        <div id="booksContainer"></div>
     </div>
 
     <!-- jQuery -->
@@ -41,13 +37,21 @@
                     headers: { Authorization: "KakaoAK 8c28987d6671ebc8c75c14bf66efb694" }
                 })
                     .done(function (msg) {
-                        console.log(`제목: ${msg.documents[1].title}`);
-                        console.log(`썸네일: ${msg.documents[1].thumbnail}`);
-                        $("#bookTitle").html("<strong>" + msg.documents[0].title + "</strong>");
-                        $("#bookContents").html("<strong>" + msg.documents[0].contents + "</strong>");
-                        $("#bookAuthor").html("<strong>" + msg.documents[0].authors + "</strong>");
-                        $("#bookThumbnail").html("<img src='" + msg.documents[0].thumbnail + "'/>");
-                        $("#bookPublisher").html("출판사: " + msg.documents[0].publisher);
+                        $("#booksContainer").empty();
+
+                        for (var i = 0; i < 5; i++) {
+                            var document = msg.documents[i];
+
+                            var bookContainer = $("<div>").addClass("book-container mb-4");
+                            var bookTitle = $("<h4>").text("제목: " + document.title);
+                            var bookAuthor = $("<span>").text("작가: " + document.authors);
+                            var bookContents = $("<p>").text("책 소개: " + document.contents);
+                            var bookThumbnail = $("<div>").html("<strong>썸네일:</strong><br><img src='" + document.thumbnail + "'/><br>");
+                            var bookPublisher = $("<small>").text("출판사: " + document.publisher);
+
+                            bookContainer.append(bookTitle, bookAuthor, bookContents, bookThumbnail, bookPublisher);
+                            $("#booksContainer").append(bookContainer);
+                        }
                     });
             }
         });
