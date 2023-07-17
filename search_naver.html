@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>검색어 트랜드(네이버API)</title>
+    <style>
+        body {
+            width: 100%;
+        }
+        .container, #trendContainer {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <h4 class="mb-4">✨ 검색어 트렌드</h4>
+        <div id="trendContainer"></div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var requestData = {
+                "startDate": "2017-01-01",
+                "endDate": "2017-04-30",
+                "timeUnit": "month",
+                "keywordGroups": [
+                    {
+                        "groupName": "한글",
+                        "keywords": [
+                            "한글",
+                            "korean"
+                        ]
+                    },
+                    {
+                        "groupName": "영어",
+                        "keywords": [
+                            "영어",
+                            "english"
+                        ]
+                    }
+                ],
+                "device": "pc",
+                "ages": [
+                    "1",
+                    "2"
+                ],
+                "gender": "f"
+            };
+
+            $.ajax({
+                method: "POST",
+                url: "https://openapi.naver.com/v1/datalab/search",
+                headers: {
+                    "X-Naver-Client-Id": "aWiKQ_T9U6CdesEFLZ6x",
+                    "X-Naver-Client-Secret": "0QCbbjx78A",
+                    "Content-Type": "application/json"
+                },
+                data: JSON.stringify(requestData),
+                success: function(response) {
+                    console.log(response);
+                    // 응답 데이터를 처리하여 트렌드 정보를 동적으로 추가하는 로직을 구현합니다.
+                    var trendContainer = $("#trendContainer");
+                    trendContainer.empty();
+
+                    for (var i = 0; i < response.results[0].data.length; i++) {
+                        var item = response.results[0].data[i];
+                        var trendItem = $("<div>").addClass("trend-item mb-4");
+                        var keyword = $("<h4>").text("검색어: " + item.groupName);
+                        var ratio = $("<p>").text("비율: " + item.ratio);
+                        var period = $("<p>").text("기간: " + item.period);
+
+                        trendItem.append(keyword, ratio, period);
+                        trendContainer.append(trendItem);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert("failed!!");
+                    // 에러 발생 시 처리를 수행합니다.
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
