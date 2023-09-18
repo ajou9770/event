@@ -76,7 +76,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="endnotice()">
     <h3>✨추석 특판몰 최다 매출 상품 맞히기 이벤트</h3>
     <h4>🚀건수로 가장 많이 판매될 것으로 예상되는 상품을 맞혀 보세요.  총 10분에게 신세계상품권(5만원)을 드립니다. 
         <br>📅응모기간: ~ 9.15일(금)까지.(1인 한번의 기회가 있습니다. 중복응모 불가)
@@ -85,7 +85,8 @@
         <br><br>
         <a href="http://ajoucu.com">🎁특판몰상품둘러보기▶</a>
      </h4>
-    <iframe src="https://script.google.com/macros/s/AKfycbzGSmgW85N--P1VjWM4ehX3PQEkseohKsnUyKCeLeQOTtsBo61wNQa9ur-ZavXi4KnB8A/exec" width="100%" height="750px"></iframe>
+     <h2 style="color: tomato;">🤷‍♂️특판몰 최다 매출상품 맞히기 이벤트가 종료되었습니다. 당첨자 발표는 10월 11일(화) 입니다.</h2>
+    <!-- <iframe src="https://script.google.com/macros/s/AKfycbzGSmgW85N--P1VjWM4ehX3PQEkseohKsnUyKCeLeQOTtsBo61wNQa9ur-ZavXi4KnB8A/exec" width="100%" height="750px"></iframe> -->
     <div class="space_around">
         <div onclick="callon()" id="icon_call">
           📞상담(문의)
@@ -108,6 +109,12 @@
           <br><small>✨평생어부바 신협</small>
         </div>
       </div>
+      <script>
+       function endnotice() {
+        alert("🤷‍♂️죄송합니다. 이벤트가 응모가 종료되었습니다. 당첨자발표는 10월 11일에 안내 드립니다.");
+        window.location.href="http://ajoucu.com";
+       }
+        </script>
       <script>
       // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
       window.addEventListener('load', function() {
