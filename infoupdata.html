@@ -24,10 +24,28 @@
     <h5>2. 신협 온뱅크에서 내정보변경 하기(추천)</h5>
     <P> 📲온뱅크접속 로그인 > 상단의 본인이름 tap > 본인이름밑에 "내정보수정" tap하여 변경 처리(완료)
       <br><br>
-      <a href="https://play.google.com/store/apps/details?id=kr.co.cu.onbank">#신협온뱅크(<i class="fa-brands fa-google-play"></i>구글 안드로이드폰) &rarr;</a>
+      <a id="onbank_Link" href="http://ajou9770.gitgub.io/usertip/process"><img src="img/onbankgo.JPG" style="border-radius: 10px; width:200px; height:100px; border: double gray 2px; box-shadow: 0px 6px 12px 0px grey;"></a>
+
+
+     <!--  <a href="https://play.google.com/store/apps/details?id=kr.co.cu.onbank">#신협온뱅크(<i class="fa-brands fa-google-play"></i>구글 안드로이드폰) &rarr;</a>
       <br><br>
-      <a href="https://apps.apple.com/kr/app/id1484456647">#신협온뱅크(<i class="fa-brands fa-apple"></i>아이폰계열) &rarr;</a>  
+      <a href="https://apps.apple.com/kr/app/id1484456647">#신협온뱅크(<i class="fa-brands fa-apple"></i>아이폰계열) &rarr;</a>   -->
     </P>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var linkElement = document.getElementById("onbank_Link");
+      
+        if (/Android/i.test(navigator.userAgent)) {
+          linkElement.href = "https://play.google.com/store/apps/details?id=kr.co.cu.onbank";
+        } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+          linkElement.href = "https://apps.apple.com/kr/app/id1484456647";
+        } else if (/Windows/i.test(navigator.userAgent)) {
+          linkElement.href = "http://cu.co.kr";
+        } else {
+          linkElement.href = "http://ajou9770.gitgub.io/usertip/process";
+        }
+      });
+      </script>
     <script src="https://kit.fontawesome.com/a66ded67ea.js" crossorigin="anonymous"></script>
 </body>
 </html>
