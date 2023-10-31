@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀신한카드 대상 여부 확인</title>
+    <style>
+        iframe {
+            border: none;
+        }
+        #icon {
+            border: none;
+            width: 150px;
+            height: 50px;
+            font-size: 25px;
+            border-radius: 10px;
+            background: none;
+            text-align: center;
+            color: black;
+            font-weight: bold;
+          }
+          #icon_call {
+            border: none;
+            width: 140px;
+            height: 43px;
+            padding-top: 14px;
+            font-size: 20px;
+            color: black;
+            border-radius: 35px;
+            box-shadow: 1px 3px 3px 1px slategray;
+            background: rgb(205, 235, 223);
+            text-align: center;
+            font-weight: bold;
+          }
+          #icon_call a {
+            color: black;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+          }
+          .space_around {
+                    display: flex;
+                    justify-content: space-around;
+          }
+          #loading-overlay {
+            position: fixed;
+            top: 0;
+           left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 배경 색상과 투명도를 조정하세요 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+          }
+         #loading-message {
+  font-size: 24px;
+  color: white;
+        }
+        #loading-spinner {
+          border: 16px solid #f3f3f3;
+          border-top: 16px solid #3498db;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <iframe src="https://script.google.com/macros/s/AKfycby-_sqyiQj7x_DOFzJdTwZMiqMK1cYvZXpBCboNPB7G9aZi0eM0yB1tfm5Zods4BL-8/exec" width="100%" height="600px"></iframe>
+    <div class="space_around">
+        <div onclick="callon()" id="icon_call">
+          📞상담(문의)
+          </div>
+      
+      <div id="icon">
+              <div
+      id="kakao-talk-channel-chat-button"
+      data-channel-public-id="_dfhkK"
+      data-title="consult"
+      data-size="small"
+      data-color="yellow"
+      data-shape="mobile"
+      data-support-multiple-densities="true"
+      ></div></div>
+      </div>
+      <div id="loading-overlay">
+        <div id="loading-spinner"></div>
+        <div id="loading-message"><span style="padding-left: 15px;">로딩중입니다...</span>
+          <br><small>✨평생어부바 신협</small>
+        </div>
+      </div>
+      <script>
+      // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
+      window.addEventListener('load', function() {
+        var spinner = document.getElementById('loading-spinner');
+        spinner.style.display = 'none';
+      });
+      </script>
+      <script>
+      window.addEventListener('load', function() {
+        var loadingOverlay = document.getElementById('loading-overlay');
+        loadingOverlay.style.display = 'none';
+      });
+      </script>
+      <script>  
+          function callon() {
+            if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
+              document.location.href = "tel:031-219-6052"
+          } else {
+            alert("취소 되었습니다!!")
+          }
+         }                
+        </script>
+      
+      <script>
+            window.kakaoAsyncInit = function() {
+              Kakao.Channel.createChatButton({
+                container: '#kakao-talk-channel-chat-button',
+              });    
+            };
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
+              fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'kakao-js-sdk');
+          </script>
+</body>
+</html>
+
