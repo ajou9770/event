@@ -90,12 +90,13 @@
   <br>
         <!-- Consent Giver's Information -->
         <div class="form-group">
-          <label for="name">동의자 성명</label>
+          <label for="name">동의자 성명 입력 및 서명하기</label>
           <input type="text" class="form-control" id="name" required placeholder="성명을 입력하세요">
         </div>
         <div class="form-group">
 <!--             <label for="signature-pad">서명</label> -->
-            <canvas id="signature-pad" class="signature-pad" width="360" height="200"></canvas>
+            <canvas id="signature-pad" class="signature-pad" width="380" height="200"></canvas>
+            <br>
             <button type="button" id="clear-signature">서명 지우기</button>
         </div>
         
@@ -120,7 +121,7 @@
         };
     </script>   
     
-    <script>
+<!--     <script>
     document.addEventListener('DOMContentLoaded', function() {
     var canvas = document.getElementById('signature-pad');
     var context = canvas.getContext('2d');
@@ -151,10 +152,10 @@
 
     addPlaceholderText(); // 페이지 로드 시 텍스트 추가
 });
-</script>
+</script> -->
 
 <script>
-/* var canvas = document.getElementById('signature-pad');
+var canvas = document.getElementById('signature-pad');
 var context = canvas.getContext('2d');
 
 // 터치 이벤트와 마우스 이벤트 모두 처리
@@ -208,59 +209,11 @@ function getY(event) {
         return event.touches[0].clientY - canvas.getBoundingClientRect().top;
     }
     return event.clientY - canvas.getBoundingClientRect().top;
-} */
+}
+    </script>
 
-      var canvas = document.getElementById('signature-pad');
-      var ctx = canvas.getContext('2d');
-      ctx.lineWidth = 2;
-      var isDrawing = false;
-      var date = new Date();
-
-      var options = {
-      year: 'numeric', month: 'numeric', day: 'numeric',
-      hour: 'numeric', minute: 'numeric', second: 'numeric',
-      timeZone: 'Asia/Seoul',
-      hour12: false
-      };
-      
-      canvas.addEventListener('touchstart', startDrawing);
-      canvas.addEventListener('touchmove', draw);
-      canvas.addEventListener('touchend', stopDrawing);
-
-      canvas.addEventListener('mousedown', function(event) {
-      alert('🤷‍♀️모바일에서만 서명하실 수 있습니다.');
-       });
-      
-      function startDrawing(event) {
-        isDrawing = true;
-        var rect = canvas.getBoundingClientRect();
-        var x = event.touches[0].clientX - rect.left;
-        var y = event.touches[0].clientY - rect.top;
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-      }
-      
-      function draw(event) {
-        event.preventDefault();
-        if (!isDrawing) return;
-        var rect = canvas.getBoundingClientRect();
-        var x = event.touches[0].clientX - rect.left;
-        var y = event.touches[0].clientY - rect.top;
-        ctx.lineTo(x, y);
-        ctx.stroke();
-      }
-      
-      function stopDrawing() {
-        isDrawing = false;
-      }
-      
-      function clearSignature() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-      ctx.font = "15px Arial";  // 폰트 크기와 스타일을 설정합니다.
-      ctx.fillText(`서명일시: ${new Intl.DateTimeFormat('ko-KR', options).format(date)}`, 5, 185);  // (10, 50) 위치에 "문구"삽입
-
-    document.getElementById("consent-form").addEventListener("submit", function(e) {
+    <script> 
+      document.getElementById("consent-form").addEventListener("submit", function(e) {
         e.preventDefault();
          var formData = {
                 name: document.getElementById("name").value,
