@@ -95,7 +95,7 @@
         </div>
         <div class="form-group">
 <!--             <label for="signature-pad">서명</label> -->
-            <canvas id="signature-pad" class="signature-pad" width="400" height="200"></canvas>
+            <canvas id="signature-pad" class="signature-pad" width="360" height="200"></canvas>
             <button type="button" id="clear-signature">서명 지우기</button>
         </div>
         
@@ -154,7 +154,7 @@
 </script>
 
 <script>
-var canvas = document.getElementById('signature-pad');
+/* var canvas = document.getElementById('signature-pad');
 var context = canvas.getContext('2d');
 
 // 터치 이벤트와 마우스 이벤트 모두 처리
@@ -208,8 +208,66 @@ function getY(event) {
         return event.touches[0].clientY - canvas.getBoundingClientRect().top;
     }
     return event.clientY - canvas.getBoundingClientRect().top;
-}
+} */
   
+var canvas = document.getElementById('signature-pad');
+var context = canvas.getContext('2d');
+
+// 터치 이벤트와 마우스 이벤트 모두 처리
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('touchstart', startDrawing);
+
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('touchmove', draw);
+
+document.addEventListener('mouseup', stopDrawing);
+document.addEventListener('touchend', stopDrawing);
+
+document.getElementById('clear-signature').addEventListener('click', clearCanvas);
+
+var drawing = false;
+
+function startDrawing(event) {
+    if (!drawing) {
+        drawing = true;
+        context.beginPath();
+    }
+    context.moveTo(getX(event), getY(event));
+    event.preventDefault();
+}
+
+function draw(event) {
+    if (!drawing) return;
+    context.lineTo(getX(event), getY(event));
+    context.stroke();
+    event.preventDefault();
+}
+
+function stopDrawing() {
+    if (drawing) {
+        drawing = false;
+        context.closePath();
+    }
+}
+
+function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function getX(event) {
+    if (event.touches) {
+        return event.touches[0].clientX - canvas.getBoundingClientRect().left;
+    }
+    return event.clientX - canvas.getBoundingClientRect().left;
+}
+
+function getY(event) {
+    if (event.touches) {
+        return event.touches[0].clientY - canvas.getBoundingClientRect().top;
+    }
+    return event.clientY - canvas.getBoundingClientRect().top;
+}
+
     document.getElementById("consent-form").addEventListener("submit", function(e) {
         e.preventDefault();
          var formData = {
