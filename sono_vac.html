@@ -159,7 +159,8 @@
 <body>
    <iframe src="https://script.google.com/macros/s/AKfycbyVeGWIIgPCe5Y81rYd3nh7raZLg0pe7njzcOk9ZTYcz67Lqbnle-_e_wxYcKcPZthVxQ/exec" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
   <!--   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button> -->
-  <a href="https://ajou9770.github.io/usertip/dm.html"><button class="btn btn-secondary btn-sm" style="margin-left: 15px;">🚀소노리조트 실시간 예약 안내 바로가기</button></a> 
+  <button id="confirmLinkButton" class="btn btn-secondary btn-sm" style="margin-left: 15px;">🚀소노리조트 실시간 예약 안내 바로가기</button>
+  
   <br><br>
   <div class="space_around">  
   <div onclick="callon()" id="icon_call">
@@ -188,6 +189,7 @@ data-support-multiple-densities="true"
   <br>
   <img src="img/jan_2024_img.jpg" style="width: 140px; height:140px;">
 </div>
+
 <!-- 모달 -->
 <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -214,6 +216,14 @@ data-support-multiple-densities="true"
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+document.getElementById('confirmLinkButton').addEventListener('click', function() {
+    var userConfirmed = confirm("⛺소노리조트 실시간 예약 안내 페이지로 이동하시겠습니까?");
+    if (userConfirmed) {
+        window.location.href = "https://ajou9770.github.io/usertip/dm.html";
+    }
+});
+
+
 $(document).ready(function() {
   // 쿠키 확인
   if (!document.cookie.includes("modalShown=true")) {
