@@ -183,73 +183,9 @@ data-support-multiple-densities="true"
     <br><small>✨평생어부바 신협</small>
   </div>
 </div>
-<!-- <button class="btn btn info btn-lg" id="showCalendar" onclick="showImg()">📆</button>
-<button class="btn btn info btn-lg" id="hideCalendar" onclick="imgClose()">📆❌</button>
-<div id="calendar">
-  <img src="img/dec_2023_img.jpg" style="width: 140px; height:140px;">
-  <br>
-  <img src="img/jan_2024_img.jpg" style="width: 140px; height:140px;">
-</div> -->
-
-<!-- 모달 -->
-<!-- <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="welcomeModalLabel">🎉연말 신협 체크카드 EVENT!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" style="text-align: center;">
-              <a href="http://pf.kakao.com/_dfhkK/102940651">
-                  <img src="img/lucky_check_event2311.png" alt="이미지" style="width:100%;">
-                  <button class="btn-primary">🔎자세히 보기</button>
-              </a>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-sm" id="dontShowAgain">하루 동안 보지 않기</button>
-              <button type="button" class="btn btn-warning btn-sm" data-bs-dismiss="modal">닫기</button>
-          </div>
-      </div>
-  </div>
-</div> -->
-
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-document.getElementById('confirmLinkButton').addEventListener('click', function() {
-    var userConfirmed = confirm("⛺소노리조트 실시간 예약 안내 페이지로 이동하시겠습니까?");
-    if (userConfirmed) {
-        window.location.href = "https://ajou9770.github.io/usertip/dm.html";
-    }
-});
-
-
-/* $(document).ready(function() {
-  // 쿠키 확인
-  if (!document.cookie.includes("modalShown=true")) {
-      $('#welcomeModal').modal('show');
-  }
-
-  $('#dontShowAgain').click(function() {
-      // 쿠키 설정 (하루 동안 유지)
-      document.cookie = "modalShown=true; max-age=86400";
-      $('#welcomeModal').modal('hide');
-  });
-}); */
-</script>
-<script>
-  function showImg() {
-    document.getElementById('calendar').style.display = 'block';
-    document.getElementById('hideCalendar').style.display = 'block';
-    document.getElementById('showCalendar').style.display = 'none';
-  }
-  function imgClose() {
-    document.getElementById('calendar').style.display = 'none';
-    document.getElementById('showCalendar').style.display = 'block';
-    document.getElementById('hideCalendar').style.display = 'none';
-  }
-</script>
 <script>
 // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
 window.addEventListener('load', function() {
