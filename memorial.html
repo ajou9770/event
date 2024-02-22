@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어머니 추모영상</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* 기본 스타일 */
+iframe {
+    width: 100%;
+    height: 600px; /* 기본 높이 */
+  }
+  
+  /* 뷰포트 너비가 768px 이하일 때 */
+  @media (max-width: 768px) {
+    iframe {
+      height: 400px; /* 태블릿 */
+    }
+  }
+  
+  /* 뷰포트 너비가 480px 이하일 때 */
+  @media (max-width: 480px) {
+    iframe {
+      height: 300px; /* 모바일 */
+    }
+  }
+  video {
+    border-radius: 10px;
+  }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 비율 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- 비디오 영역 -->
+        <div class="row mb-4">
+            <div class="col-lg-12">
+                 <video width="100%" height="400" controls autoplay>
+                    <source src="img/mom_memorial_sm.mp4" type="video/mp4">
+                  </video>
+            </div>
+        </div>
+        
+        <!-- Google Apps Script Iframe 영역 (예시) -->
+        <div class="row">
+            <div class="col-lg-12">
+                <iframe src="https://script.google.com/macros/s/AKfycbyGvu02t_TxEEHn9owj5oM3hORyOywRHIb3O-c9QINKj7xGZow8sps-I-K301EyU2HlPQ/exec" frameborder="0" width="100%" height="600"></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        function adjustIframeHeight() {
+          var iframe = document.getElementById('yourIframeId');
+          if (window.innerWidth <= 768) {
+            iframe.style.height = "400px"; // 태블릿
+          } else if (window.innerWidth <= 480) {
+            iframe.style.height = "300px"; // 모바일
+          } else {
+            iframe.style.height = "600px"; // 데스크탑
+          }
+        }
+        
+        // 뷰포트 크기 변경 시 높이 조정
+        window.onresize = adjustIframeHeight;
+        // 페이지 로드 시 높이 조정
+        window.onload = adjustIframeHeight;
+        </script>
+        
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
