@@ -10,6 +10,23 @@
     <!-- jQuery (Bootstrap의 JavaScript 플러그인에 필요) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>🚌조합원 테마여행 신청서</title>
+    <script>
+        window.onload = function() {
+          var images = document.querySelectorAll('.giftimg');
+          var currentIndex = 0;
+    
+          setInterval(function() {
+            // 현재 이미지 숨기기
+            images[currentIndex].style.display = 'none';
+    
+            // 다음 이미지로 이동
+            currentIndex = (currentIndex + 1) % images.length;
+    
+            // 다음 이미지 보이기
+            images[currentIndex].style.display = 'block';
+          }, 30000); // 30초 변경 (3600000 밀리초)
+        };
+      </script>
     <style>
         body {
             max-width: 900px;
@@ -166,7 +183,8 @@
 <!-- onload="alert('🤷‍♂️2023동계 성수기 예약신청이 마감되었습니다.')" -->
 <body>
     <!--onload="alert('🤷‍♂️아래 입력란에 입력 후 선물을 선택하여 주세요 \n ✔️중복 신청하실 수 없습니다.')"-->
-    <img class="giftimg" src="img/img02_tema.jpg" onclick="location.href='#'">
+    <img class="giftimg" src="img/img02_tema.jpg" onclick="location.href='#'" style="display: block;">
+  <img class="giftimg" src="img/img_tema.jpg" onclick="location.href='#'" style="display: none;">
 <iframe src="https://script.google.com/macros/s/AKfycbxR1LJ11u9dt49HxixqTFKDaiB-P5nkoWuLR2TOEIQx9Aqjv5hTL9m0zQ-p2qlr_labEQ/exec" width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
   <!--   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button> -->
    <!-- <button id="confirmLinkButton" class="btn btn-secondary btn-sm" style="margin-left: 15px;">🚀소노리조트 실시간 예약 안내 바로가기</button> -->
