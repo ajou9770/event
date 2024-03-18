@@ -184,6 +184,13 @@
         font-size: medium;
         font-weight: 600;
     }
+   /* 이미지를 숨기기 위한 스타일 */
+   #imageContainer {
+    display: none;
+  }
+  #myImage {
+    width: 100%;
+  }
 </style>
 </head>
 <!-- onload="alert('🤷‍♂️2023동계 성수기 예약신청이 마감되었습니다.')" -->
@@ -199,8 +206,17 @@
     📑적용금리: 만기시 최고 8.0%( 이용고배당 추가시 약 8.8%금리 효과)  <br>
     ✔ 기준금리: 3.5% + 카드신규(사용)4.0% + 결제계좌,자동이체 등 0.5%
   </p>
-<iframe src="https://script.google.com/macros/s/AKfycbxt_mCu7QjhpxFBgcw-O0I466TPR1sCNZ8ak6dBNQ5dsBrxGn7ITftg3qkX_dkCCJTsWQ/exec" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+<iframe src="https://script.google.com/macros/s/AKfycbxt_mCu7QjhpxFBgcw-O0I466TPR1sCNZ8ak6dBNQ5dsBrxGn7ITftg3qkX_dkCCJTsWQ/exec" width="100%" height="650" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
    <br>
+   <!-- 이미지를 감싸는 div 요소 -->
+<div id="imageContainer">
+  <img id="myImage" src="img/plus_agree.jpg" alt="개인정보3자제공동의">
+  <button id="closeImageButton">닫기</button>
+</div>
+
+<!-- 특정 버튼 -->
+<button class="btn btn-primary btn-sm" id="showImageButton">🔎개인정보 제3자동의서 보기</button>
+<br>
   <div class="space_around">  
   <div onclick="callon()" id="icon_call">
     📞상담(문의)
@@ -224,6 +240,39 @@ data-support-multiple-densities="true"
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 버튼 요소와 이미지 컨테이너 요소 가져오기
+    var showImageButton = document.getElementById("showImageButton");
+    var closeImageButton = document.getElementById("closeImageButton");
+    var imageContainer = document.getElementById("imageContainer");
+  
+    // 이미지 닫기 버튼 클릭 시 이미지 숨기고 보기 버튼 보이기
+    closeImageButton.addEventListener("click", function() {
+      hideImage();
+      showImageButton.style.display = "inline-block";
+    });
+  
+    // 특정 버튼 클릭 시 이미지 보이기
+    showImageButton.addEventListener("click", function() {
+      showImage();
+      showImageButton.style.display = "none";
+    });
+  
+    // 이미지 표시 함수 정의
+    function showImage() {
+      imageContainer.style.display = "block";
+    }
+  
+    // 이미지 숨기기 함수 정의
+    function hideImage() {
+      imageContainer.style.display = "none";
+    }
+  
+    // 페이지 로드 시 보기 버튼 숨기기
+    showImageButton.style.display = "block";
+  });
+  </script>
 <script>
 // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
 window.addEventListener('load', function() {
