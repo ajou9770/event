@@ -212,22 +212,24 @@
             cursor: pointer;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 스타일 */
         }
-        
         /* 버튼 클릭 시 iframe 보이기/숨기기 */
         #iframe-container {
             display: none;
         }
 </style>
 <script>
-  // 버튼 클릭 시 iframe 보이기/숨기기 함수
-  function toggleIframe() {
-      var iframeContainer = document.getElementById("iframe-container");
-      if (iframeContainer.style.display === "none") {
-          iframeContainer.style.display = "block";
-      } else {
-          iframeContainer.style.display = "none";
-      }
-  }
+// 버튼 클릭 시 iframe 보이기/숨기기 함수
+function toggleIframe() {
+            var iframeContainer = document.getElementById("iframe-container");
+            var toggleButton = document.getElementById("toggle-button");
+            if (iframeContainer.style.display === "none") {
+                iframeContainer.style.display = "block";
+                toggleButton.style.backgroundColor = "tomato"; // 그레이 배경색으로 변경
+            } else {
+                iframeContainer.style.display = "none";
+                toggleButton.style.backgroundColor = "#007bff"; // 원래 배경색으로 변경
+            }
+        }
 </script>
 </head>
 <!-- onload="alert('🤷‍♂️2023동계 성수기 예약신청이 마감되었습니다.')" -->
@@ -251,7 +253,8 @@
   </span>
   <br>
   <!-- 버튼 -->
-  <button class="toggle-button" onclick="toggleIframe()">📝참가신청하기[닫기]</button>
+  <button id="toggle-button" class="toggle-button" onclick="toggleIframe()">📝참가신청하기[닫기]</button>
+
   <div id="iframe-container">
   <iframe class="custom-iframe" src="https://script.google.com/macros/s/AKfycbwLYd8YtAlAAaZMntfHVZ2QjFLQb8_WLjqMmU5a4WZbiafhESkafGLtA1hlsZktaFer2g/exec" width="98%" height="900" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
   </div>
