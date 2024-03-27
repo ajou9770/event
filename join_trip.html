@@ -200,6 +200,22 @@
             border: 1px solid #ccc; /* 테두리 스타일 */
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 스타일 */
         }
+        /* 반응형 디자인을 위한 스타일 */
+        .responsive-iframe-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 비율에 따른 높이 설정 */
+        }
+        
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* 외부 iframe 테두리 제거 */
+        }
 </style>
 </head>
 <!-- onload="alert('🤷‍♂️2023동계 성수기 예약신청이 마감되었습니다.')" -->
@@ -222,7 +238,10 @@
   점심식사 <a href="https://blog.naver.com/cbkb21/222506911782" onclick="confirmLink(event, this.href)">🍚약채락성현한정식</a>==> <a href="https://blog.naver.com/springlll8/220784013041" onclick="confirmLink(event, this.href)">🏞️의림지</a>==> 복귀(18시)   
   </span>
   <br>
-  <iframe class="custom-iframe" src="https://script.google.com/macros/s/AKfycbwLYd8YtAlAAaZMntfHVZ2QjFLQb8_WLjqMmU5a4WZbiafhESkafGLtA1hlsZktaFer2g/exec" width="98%" height="900" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+  <div class="responsive-iframe-container">
+  <iframe src="https://script.google.com/macros/s/AKfycbwLYd8YtAlAAaZMntfHVZ2QjFLQb8_WLjqMmU5a4WZbiafhESkafGLtA1hlsZktaFer2g/exec" width="98%" height="900" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+  </div>
+  <!--class="custom-iframe"-->
   <!--   <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button> -->
    <!-- <button id="confirmLinkButton" class="btn btn-secondary btn-sm" style="margin-left: 15px;">🚀소노리조트 실시간 예약 안내 바로가기</button> -->
    <br>
