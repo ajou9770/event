@@ -251,7 +251,7 @@ function toggleIframe(type) {
       applyIframe.style.display = 'block';
       viewIframe.style.display = 'none'; // 조회하기 iframe 숨기기
       applyButton.textContent = '⛔참가신청 닫기';
-      viewButton.textContent = '🔎신청인원조회[변경]';
+      viewButton.textContent = '🔎신청인원조회[변경/취소]';
     } else {
       applyIframe.style.display = 'none';
       applyButton.textContent = '📝참가신청하기';
@@ -264,7 +264,7 @@ function toggleIframe(type) {
       applyButton.textContent = '📝참가신청하기';
     } else {
       viewIframe.style.display = 'none';
-      viewButton.textContent = '🔎신청인원조회[변경]';
+      viewButton.textContent = '🔎신청인원조회[변경/취소]';
     }
   }
 }
@@ -305,7 +305,7 @@ function toggleIframe(type) {
   <br><br>
   <!-- 버튼 -->
   <button id="toggle-button-apply" class="toggle-button" onclick="toggleIframe('apply')">📝참가신청하기</button>
-<button id="toggle-button-view" class="toggle-button" onclick="toggleIframe('view')">🔎신청인원조회[변경]</button>
+<button id="toggle-button-view" class="toggle-button" onclick="toggleIframe('view')">🔎신청인원조회[변경/취소]</button>
 
 <div id="iframe-container">
   <iframe id="iframe-apply" class="custom-iframe" src="https://script.google.com/macros/s/AKfycbwLYd8YtAlAAaZMntfHVZ2QjFLQb8_WLjqMmU5a4WZbiafhESkafGLtA1hlsZktaFer2g/exec" width="98%" height="900" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
