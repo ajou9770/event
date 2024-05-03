@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안내 페이지</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .content { display: none; }
+        .active { display: block; }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">조합원 테마교육</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showContent('menu1')">출자금비과세한도확대</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showContent('menu2')">이용고배당안내</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showContent('menu3')">보이스피싱예방</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showContent('menu4')">신협공제(보험)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 콘텐츠 영역 -->
+    <div class="container mt-5">
+        <div id="menu1" class="content">
+            <h3>출자금비과세한도가 2,000만원으로 증액되었습니다. </h3>
+            <p>#불입최대한도: 2,000만원(비과세 최대한도)
+               <br>
+               #월불입한도: 10만원 (변경없음)
+               <br>
+               #최근 5개년 평균배당율: 약 3.5% (일반과세 예금 환산시 약 4.3%) 
+               <br>
+               #퇴직공로금: 50만원 // 지급대상(퇴직전월 출자금 1,000만원 이상 유지시)   
+            </p>
+        </div>
+        <div id="menu2" class="content">
+            <h3>조합원 이용고배당안내</h3>
+            <p>신협 주거래 실적에 따른 배당 
+               <br>
+               예적금, 대출, 체크카드, 자동이체 등 주거래 이용실적에 비례하여 배당
+               <br>
+               <a href="https://ajou9770.github.io/usertip/mile.html" target="_blank">🔎최근이용고배당 지급내역</a>
+               <br>
+               ✔가족 조합원도 주거래로 이용시 이용고배당 지급(세대주 조합원)
+            </p>
+        </div>
+        <div id="menu3" class="content">
+            <h3>보이스피싱 예방</h3>
+            <p> 1. 공공기관, 금융기관 사칭 대출, 투자 권유 문자 발송 ==> 수신문자 통화 또는 링크를 통해 악성앱 설치유도, 휴대폰 수.발신 조작
+                ==> 대출,신판거래, 인출 등 진행 ==> 금전적 피해<br>
+                2. 자녀 또는 지인으로 가장하여 메신저 피싱 (자녀 핸드폰 분실 또는 파손 / 지인 부고장 등을 통한 악성앱설치 URL)
+                ==> 개인정보탈취를 통한 예금해지 등 인출<br> 
+                3. 휴대폰의 보안설정에서 출처를 알수없는 앱을 차단하는 기능 사용으로 설정<br>
+                4. 보안프로그램 최신상태로 유지 등<br>
+                5. 링크연결시, 가급적 PC를 통해 링크열기 (PC화면 카톡 등 활용)
+            </p>
+        </div>
+        <div id="menu4" class="content">
+            <h3>신협 공제(보험)의 장점</h3>
+            <p>1. 저렴함 공제(보험)료 (신협에서 판매 별도 설계사 수당 등 사업비 절감)<br>
+               2. 배당 등 수익의 공유(유배당 상품의 경우 사업수익의 일부를 가입자에게 배당)<br>
+               3. 타보험에 비해 추천 상품: 연금저축, 운전자공제, 치매보험 등.<br>
+               4. 조합에서 이용고 배당시 공제(보험)가입 실적 포함: 월 공제(보험)료 납입액의 약 4.5% <br> 
+            </p>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showContent(menuId) {
+            // 모든 콘텐츠를 숨깁니다.
+            document.querySelectorAll('.content').forEach((content) => {
+                content.style.display = 'none';
+            });
+
+            // 선택된 메뉴의 콘텐츠만 보여줍니다.
+            document.getElementById(menuId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
