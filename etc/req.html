@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>⭐전국직장신협연합회 프로그램 개선요청</title>
+    <style>
+        body {
+            max-width: 900px;
+            margin: 5px;
+            padding: 10px;
+        }
+        .center {
+            display: flex;
+            text-align: center;
+        }
+        iframe {
+            border-radius: 10px;
+        }
+        a {
+            font-size: medium;
+            font-weight: 600;
+        }
+        #detail, #close {
+            display: none;
+        }
+        button {
+            font-size: 15px;
+            margin-top: 10px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 10px;
+            box-shadow: 0px 3px 6px grey;
+        }
+#icon_call {
+  border: none;
+  width: auto;
+  height: 55px;
+  padding-top: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px;
+  color: black;
+  border-radius: 35px;
+  box-shadow: 1px 3px 3px 1px slategray;
+  background: rgb(205, 235, 223);
+  text-align: center;
+  font-weight: bold;
+}
+#icon_call a {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.space_around {
+          display: flex;
+          justify-content: space-around;
+        }
+        #docu, #cancel {
+          display: none;
+          font-size: 15px;
+        }
+        #close {
+          font-weight: 600;
+        }
+        p {
+          border: solid 1px;
+          box-shadow: opx 2x 4px grey;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        #loading-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경 색상과 투명도를 조정하세요 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    }
+ #loading-message {
+    font-size: 24px;
+    color: white;
+    }
+    #loading-spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
+</head>
+<body>
+    <!-- onload="alert('🤷‍♀️메뉴 변경시 그냥 다시 신청하시면 됩니다. 최종 주문건으로 접수합니다')" -->
+    <div class="space_around">
+        <h4>
+            <b>직장조합 비대면 온라인 대출 채널이용할 수 있도록 아래와 같이 프로그램 개발을 요청 드립니다. </b>
+            <br><br>
+            1. 온뱅크에 직장조합 환경에 적합한 대출상품 개발을 조속히 완료해 주시기 바랍니다.(2023년 협의됨.)
+            <br>
+            2. 조합 대출신청서 온라인(비대면)접수 가능하도록 전산프로그램 개발을 요청 드립니다.  
+        </h4>
+    </div>
+   <iframe src="https://script.google.com/macros/s/AKfycbzIunY2mywoAlLyAExI66Xm9l2jebVQasizh3bj_Z1jr3a6Dr2gsNPPsw5lvOv5A-QjWw/exec" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+   <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
+   -->
+    <!-- <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
+  <br> -->
+<!--   <div class="space_around">
+    <a href="https://docs.google.com/spreadsheets/d/1PjfyhTkWMwquIS6e_7edrLE-eUkuNdjDseEzUAk0qgE/edit?usp=sharing"> 🔎주문내역보기 → </a>
+    <br><br>
+    <span onclick="callon()">
+    📞총무에게전화하기
+    </span>
+    </div> -->
+    <br>
+    <div id="loading-overlay">
+      <div id="loading-spinner"></div>
+      <div id="loading-message">로딩 중입니다...
+        <br><small>✨전국직장신협연합회</small>
+      </div>
+    </div>
+    <script>
+    // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
+    window.addEventListener('load', function() {
+      var spinner = document.getElementById('loading-spinner');
+      spinner.style.display = 'none';
+    });
+    </script>
+    <script>
+    window.addEventListener('load', function() {
+      var loadingOverlay = document.getElementById('loading-overlay');
+      loadingOverlay.style.display = 'none';
+    });
+    </script>
+<script>  
+    function callon() {
+      if (window.confirm("☏ 총무(김설호)에게 📞전화앱으로 연결할까요?")) {
+        document.location.href = "tel:010-7118-6639"
+    } else {
+      alert("취소 되었습니다!!")
+    }
+   }                
+  </script>
+</body>
+</html>
