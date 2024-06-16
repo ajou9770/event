@@ -131,16 +131,67 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-#calendar {
+#calendar-container {
+  width: 350px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
   position: fixed;
-  bottom: 230px;
   right: 20px;
-  z-index: 1;
+  max-width: 300px;
+  bottom: 200px;
   display: none;
+}
+
+#calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.day-header {
+  display: inline-block;
+  width: 12%;
+  font-size: smaller;
+  padding: 10px 0;
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+#calendar .day-header:nth-child(1) {
+  color: red;
+}
+
+#calendar .day-header:nth-child(7) {
+  color: blue;
+}
+
+#calendar-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day {
+  width: 14.28%;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}        
+#calendar .day:nth-child(7n+1) {
+  color: red;
+}
+
+#calendar .day:nth-child(7n) {
+  color: blue;
 }
 #hideCalendar {
   position: fixed;
-  bottom: 180px;
+  bottom: 140px;
   right: 10px;
   display: none;
 }
@@ -183,6 +234,24 @@ data-support-multiple-densities="true"
 </div>-->
 <button class="btn btn info btn-lg" id="showCalendar" onclick="showImg()">📆</button>
 <button class="btn btn info btn-lg" id="hideCalendar" onclick="imgClose()">📆❌</button>
+<div id="calendar-container">
+  <div id="calendar-header">
+      <button id="prev-month">◀</button>
+      <span id="month-year"></span>
+      <button id="next-month">▶</button>
+  </div>
+  <div id="calendar">
+      <div class="day-header">Sun</div>
+      <div class="day-header">Mon</div>
+      <div class="day-header">Tue</div>
+      <div class="day-header">Wed</div>
+      <div class="day-header">Thu</div>
+      <div class="day-header">Fri</div>
+      <div class="day-header">Sat</div>
+      <div id="calendar-body"></div>
+  </div>
+</div>
+
 <div id="calendar">
   <img src="img/july_2024.jpg" style="width: 140px; height:140px;">
   <br>
@@ -237,13 +306,70 @@ document.getElementById('confirmLinkButton').addEventListener('click', function(
 }); */
 </script>
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const calendarBody = document.getElementById('calendar-body');
+    const monthYear = document.getElementById('month-year');
+    const prevMonth = document.getElementById('prev-month');
+    const nextMonth = document.getElementById('next-month');
+
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+    function renderCalendar(month, year) {
+        calendarBody.innerHTML = '';
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.classList.add('day');
+            calendarBody.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayCell = document.createElement('div');
+            dayCell.classList.add('day');
+            dayCell.textContent = day;
+            calendarBody.appendChild(dayCell);
+        }
+
+        monthYear.textContent = `${months[month]} ${year}`;
+    }
+
+    prevMonth.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+
+    nextMonth.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+
+    renderCalendar(currentMonth, currentYear);
+}); 
+
+
   function showImg() {
-    document.getElementById('calendar').style.display = 'block';
+    document.getElementById('calendar-container').style.display = 'block';
     document.getElementById('hideCalendar').style.display = 'block';
     document.getElementById('showCalendar').style.display = 'none';
   }
   function imgClose() {
-    document.getElementById('calendar').style.display = 'none';
+    document.getElementById('calendar-container').style.display = 'none';
     document.getElementById('showCalendar').style.display = 'block';
     document.getElementById('hideCalendar').style.display = 'none';
   }
