@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⭐조합원 하루교육 모바일상품권 획득 Quiz</title>
-    <style>
-        body {
-            text-align: center;
-        }
-        img {
-            border-radius: 10;
-            width: 250px;
-            height: 200px;
-        }
-    </style>
-</head>
-<body>
-    <!-- <img src="img/hollys_10000.jpg"> -->
-     <!-- <h3>🤷🏽‍♀️퀴즈 이벤트가 종료되었습니다. </h3> -->
-   <iframe id="iframe-apply" class="custom-iframe" src="https://script.google.com/macros/s/AKfycbxLAWDcu-vk7ux7398M7DJxbKlE__ZSITH1PYlGCVvPN1k7k7TP-1-caOG4F7j-la1Vjw/exec" width="98%" height="1000" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>⭐조합원 하루교육 모바일상품권 획득 Quiz</title>
+        <style>
+            body {
+                text-align: center;
+            }
+            img {
+                border-radius: 10;
+                width: 250px;
+                height: 200px;
+            }
+            .custom-iframe {
+                width: 100%;
+                height: 100vh;
+                /* 화면 높이에 맞도록 설정 */
+                border: 0;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                /* 박스 모델 계산을 안정적으로 유지 */
+            }
+
+            @media (max-width: 768px) {
+                .custom-iframe {
+                    height: 80vh;
+                    /* 모바일 디바이스의 경우 높이를 줄임 */
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <img src="img/hollys_10000.jpg"> -->
+        <!-- <h3>🤷🏽‍♀️퀴즈 이벤트가 종료되었습니다. </h3> -->
+        <iframe
+            id="iframe-apply"
+            class="custom-iframe"
+            src="https://script.google.com/macros/s/AKfycbxLAWDcu-vk7ux7398M7DJxbKlE__ZSITH1PYlGCVvPN1k7k7TP-1-caOG4F7j-la1Vjw/exec"
+            width="98%"
+            height="1000"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0">로드 중…</iframe>
+    </body>
 </html>
