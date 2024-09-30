@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>⭐경남아너스빌아파트도색설문</title>
+    <style>
+        body {
+            max-width: 900px;
+            margin: 5px;
+            padding: 10px;
+        }
+        .center {
+            display: flex;
+            text-align: center;
+        }
+        iframe {
+            border-radius: 10px;
+        }
+        a {
+            font-size: medium;
+            font-weight: 600;
+        }
+        #detail, #close {
+            display: none;
+        }
+        button {
+            font-size: 15px;
+            margin-top: 10px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            margin-right: 10px;
+            box-shadow: 0px 3px 6px grey;
+        }
+#icon_call {
+  border: none;
+  width: auto;
+  height: 55px;
+  padding-top: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 20px;
+  color: black;
+  border-radius: 35px;
+  box-shadow: 1px 3px 3px 1px slategray;
+  background: rgb(205, 235, 223);
+  text-align: center;
+  font-weight: bold;
+}
+#icon_call a {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.space_around {
+          display: flex;
+          justify-content: space-around;
+        }
+        #docu, #cancel {
+          display: none;
+          font-size: 15px;
+        }
+        #close {
+          font-weight: 600;
+        }
+        p {
+          border: solid 1px;
+          box-shadow: opx 2x 4px grey;
+          padding: 10px;
+          border-radius: 5px;
+        }
+        #loading-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경 색상과 투명도를 조정하세요 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    }
+ #loading-message {
+    font-size: 24px;
+    color: white;
+    }
+    #loading-spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
+</head>
+<body>
+    <!-- onload="alert('🤷‍♀️메뉴 변경시 그냥 다시 신청하시면 됩니다. 최종 주문건으로 접수합니다')" -->
+    <div class="space_around">
+        <h4>
+            <b>경남아너스빌 아파트 외부도색 설문조사 진행합니다.  </b>
+            <br><br>
+            # 동 호수 또는 동(호수는 생략가능)을 입력 후 응답해 주세요. 
+        </h4>
+    </div>
+   <iframe src="https://script.google.com/macros/s/AKfycbykIVI-sKGsATXXUXlK5Ztto3yAhf3xJui7OKqN1MVbuC9QNy1dj_bnFFvufrRujGJF/exec" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+   <div id="qrCodeContainer" class="mt-3" onclick="hideQrcode()"></div>
+   <button type="button" id="qrCodeshowbtn" class="btn btn-info mt-3" onclick="showQRCode()">⭐이페이지 QR코드 보기</button>
+   <button type="button" id="qrCodehidebtn"  class="btn btn-primary mt-3" onclick="hideQrcode()" style="display: none;">🔁QR코드 닫기</button>
+   <!--<a href="https://docs.google.com/spreadsheets/d/1JMPRVw-hIARNFGgUXzbj4Nx7x4nJGarUoQiqaoR84UM/edit#gid=0" target="_blank" onclick="alert('📢신청내역을 확인하실수 있습니다')">🔎가입신청내역 보기→</a>
+   -->
+    <!-- <button onclick="location.reload()" style="background-color: antiquewhite;">↩다시작성하기</button>
+  <br> -->
+<!--   <div class="space_around">
+    <a href="https://docs.google.com/spreadsheets/d/1PjfyhTkWMwquIS6e_7edrLE-eUkuNdjDseEzUAk0qgE/edit?usp=sharing"> 🔎주문내역보기 → </a>
+    <br><br>
+    <span onclick="callon()">
+    📞총무에게전화하기
+    </span>
+    </div> -->
+    <br>
+    <div id="loading-overlay">
+      <div id="loading-spinner"></div>
+      <div id="loading-message">로딩 중입니다...
+        <br><small>🏢경남아너스빌아파트</small>
+      </div>
+    </div>
+    <script>
+    // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
+    window.addEventListener('load', function() {
+      var spinner = document.getElementById('loading-spinner');
+      spinner.style.display = 'none';
+    });
+    </script>
+    <script>
+    window.addEventListener('load', function() {
+      var loadingOverlay = document.getElementById('loading-overlay');
+      loadingOverlay.style.display = 'none';
+    });
+    </script>
+<script>  
+    function callon() {
+      if (window.confirm("☏ 총무(김설호)에게 📞전화앱으로 연결할까요?")) {
+        document.location.href = "tel:010-7118-6639"
+    } else {
+      alert("취소 되었습니다!!")
+    }
+   }  
+   
+   function showQRCode() {
+            var qrCodeContainer = document.getElementById("qrCodeContainer");
+            var hideBtn = document.getElementById("qrCodehidebtn");
+            var showBtn = document.getElementById("qrCodeshowbtn");
+            qrCodeContainer.innerHTML = ""; // Clear any existing QR code
+            qrCodeContainer.style.display = "block";
+            hideBtn.style.display = "block";
+            showBtn.style.display = "none";
+            var url = window.location.href;
+            new QRCode(qrCodeContainer, {
+                text: url,
+                width: 128,
+                height: 128
+            });
+        }
+
+        function hideQrcode() {
+            var qrCodeContainer = document.getElementById("qrCodeContainer");
+            var hideBtn = document.getElementById("qrCodehidebtn");
+            var showBtn = document.getElementById("qrCodeshowbtn");
+            qrCodeContainer.style.display = "none"; // Clear any existing QR code
+            hideBtn.style.display = "none"; 
+            showBtn.style.display = "block";
+        }     
+  </script>
+</body>
+</html>
