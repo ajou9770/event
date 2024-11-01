@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-    <title>무료 여행자 보험 가입 신청서</title>
+    <title>🎉신협 무료 여행자보험 가입 신청서</title>
+    <style>
+        input[type="radio"], input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <div class="container mt-5">
@@ -146,7 +155,7 @@
             travelPeriodEnd,
             signature
         };
-
+        alert("✈️제출중입니다. 잠시만 기다려 주세요. \n 제출결과는 📨이메일로 안내 드립니다.");
         try {
             const response = await fetch("https://script.google.com/macros/s/AKfycbwiSD2TOWtZVriAnVDP6uoi-IorbBPXF5Ka2Rh8sdCCD5Wbx-jdKLvtt7RSryggnqcwqw/exec", {
                 method: "POST",
