@@ -16,6 +16,9 @@
         label {
             font-weight: bold;
         }
+        .input-group-text {
+            width: 150px;
+        }
     </style>
 </head>
 <body>
@@ -47,19 +50,19 @@
             <input type="tel" class="form-control" placeholder="숫자만 입력하세요" id="contactNumber" required>
         </div>
         <div class="input-group mb-3">
-            <span class="input-group-text">📨 이메일 (선택사항)</span>
+            <span class="input-group-text">📨 이메일(옵션)</span>
             <input type="email" class="form-control" placeholder="이메일로 신청 내역이 전송됩니다." id="email">
         </div>
-        <div class="mb-3">
-            <label for="destinationCountry" class="form-label">✈️방문 국가/지역</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">✈️방문국가/지역</span>
             <input type="text" class="form-control" id="destinationCountry" name="destinationCountry" required>
         </div>
-        <div class="mb-3">
-            <label for="travelPeriodStart" class="form-label">🛫출국일자</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">🛫출국 일자</span>
             <input type="date" class="form-control" id="travelPeriodStart" name="travelPeriodStart" required>
         </div>
-        <div class="mb-3">
-            <label for="travelPeriodEnd" class="form-label">🛬입국일자</label>
+        <div class="input-group mb-3">
+            <span class="input-group-text">🛬입국 일자</span>
             <input type="date" class="form-control" id="travelPeriodEnd" name="travelPeriodEnd" required>
         </div>
         <div class="form-check mb-3">
@@ -71,10 +74,6 @@
                 <input type="radio" class="form-check-input" name="privacyConsent" id="consentYes" value="yes" required>
                 <label class="form-check-label" for="consentYes">동의합니다(✔️필수)</label>
             </div>
-           <!--  <div>
-                <input type="radio" class="form-check-input" name="privacyConsent" id="consentNo" value="no" onclick="alert('⚠️ 개인정보 수집·활용에 미동의할 경우 가입하실 수 없습니다.')">
-                <label class="form-check-label" for="consentNo">동의하지 않습니다</label>
-            </div> -->
         </div>
         
         <div class="mb-3">
