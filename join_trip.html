@@ -1,419 +1,229 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery (Bootstrap의 JavaScript 플러그인에 필요) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>🚌조합원 테마여행 신청서</title>
-      <script>
-        function confirmLink(event, link) {
-            event.preventDefault();
-            if (confirm("🤷🏽‍♀️링크를 열어 블로그로 연결할까요?")) {
-                window.open(link, "_blank");
-            }
-        }
-    </script>
-    <style>
-        body {
-            max-width: 900px;
-            margin: 5px;
-            padding: 10px;
-        }
-        .center {
-            text-align: center;
-        }
-        iframe {
-            border-radius: 10px;
-        }
-        a {
-            font-size: medium;
-            font-weight: 600;
-        }
-        #detail, #close {
-            display: none;
-        }
-        button {
-            font-size: 15px;
-            margin-top: 10px;
-            font-weight: 600;
-            border: none;
-            border-radius: 10px;
-            padding: 10px;
-            margin-right: 10px;
-            box-shadow: 0px 3px 6px grey;
-        }
-        #icon {
-  border: none;
-  width: 150px;
-  height: 50px;
-  font-size: 25px;
-  border-radius: 10px;
-  background: none;
-  text-align: center;
-  color: black;
-  font-weight: bold;
-}
-#icon_call {
-  border: none;
-  width: 140px;
-  height: 55px;
-  padding-top: 12px;
-  font-size: 20px;
-  color: black;
-  border-radius: 35px;
-  box-shadow: 1px 3px 3px 1px slategray;
-  background: rgb(205, 235, 223);
-  text-align: center;
-  font-weight: bold;
-}
-#icon_call a {
-  color: black;
-  font-size: 20px;
-  font-weight: 600;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.space_around {
-          display: flex;
-          justify-content: space-around;
-        }
-.img_july {
-  position: fixed;
-  right: 10px;
-  bottom: 350px;
-  width: 150px;
-  height: 150px;
-}
-.img_august {
-  position: fixed;
-  right: 10px;
-  bottom: 200px;
-  width: 150px;
-  height: 150px;
-}
-#calbtn {
-  position: fixed;
-  right: 5px;
-  bottom: 150px;
-  width: 80px;
-  height: 50px;
-}
-#cal, #hideCal {
-  display: none;
-}
-#scrollToTopButton {
-    position: fixed;
-    bottom: 50%;
-    right: 10px;
-    display: none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🎒 조합원 테마여행 신청</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; padding-top: 40px; }
+    .form-container { max-width: 600px; margin: auto; }
+    .spinner-border { display: none; }
+    .form-check-label.btn {
+    transition: all 0.2s ease;
+    padding: 1rem;
+    border-radius: 0.5rem;
   }
-  #loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 배경 색상과 투명도를 조정하세요 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-#loading-message {
-  font-size: 15px;
-  color: white;
-}
-#loading-spinner {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-#calendar {
-  position: fixed;
-  bottom: 150px;
-  right: 20px;
-  z-index: 1;
-  display: none;
-}
-#hideCalendar {
-  position: fixed;
-  bottom: 100px;
-  right: 10px;
-  display: none;
-}
-#showCalendar {
-  position: fixed;
-  bottom: 150px;
-  right: 10px;
-}
-  #welcomeModal .modal-dialog {
-        max-width: 80%;
-        height: 60vh;
-        margin: auto;
-    }
-    .giftimg {
-        width: 100%;
-        height: auto;
-        max-height: 400px;
-        max-width: 500px;
-        border-radius: 10px;
-/*         box-shadow: 0px 4px 6px 0px lightskyblue; */
-        margin-right: 10px;
-    }
-    p {
-        font-size: large;
-        font-weight: 600;
-    }
-    a {
-      text-decoration: none;
-    }
-    /* 테두리와 그림자 스타일 */
-    .custom-iframe {
-            border: 1px solid #ccc; /* 테두리 스타일 */
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 스타일 */
-        }
-        /* 버튼 스타일 */
-        .toggle-button {
-          border: none;
-          padding: 10px 20px;
-          font-size: 16px;
-          cursor: pointer;
-          border-radius: 5px;
-          margin-bottom: 20px;
-        }
-        #toggle-button-apply {
-          background-color: #007bff;
-          color: #fff;
-        }
-        #toggle-button-view {
-          background-color: #28a745;
-          color: #fff;
-        }
-        #toggle-button-apply.closed {
-          background-color: #dc3545;
-        }
-        #toggle-button-view.closed {
-          background-color: #dc3545;
-        }
-        .custom-iframe {
-          display: none;
-        }
-  .slider {
-    max-height: 350px;
-    overflow: hidden;
-    position: relative;
-  }
-  .slide {
-    display: none;
-    max-height: 350px;
-  }
-  .slide img {
-    width: 100%;
-    max-height: 400px;
+  .carousel-inner img {
+    height: 300px;
     object-fit: cover;
   }
-  .scrollToTopBtn {
-    position: fixed;
-    right: 15px;
-    bottom: 10%;
-    cursor: pointer;
-    font-size: 24px;
-    background-color: transparent;
-    border: none;
-  }
-</style>
-<script>
-// 버튼 클릭 시 iframe 보이기/숨기기 함수
-function toggleIframe(type) {
-  var applyIframe = document.getElementById('iframe-apply');
-  var viewIframe = document.getElementById('iframe-view');
-  var applyButton = document.getElementById('toggle-button-apply');
-  var viewButton = document.getElementById('toggle-button-view');
-
-  if (type === 'apply') {
-    if (applyIframe.style.display === 'none') {
-      applyIframe.style.display = 'block';
-      viewIframe.style.display = 'none'; // 조회하기 iframe 숨기기
-      applyButton.textContent = '⛔참가신청 닫기';
-      viewButton.textContent = '🔎신청인원조회[변경/취소]';
-    } else {
-      applyIframe.style.display = 'none';
-      applyButton.textContent = '📝참가신청하기';
-    }
-  } else if (type === 'view') {
-    if (viewIframe.style.display === 'none') {
-      viewIframe.style.display = 'block';
-      applyIframe.style.display = 'none'; // 참가신청하기 iframe 숨기기
-      viewButton.textContent = '⛔신청인원조회 닫기';
-      applyButton.textContent = '📝참가신청하기';
-    } else {
-      viewIframe.style.display = 'none';
-      viewButton.textContent = '🔎신청인원조회[변경/취소]';
-    }
-  }
-}
-</script>
+  </style>
 </head>
-<!-- onload="alert('🤷‍♂️2023동계 성수기 예약신청이 마감되었습니다.')" -->
-<body onload="alert('🤷🏽‍♀️10월 24일 조합원 테마여행 세부일정 안내입니다. 추가 신청은 신협으로 문의 바랍니다.')">
-  <div class="slider">
-    <div class="slide">
-      <img src="img/mk01.jpg" alt="Image 1">
+<body>
+<!-- <div class="mb-4 position-relative" style="height: 400px; overflow: hidden;">
+  <img id="randomImage" class="position-absolute w-90 h-90 object-fit-cover fade-image" src="" alt="랜덤 산 이미지" />
+</div> -->
+<!-- 이미지 슬라이드 -->
+<div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <!-- 슬라이드 인디케이터 (동그라미) -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="4"></button>
+    <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="5"></button>
+  </div>
+
+  <!-- 슬라이드 이미지 영역 -->
+  <div class="carousel-inner rounded shadow">
+    <div class="carousel-item active">
+      <img src="https://file.sportsseoul.com/news/legacy/2019/10/29/news/2019102901002614700187451.jpg" class="d-block w-100" alt="슬라이드1">
     </div>
-    <div class="slide">
-      <img src="img/mk02.jpg" alt="Image 2">
+    <div class="carousel-item">
+      <img src="https://img.khan.co.kr/news/2022/08/31/news-p.v1.20220831.eb45dcf1aef5462385322834f298d197_P1.jpg" class="d-block w-100" alt="슬라이드2">
     </div>
-    <div class="slide">
-      <img src="img/mk03.jpg" alt="Image 3">
+    <div class="carousel-item">
+      <img src="https://www.hapt.co.kr/news/photo/202310/160352_30866_1012.jpg" class="d-block w-100" alt="슬라이드3">
     </div>
-    <div class="slide">
-      <img src="img/mk04.jpg" alt="Image 4">
+    <div class="carousel-item">
+      <img src="https://blog.kakaocdn.net/dn/bCHUXR/btqI7wJvXwZ/Tk3KmE4UxkiXsgPUNr61Kk/img.jpg" class="d-block w-100" alt="슬라이드4">
     </div>
-    <div class="slide">
-      <img src="img/mk05.jpg" alt="Image 5">
+    <div class="carousel-item">
+      <img src="https://img6.yna.co.kr/etc/inner/KR/2022/12/12/AKR20221212005400805_01_i_P4.jpg" class="d-block w-100" alt="슬라이드5">
     </div>
-    <div class="slide">
-      <img src="img/mk06.jpg" alt="Image 6">
+    <div class="carousel-item">
+      <img src="https://blog.kakaocdn.net/dn/bhwk3M/btrpuujnEiW/ObrYGkaUPaX75Gdm8Ahht0/img.jpg" class="d-block w-100" alt="슬라이드6">
     </div>
   </div>
-    <!-- 추가 이미지는 여기에 배치 -->
-     <br>
-     <p>
-    📅일시: 2024.10.24(목) 7시 ~ 18시<br>
-    ⛳장소: 문경새재 (사과축제) + 구랑리 철로자전거<br>
-    💸참가비: 인당 1만원(11월 급여공제)<br>
-<!--        <small><mark>⭐ 신청기간내에 참석인원 변경 가능합니다.</mark></small><br>   --> 
-    📑참가취소신청: 10월 17일까지 취소가(이후, 5000원 패널티 급여공제).<br>
-    ✔ 참가 취소는 신협으로 신청해 주세요. <br>
-  </p>
-  <span>⭐세부일정(링크를 열어 자세히 보실 수 있습니다.)<br>
-  ✈️07:00병원출발 => 🍎문경새재(사과축제)</a> ==><a href="https://m.blog.naver.com/chaegool/223097787482" onclick="confirmLink(event, this.href)">🍚점심:모심정(한정식)</a> ==> <a href="https://blog.naver.com/cobijjang/223174428009" onclick="confirmLink(event, this.href)">🍒진남교반(오미자터널)</a>==> <a href="https://m.blog.naver.com/nicenet/222503164515" onclick="confirmLink(event, this.href)">🚲구랑리 철로자전거</a>==> 복귀(18시)   
-  </span>
-  <br>
-  <small>🤷🏽‍♀️현지 사정에 따라 일정이 변경될 수 있습니다. </small>
-  <!--<a href="https://obravomylife.tistory.com/entry/%EC%B6%A9%EB%B6%81%EC%A0%9C%EC%B2%9C-%EC%98%A4%EB%94%94%ED%96%A5-%ED%95%9C%EC%A0%95%EC%8B%9D" onclick="confirmLink(event, this.href)">🍚약채락성현한정식</a>-->
-  <br>
-  <!-- 버튼 -->
-<button id="toggle-button-apply" class="toggle-button" onclick="toggleIframe('apply')">📝참가신청하기</button>
-<button id="toggle-button-view" class="toggle-button" onclick="toggleIframe('view')">🔎신청조회[변경/취소]</button>
 
-<div id="iframe-container">
-  <iframe id="iframe-apply" class="custom-iframe" src="https://script.google.com/macros/s/AKfycbwLYd8YtAlAAaZMntfHVZ2QjFLQb8_WLjqMmU5a4WZbiafhESkafGLtA1hlsZktaFer2g/exec" width="98%" height="900" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
-  <iframe id="iframe-view" class="custom-iframe" src="https://script.google.com/macros/s/AKfycbwT2lS-lhLhJ4qskneodalBb807v3bOwerA9e5DahPvEKxW9Djppwhc_DCCO1uuvLEK/exec" width="98%" height="500" frameborder="0" marginheight="0" marginwidth="0">로드 중…</iframe>
+  <!-- 좌우 이동 버튼 -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">이전</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">다음</span>
+  </button>
 </div>
-  <br>
-   <!-- <button class="scrollToTopBtn">⬆️</button> -->
-  <div class="space_around">  
-  <div onclick="callon()" id="icon_call">
-    📞상담(문의)
-    </div>
-<div id="icon">
-        <div
-id="kakao-talk-channel-chat-button"
-data-channel-public-id="_dfhkK"
-data-title="consult"
-data-size="small"
-data-color="yellow"
-data-shape="mobile"
-data-support-multiple-densities="true"
-></div></div>
-<div id="loading-overlay">
-  <div id="loading-spinner"></div>
-  <div id="loading-message"><span style="padding-left: 17px;">🚌테마여행신청...</span>
-    <br><small>✨평생어부바 신협</small>
+
+<!-- Hero 섹션 -->
+<div class="bg-dark text-white text-center py-3" style="background-image: url('https://example.com/hero-image.jpg'); background-size: cover; background-position: center;">
+  <div class="container">
+    <h3 class="display-4 fw-bold">🚌 조합원 테마여행 신청</h3>
+    <p class="lead">남설악과 동해바다를 함께하는 특별한 하루</p>
   </div>
 </div>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 신청 안내 카드 -->
+<section class="container my-3" id="application">
+  <div class="card shadow">
+    <div class="card-body">
+      <h5 class="card-title">📢 신청 안내</h5>
+      <ul class="list-unstyled">
+        <li><strong>대상:</strong> 최근 5년 이내 가입 조합원 우선 접수</li>
+        <li><strong>일시:</strong> 2025년 5월 30일(금) 06:00 ~ 19:00</li>
+        <li><strong>장소:</strong> 남설악(한계령 경유 용소탐방센터 ~ 오색약수) + 속초 바다향기길 트래킹</li>
+        <li><strong>코스:</strong> 용소폭포탐방센터 ~ 주전골 ~ 오색약수 (난이도: 하)</li>
+        <li><strong>참가비:</strong> 인당 1만원 (교통비, 아침, 점심(회정식), 간식 포함)</li>
+        <li><strong>신청인원:</strong> 최대 2명 (동반 1인 가능, 미성년 자녀 제외)</li>
+        <li><strong>신청기간:</strong> 4월 18일(금) ~ 5월 16일(금)</li>
+        <li><strong>참석인원:</strong> 선착순 40명 (초과 시 추첨)</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
+  <div class="container form-container bg-white p-4 shadow rounded">
+    <h3 class="text-center mb-4">📝신청하기</h3>
+    <form id="travelForm" onsubmit="submitForm(event)">
+      <div class="mb-3">
+        <label class="form-label">📌 사번</label>
+        <input type="number" class="form-control" id="employeeId" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">👤 성명</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">📞 연락처</label>
+        <input type="tel" class="form-control" id="contact" required placeholder="숫자만">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">👥 참석인원</label>
+        <select class="form-select" id="attendees" required>
+          <option value="">선택하세요</option>
+          <option value="1">1명</option>
+          <option value="2">2명</option>
+        </select>
+      </div>
+      <div class="accordion mb-3" id="consentAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="consentHeading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#consentCollapse" aria-expanded="false" aria-controls="consentCollapse">
+              📄 개인정보 수집 및 활용 동의 내용 보기/닫기
+            </button>
+          </h2>
+          <div id="consentCollapse" class="accordion-collapse collapse" aria-labelledby="consentHeading" data-bs-parent="#consentAccordion">
+            <div class="accordion-body">
+              <p>
+                우리 조합은 테마여행 참가 및 여행자 보험 가입을 위해 아래의 개인정보를 수집 및 활용합니다:
+              </p>
+              <ul>
+                <li><strong>수집 항목:</strong> 성명, 주민등록번호, 연락처</li>
+                <li><strong>이용 목적:</strong> 여행자 보험 가입 및 테마여행 운영</li>
+                <li><strong>보유 기간:</strong> 행사 종료 후 1개월 이내 파기</li>
+              </ul>
+              <p>
+                선생님은 개인정보 수집 및 활용에 동의하지 않을 권리가 있으며, 동의하지 않을 경우 테마여행 참가가 제한될 수 있습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="consent" required>
+        <label class="form-check-label" for="consent">
+          📄 상기 개인정보 수집 및 활용에 동의합니다.
+        </label>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">💬 기타 코멘트 (선택)</label>
+        <textarea class="form-control" id="comment" rows="2" placeholder="선택사항입니다."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" id="submitBtn">📤 제출하기</button>
+      <div class="text-center mt-3">
+        <div class="spinner-border text-primary" id="loadingSpinner" role="status"><span class="visually-hidden">제출 중...</span></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS Bundle (body 맨 아래에 삽입) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-
- let slideIndex = 0;
- showSlides();
-
-function showSlides() {
-  let slides = document.getElementsByClassName("slide");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 3000); // Change image every 10 seconds
-}
-  
-  // Scroll to Top Button
-  const scrollToTopBtn = document.querySelector(".scrollToTopBtn");
-  scrollToTopBtn.addEventListener("click", function() {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+  const carouselElement = document.querySelector('#mainCarousel');
+  const carousel = new bootstrap.Carousel(carouselElement, {
+    interval: 3000, // 3초마다 슬라이드
+    ride: 'carousel'
   });
-  </script>
-
-<script>
-// 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
-window.addEventListener('load', function() {
-  var spinner = document.getElementById('loading-spinner');
-  spinner.style.display = 'none';
-});
 </script>
-<script>
-window.addEventListener('load', function() {
-  var loadingOverlay = document.getElementById('loading-overlay');
-  loadingOverlay.style.display = 'none';
-});
-  </script>
-  <script>
-    // 스크롤 위치를 모니터링하여 버튼을 표시 또는 숨깁니다.
-    window.addEventListener('scroll', function() {
-      var scrollToTopButton = document.getElementById('scrollToTopButton');
-      if (window.pageYOffset > 800) {
-        scrollToTopButton.style.display = 'block';
-      } else {
-        scrollToTopButton.style.display = 'none';
-      }
-    });
-  
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  </script>
-<script>  
-    function callon() {
-      if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
-        document.location.href = "tel:031-219-4939"
-    } else {
-      alert("취소 되었습니다!!")
-    }
-   }                
-  </script>
 
-<script>
-      window.kakaoAsyncInit = function() {
-        Kakao.Channel.createChatButton({
-          container: '#kakao-talk-channel-chat-button',
-        });    
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzP-VPAbjtzV1oqTfLsuSDYtnpQBludpT0SPxGPQQ4V7BzKAVTrZ3l8FGVPjslVGBYO/exec'; // 배포된 웹 앱 URL로 변경해주세요
+
+    function submitForm(event) {
+      event.preventDefault();
+
+      const form = document.getElementById("travelForm");
+      const btn = document.getElementById("submitBtn");
+      const spinner = document.getElementById("loadingSpinner");
+
+      const contact = document.getElementById("contact").value.trim();
+        // 연락처가 11자리 숫자인지 확인
+     if (!/^\d{11}$/.test(contact)) {
+    alert("📞 연락처는 숫자만 11자리입니다. 확인해 주세요. 예: 01012345678");
+    document.getElementById("contact").focus();
+    return;
+  }
+
+      const data = {
+        employeeId: document.getElementById("employeeId").value.trim(),
+        name: document.getElementById("name").value.trim(),
+        contact: document.getElementById("contact").value.trim(),
+        attendees: document.getElementById("attendees").value,
+        consent: document.getElementById("consent").checked ? "동의" : "미동의",
+        comment: document.getElementById("comment").value.trim()
       };
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, 'script', 'kakao-js-sdk');
-    </script>
+
+      const confirmMsg = `입력하신 내용을 확인해주세요:\n\n` +
+        `📌 사번: ${data.employeeId}\n` +
+        `👤 성명: ${data.name}\n` +
+        `📞 연락처: ${data.contact}\n` +
+        `👥 참석인원: ${data.attendees}명\n\n` +
+        `이대로 제출하시겠습니까?`;
+
+      if (!confirm(confirmMsg)) return;
+
+      btn.disabled = true;
+      btn.innerText = "🔄 제출 중...";
+      spinner.style.display = "inline-block";
+
+      fetch(scriptURL, {
+  method: "POST",
+  mode: "no-cors", // ✨ 핵심 설정
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data)
+})
+.finally(() => {
+  alert("✅ 신청이 완료되었을 수 있습니다.\n 취소 및 변경은 신협으로 신청 바랍니다. ");
+  form.reset();
+  btn.disabled = false;
+  btn.innerText = "📤 제출하기";
+  spinner.style.display = "none";
+});
+    }
+  </script>
 </body>
 </html>
