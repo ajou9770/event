@@ -93,44 +93,68 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    const form = document.getElementById("eventForm");
-    const submitBtn = document.getElementById("submitBtn");
-    const loading = document.getElementById("loading");
+   const form = document.getElementById("eventForm");
+const submitBtn = document.getElementById("submitBtn");
+const loading = document.getElementById("loading");
+const consentCheckbox = document.getElementById("consent");  // 동의 체크박스
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-      const name = document.getElementById("name").value.trim();
-      const employeeId = document.getElementById("employeeId").value.trim();
-      const contact = document.getElementById("contact").value.trim();
-      const missionDate = document.getElementById("missionDate").value;
-      const comment = document.getElementById("comment").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const employeeId = document.getElementById("employeeId").value.trim();
+  const contact = document.getElementById("contact").value.trim();
+  const missionDate = document.getElementById("missionDate").value;
+  const comment = document.getElementById("comment").value.trim();
 
-      if (!name || !employeeId || !contact || !missionDate) {
-        alert("⚠ 필수항목을 모두 입력해 주세요.");
-        return;
-      }
+  if (!name || !employeeId || !contact || !missionDate) {
+    alert("⚠ 필수항목을 모두 입력해 주세요.");
+    return;
+  }
 
-      submitBtn.disabled = true;
-      loading.style.display = "block";
+  if (!consentCheckbox.checked) {
+    alert("⚠ 개인정보 수집 및 활용에 동의해 주세요.");
+    return;
+  }
 
-      try {
-        await fetch("https://script.google.com/macros/s/AKfycbxGGZp1MincKrOnvvkHO7DqT2QJHREFOGTt1bs5UDvhm7ewXc0yxe7fuWQaJ9upWmsE5Q/exec", {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, employeeId, contact, missionDate, comment })
-        });
+  // ✅ 입력내용 확인창 띄우기
+  const confirmMessage = `
+입력하신 내용을 확인해 주세요:
 
-        alert("✅ 신청이 완료되었습니다!");
-        form.reset();
-      } catch (err) {
-        alert("❌ 제출 중 오류가 발생했습니다. 다시 시도해 주세요.");
-      } finally {
-        submitBtn.disabled = false;
-        loading.style.display = "none";
-      }
+- 이름: ${name}
+- 사번: ${employeeId}
+- 연락처: ${contact}
+- 미션 완료일: ${missionDate}
+- 기타 말씀: ${comment ? comment : '없음'}
+
+제출하시겠습니까?
+  `;
+  if (!confirm(confirmMessage)) {
+    // 사용자가 "취소"를 누르면 여기서 멈춤
+    return;
+  }
+
+  submitBtn.disabled = true;
+  loading.style.display = "block";
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbxGGZp1MincKrOnvvkHO7DqT2QJHREFOGTt1bs5UDvhm7ewXc0yxe7fuWQaJ9upWmsE5Q/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, employeeId, contact, missionDate, comment })
     });
+
+    alert("✅ 신청이 완료되었습니다!");
+    form.reset();
+    consentCheckbox.checked = false; // 폼 리셋시 체크박스도 초기화
+  } catch (err) {
+    alert("❌ 제출 중 오류가 발생했습니다. 다시 시도해 주세요.");
+  } finally {
+    submitBtn.disabled = false;
+    loading.style.display = "none";
+  }
+});
   </script>
 </body>
 </html>
