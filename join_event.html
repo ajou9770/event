@@ -164,7 +164,7 @@ form.addEventListener("submit", async function (e) {
       body: JSON.stringify({ name, employeeId, contact, missionDate, comment })
     });
 
-    alert("✅ 신청이 완료되었습니다!");
+    alert("✅ 신청이 완료되었습니다!. 미션 완료 확인 후 매월초 쿠폰이 발송됩니다.");
     form.reset();
     consentCheckbox.checked = false; // 폼 리셋시 체크박스도 초기화
   } catch (err) {
