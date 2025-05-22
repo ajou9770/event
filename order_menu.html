@@ -2,20 +2,29 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>🍱 테마여행팀 점심 주문</title>
+  <title>🍽️ 테마여행팀 키오스크 주문</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #f8f9fa; }
+    body { font-family: 'Gowun Dodum', sans-serif; background-color: #f3f4f6; }
+    h2, h4 { font-weight: bold; }
     .form-section { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-bottom: 2rem; }
-    .menu-item img { max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 0.5rem; }
-    .menu-item { text-align: center; margin-bottom: 1.5rem; }
+    .menu-item { background: #ffffff; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.06); padding: 1rem; margin-bottom: 1rem; transition: transform 0.3s ease; text-align: center; }
+    .menu-item:hover { transform: scale(1.03); }
+    .menu-item img { max-width: 100%; border-radius: 0.75rem; margin-bottom: 0.5rem; cursor: pointer; transition: opacity 0.2s ease; }
+    .menu-item img:hover { opacity: 0.9; }
+    .form-label { font-weight: bold; }
+    .btn-success { font-size: 1.25rem; padding: 0.75rem 2rem; }
+    mark { background-color: #fff3cd; padding: 0.3rem 0.5rem; border-radius: 0.4rem; }
+    .list-group-item { font-size: 1.1rem; }
   </style>
 </head>
 <body>
 <div class="container py-5">
-  <h3 class="text-center mb-4">🍱 테마여행팀 점심 주문하기</h3>
-  <p><mark>📌동반자 메뉴도 함께 주문해 주세요</mark></p>
+  <h3 class="text-center mb-4">🍽️ 테마여행팀 점심메뉴 주문하기</h3>
+  <p class="text-center"><mark>📌 동반자 메뉴도 함께 주문해 주세요</mark></p>
+
   <form id="orderForm" class="form-section">
     <div class="mb-3">
       <label for="username" class="form-label">👤 성명</label>
@@ -25,58 +34,53 @@
     <div class="row">
       <div class="col-md-4 menu-item">
         <img src="img/modem_mul.jpg" alt="모듬물회">
-        <label>모듬물회</label>
+        <label class="form-label">모듬물회</label>
         <select class="form-control" name="menu1">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
         </select>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/headubbab.jpg" alt="모듬회덥밥">
-        <label>모듬회덥밥</label>
+        <label class="form-label">모듬회덥밥</label>
         <select class="form-control" name="menu2">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
         </select>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/munebimbab.jpg" alt="문어비빔밥">
-        <label>문어비빔밥</label>
+        <label class="form-label">문어비빔밥</label>
         <select class="form-control" name="menu3">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
         </select>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/sunggemiyekkuk.jpg" alt="성게미역국">
-        <label>성게미역국</label>
+        <label class="form-label">성게미역국</label>
         <select class="form-control" name="menu4">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
         </select>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/hongesalbibimbab.jpg" alt="홍게살비빔밥">
-        <label>홍게살비빔밥</label>
+        <label class="form-label">홍게살비빔밥</label>
         <select class="form-control" name="menu5">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
+          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
         </select>
       </div>
     </div>
-    <p><mark>📌테이블에 오징회와 오징어순대가 사이드 메뉴로 추가됩니다.(주류, 음료 포함)</mark></p>
-    <button id="submitBtn" type="submit" class="btn btn-success mt-3">🍜 주문하기</button>
+
+    <p class="text-center"><mark>📌 테이블에 오징회와 오징어순대가 사이드 메뉴로 제공됩니다. (주류, 음료 포함)</mark></p>
+
+    <div class="text-center">
+      <button id="submitBtn" type="submit" class="btn btn-success mt-3">🍜 주문하기</button>
+    </div>
   </form>
 
-  <button class="btn btn-outline-secondary mb-3" onclick="toggleSummary()">🍜Team 주문현황 보기/닫기</button>
+  <div class="text-center">
+    <button class="btn btn-outline-dark mb-3" onclick="toggleSummary()">📊 Team 주문현황 보기/닫기</button>
+  </div>
 
-    <div id="orderSummarySection" class="form-section" style="display: none;">
-    <!-- <h4 class="text-center">🍜 테마Team 주문 현황</h4> -->
+  <div id="orderSummarySection" class="form-section" style="display: none;">
     <ul id="orderSummary" class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">🍨모듬물회 <span id="count1" class="badge bg-primary rounded-pill">0</span></li>
       <li class="list-group-item d-flex justify-content-between align-items-center">🍚모듬회덥밥 <span id="count2" class="badge bg-primary rounded-pill">0</span></li>
