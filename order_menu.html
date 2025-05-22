@@ -53,9 +53,9 @@
 </div>
       </div>
       <div class="col-md-4 menu-item">
-        <img src="img/headubbab.jpg" alt="모듬회덥밥">
-        <label class="form-label">모듬회덥밥</label>
-        <div class="btn-group" role="group" aria-label="모듬회덥밥">
+        <img src="img/headubbab.jpg" alt="모듬회덮덮밥">
+        <label class="form-label">모듬회덮밥</label>
+        <div class="btn-group" role="group" aria-label="모듬회덮밥">
   <input type="radio" class="btn-check" name="menu2" id="menu2-0" value="0" checked>
   <label class="btn btn-outline-primary" for="menu2-0">0</label>
   <input type="radio" class="btn-check" name="menu2" id="menu2-1" value="1">
@@ -116,7 +116,7 @@
   <div id="orderSummarySection" class="form-section" style="display: none;">
     <ul id="orderSummary" class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">🍨모듬물회 <span id="count1" class="badge bg-primary rounded-pill">0</span></li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">🍚모듬회덥밥 <span id="count2" class="badge bg-primary rounded-pill">0</span></li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">🍚모듬회덮밥 <span id="count2" class="badge bg-primary rounded-pill">0</span></li>
       <li class="list-group-item d-flex justify-content-between align-items-center">🍛문어비빔밥 <span id="count3" class="badge bg-primary rounded-pill">0</span></li>
       <li class="list-group-item d-flex justify-content-between align-items-center">🥘성게미역국 <span id="count4" class="badge bg-primary rounded-pill">0</span></li>
       <li class="list-group-item d-flex justify-content-between align-items-center">🍝홍게살비빔밥 <span id="count5" class="badge bg-primary rounded-pill">0</span></li>
@@ -175,7 +175,7 @@
 
     const selectedMenus = [];
     if (data.menu1) selectedMenus.push(`모듬물회 ${data.menu1}개`);
-    if (data.menu2) selectedMenus.push(`모듬회덥밥 ${data.menu2}개`);
+    if (data.menu2) selectedMenus.push(`모듬회덮덮밥 ${data.menu2}개`);
     if (data.menu3) selectedMenus.push(`문어비빔밥 ${data.menu3}개`);
     if (data.menu4) selectedMenus.push(`성게미역국 ${data.menu4}개`);
     if (data.menu5) selectedMenus.push(`홍게살비빔밥 ${data.menu5}개`);
@@ -204,20 +204,20 @@
       .then(data => {
         const totals = {
           '모듬물회': 0,
-          '모듬회덥밥': 0,
+          '모듬회덮밥': 0,
           '문어비빔밥': 0,
           '성게미역국': 0,
           '홍게살비빔밥': 0,
         };
         data.forEach(row => {
           totals['모듬물회'] += Number(row['모듬물회']) || 0;
-          totals['모듬회덥밥'] += Number(row['모듬회덥밥']) || 0;
+          totals['모듬회덮밥'] += Number(row['모듬회덮밥']) || 0;
           totals['문어비빔밥'] += Number(row['문어비빔밥']) || 0;
           totals['성게미역국'] += Number(row['성게미역국']) || 0;
           totals['홍게살비빔밥'] += Number(row['홍게살비빔밥']) || 0;
         });
         document.getElementById('count1').textContent = totals['모듬물회'];
-        document.getElementById('count2').textContent = totals['모듬회덥밥'];
+        document.getElementById('count2').textContent = totals['모듬회덮밥'];
         document.getElementById('count3').textContent = totals['문어비빔밥'];
         document.getElementById('count4').textContent = totals['성게미역국'];
         document.getElementById('count5').textContent = totals['홍게살비빔밥'];
