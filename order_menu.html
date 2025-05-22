@@ -156,6 +156,12 @@
 };
 
     const total = data.menu1 + data.menu2 + data.menu3 + data.menu4 + data.menu5;
+
+    if (total === 0) {
+    alert('⚠️ 최소 1개 이상의 메뉴를 선택해 주세요.');
+    return;
+  }
+
     if (total > 2) {
       alert('⚠️ 주문은 최대 2개까지만 가능합니다. 다시 선택해 주세요.');
       return;
