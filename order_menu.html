@@ -129,9 +129,15 @@
   const scriptUrl = 'https://script.google.com/macros/s/AKfycbxvqfsVTlPnOjbmU5y7koskUxdPVxnXgO3f-GQLdkS9ewyKBX19WRAj94Y2Xfz67xIVmQ/exec';
 
   function toggleSummary() {
-    const section = document.getElementById('orderSummarySection');
-    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+  const section = document.getElementById('orderSummarySection');
+  const isHidden = section.style.display === 'none';
+  section.style.display = isHidden ? 'block' : 'none';
+
+  // 펼쳐질 때 스크롤 이동
+  if (isHidden) {
+    section.scrollIntoView({ behavior: 'smooth' });
   }
+}
  
   // 메뉴 이미지 클릭 시 외부 링크로 이동 (with confirm)
     document.querySelectorAll('.menu-item img').forEach(img => {
