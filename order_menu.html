@@ -15,7 +15,7 @@
 <body>
 <div class="container py-5">
   <h3 class="text-center mb-4">🍱 테마여행팀 점심 주문하기</h3>
-
+  <p><mark>📌동반자 메뉴도 함께 주문해 주세요</mark></p>
   <form id="orderForm" class="form-section">
     <div class="mb-3">
       <label for="username" class="form-label">👤 성명</label>
@@ -69,7 +69,7 @@
         </select>
       </div>
     </div>
-
+    <p><mark>📌테이블에 오징회와 오징어순대가 사이드 메뉴로 추가됩니다.(주류, 음료 포함)</mark></p>
     <button id="submitBtn" type="submit" class="btn btn-success mt-3">🍜 주문하기</button>
   </form>
 
@@ -96,6 +96,14 @@
     section.style.display = section.style.display === 'none' ? 'block' : 'none';
   }
  
+  // 메뉴 이미지 클릭 시 외부 링크로 이동 (with confirm)
+    document.querySelectorAll('.menu-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        const go = confirm('💡속초항아리 물회 메뉴 안내 페이지로 이동 하시겠습니까?');
+        if (go) window.open('https://mulhoe.co.kr/pages/service', '_blank');
+      });
+    });
+
   document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -123,7 +131,7 @@
     if (data.menu4) selectedMenus.push(`성게미역국 ${data.menu4}개`);
     if (data.menu5) selectedMenus.push(`홍게살비빔밥 ${data.menu5}개`);
 
-    const confirmMessage = `👤 이름: ${data.username}\n📌 선택 메뉴:\n- ` + selectedMenus.join('\n- ') + `\n\n제출하시겠습니까?`;
+    const confirmMessage = `👤 이름: ${data.username}\n\n📌 선택 메뉴:\n- ` + selectedMenus.join('\n- ') + `\n\n 이대로 주문할까요?`;
     if (!confirm(confirmMessage)) return;
 
     submitBtn.textContent = '🔃 주문중...';
