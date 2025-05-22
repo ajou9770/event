@@ -29,7 +29,7 @@
   <h3 class="text-center mb-4">🍽️ 테마여행팀 점심메뉴 주문하기</h3>
   <p class="text-center"><mark>📌 동반자 메뉴도 함께 주문해 주세요</mark></p>
 
-  <form id="orderForm" class="form-section">
+    <form id="orderForm" class="form-section">
     <div class="mb-3">
       <label for="username" class="form-label">👤 성명</label>
       <input type="text" class="form-control" id="username" required>
@@ -39,41 +39,66 @@
       <div class="col-md-4 menu-item">
         <img src="img/modem_mul.jpg" alt="모듬물회">
         <label class="form-label">모듬물회</label>
-        <select class="form-control" name="menu1">
-          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
-        </select>
+        <div class="btn-group" role="group" aria-label="모듬물회">
+  <input type="radio" class="btn-check" name="menu1" id="menu1-0" value="0" checked>
+  <label class="btn btn-outline-primary" for="menu1-0">0</label>
+  <input type="radio" class="btn-check" name="menu1" id="menu1-1" value="1">
+  <label class="btn btn-outline-primary" for="menu1-1">1</label>
+  <input type="radio" class="btn-check" name="menu1" id="menu1-2" value="2">
+  <label class="btn btn-outline-primary" for="menu1-2">2</label>
+</div>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/headubbab.jpg" alt="모듬회덥밥">
         <label class="form-label">모듬회덥밥</label>
-        <select class="form-control" name="menu2">
-          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
-        </select>
+        <div class="btn-group" role="group" aria-label="모듬회덥밥">
+  <input type="radio" class="btn-check" name="menu2" id="menu2-0" value="0" checked>
+  <label class="btn btn-outline-primary" for="menu2-0">0</label>
+  <input type="radio" class="btn-check" name="menu2" id="menu2-1" value="1">
+  <label class="btn btn-outline-primary" for="menu2-1">1</label>
+  <input type="radio" class="btn-check" name="menu2" id="menu2-2" value="2">
+  <label class="btn btn-outline-primary" for="menu2-2">2</label>
+</div>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/munebimbab.jpg" alt="문어비빔밥">
         <label class="form-label">문어비빔밥</label>
-        <select class="form-control" name="menu3">
-          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
-        </select>
+        <div class="btn-group" role="group" aria-label="문어비빔밥">
+  <input type="radio" class="btn-check" name="menu3" id="menu3-0" value="0" checked>
+  <label class="btn btn-outline-primary" for="menu3-0">0</label>
+  <input type="radio" class="btn-check" name="menu3" id="menu3-1" value="1">
+  <label class="btn btn-outline-primary" for="menu3-1">1</label>
+  <input type="radio" class="btn-check" name="menu3" id="menu3-2" value="2">
+  <label class="btn btn-outline-primary" for="menu3-2">2</label>
+</div>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/sunggemiyekkuk.jpg" alt="성게미역국">
         <label class="form-label">성게미역국</label>
-        <select class="form-control" name="menu4">
-          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
-        </select>
+        <div class="btn-group" role="group" aria-label="성게미역국">
+  <input type="radio" class="btn-check" name="menu4" id="menu4-0" value="0" checked>
+  <label class="btn btn-outline-primary" for="menu4-0">0</label>
+  <input type="radio" class="btn-check" name="menu4" id="menu4-1" value="1">
+  <label class="btn btn-outline-primary" for="menu4-1">1</label>
+  <input type="radio" class="btn-check" name="menu4" id="menu4-2" value="2">
+  <label class="btn btn-outline-primary" for="menu4-2">2</label>
+</div>
       </div>
       <div class="col-md-4 menu-item">
         <img src="img/hongesalbibimbab.jpg" alt="홍게살비빔밥">
         <label class="form-label">홍게살비빔밥</label>
-        <select class="form-control" name="menu5">
-          <option value="0">0</option><option value="1">1</option><option value="2">2</option>
-        </select>
+        <div class="btn-group" role="group" aria-label="홍게살비빔밥">
+  <input type="radio" class="btn-check" name="menu5" id="menu5-0" value="0" checked>
+  <label class="btn btn-outline-primary" for="menu5-0">0</label>
+  <input type="radio" class="btn-check" name="menu5" id="menu5-1" value="1">
+  <label class="btn btn-outline-primary" for="menu5-1">1</label>
+  <input type="radio" class="btn-check" name="menu5" id="menu5-2" value="2">
+  <label class="btn btn-outline-primary" for="menu5-2">2</label>
+</div>
       </div>
     </div>
 
-    <p class="text-center"><mark>📌 테이블에 오징(물)회와 오징어순대가 사이드 메뉴로 제공됩니다. (주류, 음료 포함)</mark></p>
+    <p class="text-center"><mark>📌 테이블에 오징회와 오징어순대가 사이드 메뉴로 제공됩니다. (주류, 음료 포함)</mark></p>
 
     <div class="text-center">
       <button id="submitBtn" type="submit" class="btn btn-success mt-3">🍜 주문하기</button>
@@ -118,13 +143,13 @@
     const submitBtn = document.getElementById('submitBtn');
 
     const data = {
-      username: document.getElementById('username').value,
-      menu1: parseInt(document.querySelector('select[name="menu1"]').value),
-      menu2: parseInt(document.querySelector('select[name="menu2"]').value),
-      menu3: parseInt(document.querySelector('select[name="menu3"]').value),
-      menu4: parseInt(document.querySelector('select[name="menu4"]').value),
-      menu5: parseInt(document.querySelector('select[name="menu5"]').value),
-    };
+  username: document.getElementById('username').value,
+  menu1: parseInt(document.querySelector('input[name="menu1"]:checked').value),
+  menu2: parseInt(document.querySelector('input[name="menu2"]:checked').value),
+  menu3: parseInt(document.querySelector('input[name="menu3"]:checked').value),
+  menu4: parseInt(document.querySelector('input[name="menu4"]:checked').value),
+  menu5: parseInt(document.querySelector('input[name="menu5"]:checked').value),
+};
 
     const total = data.menu1 + data.menu2 + data.menu3 + data.menu4 + data.menu5;
     if (total > 2) {
