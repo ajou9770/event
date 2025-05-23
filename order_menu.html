@@ -34,10 +34,11 @@
   <p class="text-center"><mark>📌 동반자 메뉴도 함께 주문해 주세요</mark></p>
 
     <form id="orderForm" class="form-section">
-    <div class="mb-3">
-      <label for="username" class="form-label">👤 조합원 이름을 입력 하세요</label>
-      <input type="text" class="form-control" id="username" placeholder="예: 홍길동" required>
+      <div class="mb-3">
+      <label for="username" class="form-label">👤 조합원 성명</label>
+      <input type="text" class="form-control" id="username" placeholder="이름을 입력하세요" required autocomplete="off">
     </div>
+    <div class="mt-1" id="nameSuggestionBox" style="font-size: 0.9rem; color: #6c757d;"></div>
 
     <div class="row">
       <div class="col-md-4 menu-item">
@@ -214,6 +215,7 @@ if (total > totalAllowed) {
       submitBtn.disabled = false;
     });
   });
+  
 
   function loadOrderSummary() {
     fetch(scriptUrl)
@@ -243,8 +245,37 @@ if (total > totalAllowed) {
         document.getElementById('totalCount').textContent = totalCount;
       });
   }
+  // 이름 자동완성 추천 기능
+const participantNames = [
+  '김단유', '최희원', '이민하', '정바름', '차혜인', '정서진', '이지현',
+  '정망래', '길민주', '박수정', '허수정', '이세민', '이충희', '박철승',
+  '이유정', '유현희', '권오성', '강현삼', '이동규', '조선희', '신동근',
+  '박은영', '기은정'
+];
+
+const usernameInput = document.getElementById('username');
+usernameInput.addEventListener('input', () => {
+  const value = usernameInput.value.toLowerCase();
+  const matched = participantNames.filter(name => name.includes(value));
+  const suggestionBox = document.getElementById('nameSuggestionBox');
+  suggestionBox.innerHTML = '';
+  if (matched.length > 0 && value.length > 0) {
+    matched.slice(0, 3).forEach(name => {
+      const span = document.createElement('span');
+      span.textContent = name;
+      span.className = 'badge bg-light text-dark border me-1';
+      span.style.cursor = 'pointer';
+      span.onclick = () => {
+        usernameInput.value = name;
+        suggestionBox.innerHTML = '';
+      };
+      suggestionBox.appendChild(span);
+    });
+  }
+});
 
   window.onload = loadOrderSummary;
+
 </script>
 </body>
 </html>
