@@ -168,10 +168,27 @@
     return;
   }
 
-    if (total > 2) {
+    /* if (total > 2) {
       alert('⚠️ 주문은 최대 2개까지만 가능합니다. 다시 선택해 주세요.');
       return;
-    }
+    } */
+
+    const nameMap = {
+  '김단유': 2, '최희원': 1, '이민하': 1, '정바름': 2, '차혜인': 2, '정서진': 2,
+  '이지현': 2, '정망래': 1, '길민주': 1, '박수정': 2, '허수정': 2, '이세민': 2,
+  '이충희': 2, '박철승': 1, '이유정': 2, '유현희': 2, '권오성': 1, '강현삼': 2,
+  '이동규': 2, '조선희': 2, '신동근': 2, '박은영': 1, '기은정': 2
+};
+
+const name = document.getElementById('username').value.trim();
+const participants = nameMap[name] || 1;
+const totalAllowed = participants;
+
+if (total > totalAllowed) {
+  alert(`⚠️죄송합니다! 과식은 몸에 해롭습니다! 참가 인원 수[ ${totalAllowed} 명]내에서 주문해 주세요. \n 📌현재 주문 수량 [ ${total} 개 ]`);
+  return;
+}
+
 
     const selectedMenus = [];
     if (data.menu1) selectedMenus.push(`모듬물회 ${data.menu1}개`);
