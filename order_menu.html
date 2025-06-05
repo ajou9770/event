@@ -108,8 +108,9 @@
     <div class="text-center">
       <button id="submitBtn" type="submit" class="btn btn-primary btn-lg">🍜 주문하기</button>
     </div>
+    <strong>📢 새로 주문시 기존주문내역은 자동 삭제 됩니다.</strong>
   </form>
-
+  
   <div class="text-center">
     <button class="btn btn-outline-dark mb-3" onclick="toggleSummary()">📊 Team 주문현황 보기/닫기</button>
   </div>
@@ -148,73 +149,95 @@
       });
     });
 
-  document.getElementById('orderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+async function checkNameExists(name) {
+  const res = await fetch(scriptUrl);
+  const data = await res.json();
+  return data.some(row => row['조합원 성명'] === name);
+}
 
-    const submitBtn = document.getElementById('submitBtn');
+document.getElementById('orderForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-    const data = {
-  username: document.getElementById('username').value,
-  menu1: parseInt(document.querySelector('input[name="menu1"]:checked').value),
-  menu2: parseInt(document.querySelector('input[name="menu2"]:checked').value),
-  menu3: parseInt(document.querySelector('input[name="menu3"]:checked').value),
-  menu4: parseInt(document.querySelector('input[name="menu4"]:checked').value),
-  menu5: parseInt(document.querySelector('input[name="menu5"]:checked').value),
-};
+  const submitBtn = document.getElementById('submitBtn');
+  const usernameInput = document.getElementById('username');
+  const username = usernameInput.value.trim();
 
-    const total = data.menu1 + data.menu2 + data.menu3 + data.menu4 + data.menu5;
+  if (!username) {
+    alert('⚠️ 이름을 입력해 주세요.');
+    return;
+  }
 
-    if (total === 0) {
+  // 중복 주문 확인
+  const exists = await checkNameExists(username);
+  if (exists) {
+    const confirmed = confirm(`⚠️ ${username}님의 주문이 이미 존재합니다.\n기존 주문을 삭제하고 새로 주문하시겠습니까?`);
+    if (!confirmed) return;
+  }
+
+  // 메뉴 수량 수집
+  const data = {
+    username,
+    menu1: parseInt(document.querySelector('input[name="menu1"]:checked').value),
+    menu2: parseInt(document.querySelector('input[name="menu2"]:checked').value),
+    menu3: parseInt(document.querySelector('input[name="menu3"]:checked').value),
+    menu4: parseInt(document.querySelector('input[name="menu4"]:checked').value),
+    menu5: parseInt(document.querySelector('input[name="menu5"]:checked').value),
+  };
+
+  const total = data.menu1 + data.menu2 + data.menu3 + data.menu4 + data.menu5;
+
+  if (total === 0) {
     alert('⚠️ 최소 1개 이상의 메뉴를 선택해 주세요.');
     return;
   }
 
-    /* if (total > 2) {
-      alert('⚠️ 주문은 최대 2개까지만 가능합니다. 다시 선택해 주세요.');
-      return;
-    } */
+  // 참가 인원당 허용 수량 확인
+  const nameMap = {
+    '김단유': 2, '최희원': 1, '이민하': 1, '정바름': 2, '차혜인': 2, '정서진': 2,
+    '이지현': 2, '정망래': 1, '길민주': 1, '박수정': 2, '허수정': 2, '이세민': 2,
+    '이충희': 2, '박철승': 1, '이유정': 2, '유현희': 2, '권오성': 1, '강현삼': 2,
+    '이동규': 2, '조선희': 2, '신동근': 2, '박은영': 1, '기은정': 2
+  };
+  const totalAllowed = nameMap[username] || 1;
 
-    const nameMap = {
-  '김단유': 2, '최희원': 1, '이민하': 1, '정바름': 2, '차혜인': 2, '정서진': 2,
-  '이지현': 2, '정망래': 1, '길민주': 1, '박수정': 2, '허수정': 2, '이세민': 2,
-  '이충희': 2, '박철승': 1, '이유정': 2, '유현희': 2, '권오성': 1, '강현삼': 2,
-  '이동규': 2, '조선희': 2, '신동근': 2, '박은영': 1, '기은정': 2
-};
+  if (total > totalAllowed) {
+    alert(`⚠️주문수량이 참가인원수를 초과하였습니다! \n\n 참가 인원 수: ${totalAllowed}명\n 현재 주문 수량: ${total}개`);
+    return;
+  }
 
-const name = document.getElementById('username').value.trim();
-const participants = nameMap[name] || 1;
-const totalAllowed = participants;
+  // 주문 확인 메시지
+  const selectedMenus = [];
+  if (data.menu1) selectedMenus.push(`모듬물회 ${data.menu1}개`);
+  if (data.menu2) selectedMenus.push(`모듬회덮밥 ${data.menu2}개`);
+  if (data.menu3) selectedMenus.push(`문어비빔밥 ${data.menu3}개`);
+  if (data.menu4) selectedMenus.push(`성게미역국 ${data.menu4}개`);
+  if (data.menu5) selectedMenus.push(`홍게살비빔밥 ${data.menu5}개`);
 
-if (total > totalAllowed) {
-  alert(`⚠️죄송합니다! 과식은 몸에 해롭습니다! 참가 인원 수[ ${totalAllowed} 명]내에서 주문해 주세요. \n 📌현재 주문 수량 [ ${total} 개 ]`);
-  return;
-}
+  const confirmMessage = `👤 이름: ${username}\n\n📌 선택한 메뉴:\n- ` + selectedMenus.join('\n- ') + `\n\n이대로 주문하시겠습니까?`;
+  if (!confirm(confirmMessage)) return;
 
-
-    const selectedMenus = [];
-    if (data.menu1) selectedMenus.push(`모듬물회 ${data.menu1}개`);
-    if (data.menu2) selectedMenus.push(`모듬회덮밥 ${data.menu2}개`);
-    if (data.menu3) selectedMenus.push(`문어비빔밥 ${data.menu3}개`);
-    if (data.menu4) selectedMenus.push(`성게미역국 ${data.menu4}개`);
-    if (data.menu5) selectedMenus.push(`홍게살비빔밥 ${data.menu5}개`);
-
-    const confirmMessage = `👤 이름: ${data.username}\n\n📌 선택 메뉴:\n- ` + selectedMenus.join('\n- ') + `\n\n 이대로 주문할까요?`;
-    if (!confirm(confirmMessage)) return;
-
+  // 주문 제출
+  try {
     submitBtn.textContent = '🔃 주문중...';
     submitBtn.disabled = true;
 
-    fetch(scriptUrl, {
+    await fetch(scriptUrl, {
       method: 'POST',
       mode: 'no-cors',
       body: JSON.stringify(data),
-    }).then(() => {
-      alert('✅ 성공적으로 주문되었습니다!');
-      loadOrderSummary();
-      submitBtn.textContent = '🍜주문하기';
-      submitBtn.disabled = false;
     });
-  });
+
+    alert('✅ 성공적으로 주문되었습니다!');
+    loadOrderSummary();
+    usernameInput.value = ''; // 이름 초기화
+  } catch (err) {
+    alert('🚫 주문 처리 중 오류가 발생했습니다. 다시 시도해 주세요.');
+    console.error(err);
+  } finally {
+    submitBtn.textContent = '🍜주문하기';
+    submitBtn.disabled = false;
+  }
+});
   
 
   function loadOrderSummary() {
