@@ -1,139 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉으뜸이 생일선물 선택하기</title>
-    <style>
-        iframe {
-            border: none;
-        }
-        #icon {
-            border: none;
-            width: 150px;
-            height: 50px;
-            font-size: 25px;
-            border-radius: 10px;
-            background: none;
-            text-align: center;
-            color: black;
-            font-weight: bold;
-          }
-          #icon_call {
-            border: none;
-            width: 140px;
-            height: 43px;
-            padding-top: 14px;
-            font-size: 20px;
-            color: black;
-            border-radius: 35px;
-            box-shadow: 1px 3px 3px 1px slategray;
-            background: rgb(205, 235, 223);
-            text-align: center;
-            font-weight: bold;
-          }
-          #icon_call a {
-            color: black;
-            font-size: 20px;
-            font-weight: 600;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-          }
-          .space_around {
-                    display: flex;
-                    justify-content: space-around;
-          }
-          #loading-overlay {
-            position: fixed;
-            top: 0;
-           left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* 배경 색상과 투명도를 조정하세요 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-          }
-         #loading-message {
-  font-size: 24px;
-  color: white;
-        }
-        #loading-spinner {
-          border: 16px solid #f3f3f3;
-          border-top: 16px solid #3498db;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          animation: spin 2s linear infinite;
-        }
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
+  <meta charset="UTF-8">
+  <title>🎁 생일쿠폰 신청</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  body {
+    background: linear-gradient(to right, #f9f9f9, #e0f7fa);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .card-option img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border: 2px solid #dee2e6; /* 밝은 회색 테두리 */
+  border-radius: 0.5rem;
+  background-color: #f8f9fa;
+  margin-bottom: 10px;
+}
+
+  .card-option:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-option.selected {
+    border: 3px solid #0d6efd !important;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.5);
+  }
+
+  .card-option img {
+  max-width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background-color: #f8f8f8;
+  border-radius: 0.5rem;
+  margin-bottom: 10px;
+}
+  .card-option h3,
+  .card-option h2 {
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+  }
+
+  #submitBtn {
+    font-size: 1.2rem;
+    padding: 12px;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  #submitBtn:disabled {
+    background: #6c757d !important;
+    cursor: not-allowed;
+  }
+
+  .form-label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .shadowed-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+</style>
+
 <body>
-    <h3>🎁으뜸이 조합원 생일 쿠폰 선택하기</h3>
-    <iframe src="https://script.google.com/macros/s/AKfycbyZSh8xDnN5G83w4owEk-HxVnZiLLqj573nloDFIlegRdWYPiYsaMgK75-CxenC1xb9/exec" width="100%" height="600px"></iframe>
-    <div class="space_around">
-        <div onclick="callon()" id="icon_call">
-          📞상담(문의)
+  <div class="container py-5">
+    <h3 class="text-center mb-4">🎉 <strong>으뜸이 생일쿠폰 신청</strong></h3>
+    <form id="couponForm" class="shadowed-box">
+      <div class="mb-3">
+        <label class="form-label">💡 성명</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">📞 연락처</label>
+        <input type="number" class="form-control" id="contact" placeholder="숫자만 입력" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">⭐ 쿠폰 선택</label>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="card card-option p-3" data-value="세븐일레븐쿠폰(2만원)">
+              <img src="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/1540391819/B.jpg?979000000" alt="세븐일레븐">
+              <h3>10,000원권 * 2매(📌아주대병원점 전용교환권)</h3>
+            </div>
           </div>
-      
-      <div id="icon">
-              <div
-      id="kakao-talk-channel-chat-button"
-      data-channel-public-id="_dfhkK"
-      data-title="consult"
-      data-size="small"
-      data-color="yellow"
-      data-shape="mobile"
-      data-support-multiple-densities="true"
-      ></div></div>
-      </div>
-      <div id="loading-overlay">
-        <div id="loading-spinner"></div>
-        <div id="loading-message"><span style="padding-left: 15px;">로딩중입니다...</span>
-          <br><small>✨평생어부바 신협</small>
+          <div class="col-md-6">
+            <div class="card card-option p-3" data-value="네이버 페이(1만5천원)">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMe6jelIGKUqp-zJPV5CfQ_yA6jnUTXrAOaw&s" alt="네이버페이">
+              <h2>네이버페이 15,000원(10,000원 + 5,000원)</h2>
+            </div>
+          </div>
         </div>
+        <input type="hidden" id="coupon" required>
       </div>
-      <script>
-      // 페이지 로딩이 완료되면 로딩 스피너를 숨깁니다.
-      window.addEventListener('load', function() {
-        var spinner = document.getElementById('loading-spinner');
-        spinner.style.display = 'none';
+      <div class="mb-3">
+        <label class="form-label">🗨️ 기타 코멘트</label>
+        <textarea class="form-control" id="comment" rows="2" placeholder="기타 남기실 말씀(선택)"></textarea>
+      </div>
+      <button type="submit" id="submitBtn" class="btn btn-primary w-100">✅ 신청하기</button>
+      <div id="loading" class="text-center mt-3" style="display:none;">⏳ 제출 중입니다...</div>
+      <div id="result" class="text-center mt-3 fw-bold"></div>
+    </form>
+  </div>
+
+  <script>
+  const form = document.getElementById("couponForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const loading = document.getElementById("loading");
+  const result = document.getElementById("result");
+  const couponField = document.getElementById("coupon");
+
+  document.querySelectorAll('.card-option').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      couponField.value = card.getAttribute('data-value');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const coupon = couponField.value;
+    const comment = document.getElementById("comment").value.trim();
+
+    if (!coupon) {
+      alert("쿠폰을 선택해주세요.");
+      return;
+    }
+
+    const confirmMsg = `
+🧾 아래와 같이 생일 쿠폰을 신청 하시겠습니까?
+
+👤 성명: ${name}
+📱 연락처: ${contact}
+🎁 선택한 쿠폰: ${coupon}
+    `.trim();
+
+    if (!confirm(confirmMsg)) return;
+
+    // 🔄 버튼 상태 변경
+    submitBtn.disabled = true;
+    submitBtn.textContent = "🔂 신청중...";
+    loading.style.display = 'block';
+    result.textContent = '';
+
+    const payload = { name, contact, coupon, comment };
+
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbyZSh8xDnN5G83w4owEk-HxVnZiLLqj573nloDFIlegRdWYPiYsaMgK75-CxenC1xb9/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       });
-      </script>
-      <script>
-      window.addEventListener('load', function() {
-        var loadingOverlay = document.getElementById('loading-overlay');
-        loadingOverlay.style.display = 'none';
-      });
-      </script>
-      <script>  
-          function callon() {
-            if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
-              document.location.href = "tel:031-219-6052"
-          } else {
-            alert("취소 되었습니다!!")
-          }
-         }                
-        </script>
-      
-      <script>
-            window.kakaoAsyncInit = function() {
-              Kakao.Channel.createChatButton({
-                container: '#kakao-talk-channel-chat-button',
-              });    
-            };
-            (function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
-              fjs.parentNode.insertBefore(js, fjs);
-            })(document, 'script', 'kakao-js-sdk');
-          </script>
+
+      result.textContent = "✅ 신청이 완료되었습니다!. 🎫쿠폰은 해당월 1~2일사이에 발송됩니다.";
+      form.reset();
+      document.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+    } catch (error) {
+      result.textContent = "❌ 신청 중 오류가 발생했습니다.";
+    } finally {
+      // 🔁 버튼 복원
+      loading.style.display = 'none';
+      submitBtn.disabled = false;
+      submitBtn.textContent = "✅신청하기";
+    }
+  });
+</script>
 </body>
 </html>
