@@ -209,17 +209,85 @@ body{
     </div>
 
 </div>
+<!-- 사업자번호 안내 Modal -->
+<div class="modal fade" id="bizModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content"
+         style="border-radius:24px;border:none;overflow:hidden;">
 
+      <div class="modal-body p-4 text-center">
+
+        <div style="font-size:52px;">🏥</div>
+
+        <h5 class="fw-bold mt-2">
+          직장정보 조회 안내
+        </h5>
+
+        <p class="text-secondary mt-3 mb-2"
+           style="line-height:1.7;">
+          직장정보 조회 시<br>
+          아래 <b>아주대의료원 사업자번호</b>를<br>
+          직접 입력하여 진행해주세요.
+        </p>
+
+        <div class="bg-light border rounded-4 p-3 mt-3">
+
+          <div class="text-secondary small mb-1">
+            사업자번호
+          </div>
+
+          <div id="bizNo"
+               style="font-size:1.4rem;
+                      font-weight:900;
+                      letter-spacing:1px;">
+            1248203965
+          </div>
+
+          <button class="btn btn-primary mt-3 px-4 rounded-pill"
+                  onclick="copyBizNo()">
+            📋 복사하기
+          </button>
+
+          <div id="copyMsg"
+               class="small text-success mt-2">
+          </div>
+
+        </div>
+
+        <button class="btn btn-dark w-100 rounded-pill mt-4 py-3"
+                onclick="moveLoan()">
+          신청페이지로 이동 →
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-function goLoan(url){
+let targetLoanUrl = '';
 
-    const ok = confirm(
-        "직장정보 조회시 [아주대의료원사업자번호 (124-82-06965)]를 직접 입력하여 진행바랍니다."
+function goLoan(url){
+    targetLoanUrl = url;
+
+    const modal = new bootstrap.Modal(
+        document.getElementById('bizModal')
     );
 
-    if(ok){
-        window.location.href = url;
-    }
+    modal.show();
+}
+
+function copyBizNo(){
+
+    navigator.clipboard.writeText('1248203965')
+    .then(()=>{
+        document.getElementById('copyMsg').innerHTML =
+            '✅ 사업자번호가 복사되었습니다.';
+    });
+}
+
+function moveLoan(){
+    window.location.href = targetLoanUrl;
 }
 </script>
 
