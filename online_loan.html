@@ -226,22 +226,21 @@ body{
         <p class="text-secondary mt-3 mb-2"
            style="line-height:1.7;">
           직장정보 조회 시<br>
-          아래 <b>아주대의료원 사업자번호</b>를<br>
+          아래 <b>아주대학교의료원</b>를<br>
           |직접 입력|하여 진행해주세요.<br>
-           ⚠️아주대의료원으로 조회시 정상 조회 되지 않습니다. (대우학원 학교법인과 사업자번호가 다름)
         </p>
 
         <div class="bg-light border rounded-4 p-3 mt-3">
 
           <div class="text-secondary small mb-1">
-            사업자번호
+            직장명
           </div>
 
           <div id="bizNo"
                style="font-size:1.4rem;
                       font-weight:900;
                       letter-spacing:1px;">
-            1248206965
+            아주대학교의료원
           </div>
 
           <button class="btn btn-primary mt-3 px-4 rounded-pill"
@@ -283,7 +282,7 @@ function copyBizNo(){
     navigator.clipboard.writeText('1248206965')
     .then(()=>{
         document.getElementById('copyMsg').innerHTML =
-            '✅ 사업자번호가 복사되었습니다.';
+            '✅ 직장명이 복사되었습니다.';
     });
 }
 
