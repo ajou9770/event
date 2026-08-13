@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>🎁 생일쿠폰 신청</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- AjouCU shared event mobile UI -->
+  <link rel="stylesheet" href="event-ui.css?v=20260814">
+  <script src="event-ui.js?v=20260814" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
   body {
@@ -21,14 +24,57 @@
   margin-bottom: 10px;
 }
 
-  .card-option:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  .card-option {
+    position: relative;
+    cursor: pointer;
+    border: 2px solid #dfe5ec !important;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .card-option.selected {
+  .card-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10);
+  }
+
+  /* event-ui.css의 공통 .card !important보다 우선하도록 body 클래스까지 지정 */
+  body.ajou-event-ui .card.card-option.selected,
+  .card.card-option.selected {
     border: 3px solid #0d6efd !important;
-    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.5);
+    background: #f2f7ff !important;
+    box-shadow: 0 0 0 4px rgba(13,110,253,.12), 0 10px 24px rgba(13,110,253,.18) !important;
+    transform: translateY(-2px);
+  }
+
+  .card-option::after {
+    content: "선택";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.94);
+    border: 1px solid #dfe5ec;
+    color: #6c757d;
+    font-size: .78rem;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+
+  .card-option.selected::after {
+    content: "✓ 선택됨";
+    color: #fff;
+    background: #0d6efd;
+    border-color: #0d6efd;
+  }
+
+  .card-option.selected h2,
+  .card-option.selected h3 {
+    color: #0b4fa8 !important;
+    font-weight: 800;
   }
 
   .card-option img {
@@ -117,11 +163,28 @@
   const result = document.getElementById("result");
   const couponField = document.getElementById("coupon");
 
-  document.querySelectorAll('.card-option').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.card-option').forEach((card, index) => {
+    card.setAttribute('role', 'radio');
+    card.setAttribute('aria-checked', 'false');
+    card.setAttribute('tabindex', '0');
+
+    const selectCard = () => {
+      document.querySelectorAll('.card-option').forEach(c => {
+        c.classList.remove('selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+
       card.classList.add('selected');
+      card.setAttribute('aria-checked', 'true');
       couponField.value = card.getAttribute('data-value');
+    };
+
+    card.addEventListener('click', selectCard);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectCard();
+      }
     });
   });
 
@@ -172,7 +235,7 @@ if (!/^\d{11}$/.test(contact)) {
 
       result.textContent = "✅ 신청이 완료되었습니다!. 🎫쿠폰은 해당월 1~2일사이에 발송됩니다.";
       form.reset();
-      document.querySelectorAll('.card-option').forEach(c => c.classList.remove('selected'));
+      document.querySelectorAll('.card-option').forEach(c => { c.classList.remove('selected'); c.setAttribute('aria-checked', 'false'); });
     } catch (error) {
       result.textContent = "❌ 신청 중 오류가 발생했습니다.";
     } finally {
