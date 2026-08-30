@@ -1,299 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>모바일 비대면 대출 신청</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모바일 비대면 대출 신청</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-    background:
-        radial-gradient(circle at top left,#dbeafe 0%,transparent 35%),
-        radial-gradient(circle at bottom right,#fde68a 0%,transparent 30%),
-        linear-gradient(135deg,#eff6ff,#ffffff);
-    font-family:
-        "Pretendard",
-        "Noto Sans KR",
-        sans-serif;
-}
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background:
+          radial-gradient(circle at top left, #dbeafe 0%, transparent 35%),
+          radial-gradient(circle at bottom right, #fde68a 0%, transparent 30%),
+          linear-gradient(135deg, #eff6ff, #ffffff);
+        font-family: "Pretendard", "Noto Sans KR", sans-serif;
+      }
 
-.main-card{
-    width:100%;
-    max-width:540px;
-    background:rgba(255,255,255,.72);
-    backdrop-filter:blur(18px);
-    border:1px solid rgba(255,255,255,.6);
-    border-radius:32px;
-    box-shadow:0 20px 60px rgba(15,23,42,.12);
-    padding:36px 24px;
-    animation:fadeUp .7s ease;
-}
+      .main-card {
+        width: 100%;
+        max-width: 540px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 32px;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+        padding: 36px 24px;
+        animation: fadeUp 0.7s ease;
+      }
 
-.logo-badge{
-    display:inline-block;
-    background:#eef4ff;
-    color:#2563eb;
-    padding:8px 16px;
-    border-radius:999px;
-    font-size:.88rem;
-    font-weight:700;
-}
+      .logo-badge {
+        display: inline-block;
+        background: #eef4ff;
+        color: #2563eb;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
 
-.title{
-    font-size:1.85rem;
-    font-weight:900;
-    letter-spacing:-1px;
-    margin-top:18px;
-    color:#0f172a;
-}
+      .title {
+        font-size: 1.85rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+        margin-top: 18px;
+        color: #0f172a;
+      }
 
-.subtitle{
-    color:#64748b;
-    margin-top:10px;
-    line-height:1.7;
-    font-size:.97rem;
-}
+      .subtitle {
+        color: #64748b;
+        margin-top: 10px;
+        line-height: 1.7;
+        font-size: 0.97rem;
+      }
 
-.loan-btn{
-    width:100%;
-    border:none;
-    border-radius:24px;
-    padding:20px;
-    margin-top:16px;
-    background:white;
-    display:flex;
-    align-items:center;
-    gap:16px;
-    text-align:left;
-    cursor:pointer;
-    box-shadow:0 10px 28px rgba(15,23,42,.06);
-    transition:.25s;
-    position:relative;
-    overflow:hidden;
-}
+      .loan-btn {
+        width: 100%;
+        border: none;
+        border-radius: 24px;
+        padding: 20px;
+        margin-top: 16px;
+        background: white;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-align: left;
+        cursor: pointer;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+        transition: 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
 
-.loan-btn:hover{
-    transform:translateY(-4px);
-    box-shadow:0 18px 36px rgba(37,99,235,.15);
-}
+      .loan-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 36px rgba(37, 99, 235, 0.15);
+      }
 
-.loan-btn::after{
-    content:'→';
-    position:absolute;
-    right:22px;
-    font-size:1.35rem;
-    color:#94a3b8;
-}
+      .loan-btn::after {
+        content: "→";
+        position: absolute;
+        right: 22px;
+        font-size: 1.35rem;
+        color: #94a3b8;
+      }
 
-.icon-wrap{
-    width:56px;
-    height:56px;
-    border-radius:20px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:1.6rem;
-    flex-shrink:0;
-}
+      .icon-wrap {
+        width: 56px;
+        height: 56px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;
+        flex-shrink: 0;
+      }
 
-.icon1{background:#eff6ff;}
-.icon2{background:#fff7ed;}
+      .icon1 {
+        background: #eff6ff;
+      }
+      .icon2 {
+        background: #fff7ed;
+      }
 
-.loan-title{
-    font-size:1.08rem;
-    font-weight:800;
-    color:#111827;
-}
+      .loan-title {
+        font-size: 1.08rem;
+        font-weight: 800;
+        color: #111827;
+      }
 
-.loan-desc{
-    font-size:.9rem;
-    color:#64748b;
-    margin-top:4px;
-}
+      .loan-desc {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-top: 4px;
+      }
 
-.notice{
-    margin-top:24px;
-    background:#f8fafc;
-    border:1px dashed #cbd5e1;
-    border-radius:18px;
-    padding:14px;
-    color:#475569;
-    font-size:.88rem;
-    line-height:1.6;
-}
+      .notice {
+        margin-top: 24px;
+        background: #f8fafc;
+        border: 1px dashed #cbd5e1;
+        border-radius: 18px;
+        padding: 14px;
+        color: #475569;
+        font-size: 0.88rem;
+        line-height: 1.6;
+      }
 
-.footer{
-    text-align:center;
-    color:#94a3b8;
-    font-size:.8rem;
-    margin-top:22px;
-}
+      .footer {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.8rem;
+        margin-top: 22px;
+      }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-</style>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
 
-<!-- AjouCU shared event mobile UI -->
-<link rel="stylesheet" href="event-ui.css?v=20260814">
-<script src="event-ui.js?v=20260814" defer></script>
-</head>
+    <!-- AjouCU shared event mobile UI -->
+    <link rel="stylesheet" href="event-ui.css?v=20260814" />
+    <script src="event-ui.js?v=20260814" defer></script>
+  </head>
 
-<body>
+  <body>
+    <div class="main-card">
+      <div class="text-center">
+        <span class="logo-badge"> 아주대의료원신협 </span>
 
-<div class="main-card">
-
-    <div class="text-center">
-        <span class="logo-badge">
-            아주대의료원신협
-        </span>
-
-        <div class="title">
-            모바일 비대면 대출 신청
-        </div>
+        <div class="title">모바일 비대면 대출 신청</div>
 
         <div class="subtitle">
-            <b>🎉오픈기념 이벤트 진행중입니다.</b><br>
-            📝절차: 신청(가입하기) >> 대출 심사 >> 한도 및 적용금리 확인 >> 약정 <br>
-            신협 모바일 대출 리온브런치로 이동합니다.
+          <b>🎉여기서(비대면)으로 신청시 -0.1% 우대금리 적용(9월 2일부~)</b
+          ><br />
+          📝절차: 신청(가입하기) >> 대출 심사 >> 한도 및 적용금리 확인 >> 약정
+          <br />
+          신협 모바일 대출 리온브런치로 이동합니다.
         </div>
-    </div>
+      </div>
 
-    <!-- 보통대출 -->
-    <button class="loan-btn"
-        onclick="goLoan('https://m.cu.co.kr/otu/zB3OcD0C')">
+      <!-- 보통대출 -->
+      <button
+        class="loan-btn"
+        onclick="goLoan('https://m.cu.co.kr/otu/zB3OcD0C')"
+      >
         <div class="icon-wrap icon1">💳</div>
         <div>
-            <div class="loan-title">보통대출</div>
-            <div class="loan-desc">
-                최저4.4%~ / 최대 1억원 / 1년
-            </div>
+          <div class="loan-title">보통대출</div>
+          <div class="loan-desc">최저4.4%~ / 최대 1억원 / 1년</div>
         </div>
-    </button>
+      </button>
 
-    <!-- 자립대월 -->
-    <button class="loan-btn"
-        onclick="goLoan('https://m.cu.co.kr/otu/c54WcD0C')">
+      <!-- 자립대월 -->
+      <button
+        class="loan-btn"
+        onclick="goLoan('https://m.cu.co.kr/otu/c54WcD0C')"
+      >
         <div class="icon-wrap icon2">📘</div>
         <div>
-            <div class="loan-title">마이너스통장(대월)</div>
-            <div class="loan-desc">
-                최저 4.9%~ / 최대 2,000만원 / 1년
-            </div>
+          <div class="loan-title">마이너스통장(대월)</div>
+          <div class="loan-desc">최저 4.9%~ / 최대 2,000만원 / 1년</div>
         </div>
-    </button>
+      </button>
 
-    <div class="notice">
-        ※ 선택 후 신협 모바일 대출 신청 화면으로 이동합니다.<br>
+      <div class="notice">
+        ※ 선택 후 신협 모바일 대출 신청 화면으로 이동합니다.<br />
         ※ 본인인증 및 신청 절차는 이동한 페이지에서 진행됩니다.
+      </div>
+
+      <div class="footer">Copyright © 아주대의료원신협</div>
     </div>
+    <!-- 사업자번호 안내 Modal -->
+    <div class="modal fade" id="bizModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div
+          class="modal-content"
+          style="border-radius: 24px; border: none; overflow: hidden"
+        >
+          <div class="modal-body p-4 text-center">
+            <div style="font-size: 52px">🏥</div>
 
-    <div class="footer">
-        Copyright © 아주대의료원신협
-    </div>
+            <h5 class="fw-bold mt-2">직장정보 조회 안내</h5>
 
-</div>
-<!-- 사업자번호 안내 Modal -->
-<div class="modal fade" id="bizModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content"
-         style="border-radius:24px;border:none;overflow:hidden;">
+            <p class="text-secondary mt-3 mb-2" style="line-height: 1.7">
+              직장정보 조회 시<br />
+              아래 <b>아주대학교의료원</b>를<br />
+              |직접 입력|하여 진행해주세요.<br />
+            </p>
 
-      <div class="modal-body p-4 text-center">
+            <div class="bg-light border rounded-4 p-3 mt-3">
+              <div class="text-secondary small mb-1">직장명</div>
 
-        <div style="font-size:52px;">🏥</div>
+              <div
+                id="bizNo"
+                style="font-size: 1.4rem; font-weight: 900; letter-spacing: 1px"
+              >
+                아주대학교의료원
+              </div>
 
-        <h5 class="fw-bold mt-2">
-          직장정보 조회 안내
-        </h5>
+              <button
+                class="btn btn-primary mt-3 px-4 rounded-pill"
+                onclick="copyBizNo()"
+              >
+                📋 복사하기
+              </button>
 
-        <p class="text-secondary mt-3 mb-2"
-           style="line-height:1.7;">
-          직장정보 조회 시<br>
-          아래 <b>아주대학교의료원</b>를<br>
-          |직접 입력|하여 진행해주세요.<br>
-        </p>
+              <div id="copyMsg" class="small text-success mt-2"></div>
+            </div>
 
-        <div class="bg-light border rounded-4 p-3 mt-3">
-
-          <div class="text-secondary small mb-1">
-            직장명
+            <button
+              class="btn btn-dark w-100 rounded-pill mt-4 py-3"
+              onclick="moveLoan()"
+            >
+              신청페이지로 이동 →
+            </button>
           </div>
-
-          <div id="bizNo"
-               style="font-size:1.4rem;
-                      font-weight:900;
-                      letter-spacing:1px;">
-            아주대학교의료원
-          </div>
-
-          <button class="btn btn-primary mt-3 px-4 rounded-pill"
-                  onclick="copyBizNo()">
-            📋 복사하기
-          </button>
-
-          <div id="copyMsg"
-               class="small text-success mt-2">
-          </div>
-
         </div>
-
-        <button class="btn btn-dark w-100 rounded-pill mt-4 py-3"
-                onclick="moveLoan()">
-          신청페이지로 이동 →
-        </button>
-
       </div>
     </div>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-let targetLoanUrl = '';
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let targetLoanUrl = "";
 
-function goLoan(url){
-    targetLoanUrl = url;
+      function goLoan(url) {
+        targetLoanUrl = url;
 
-    const modal = new bootstrap.Modal(
-        document.getElementById('bizModal')
-    );
+        const modal = new bootstrap.Modal(document.getElementById("bizModal"));
 
-    modal.show();
-}
+        modal.show();
+      }
 
-function copyBizNo(){
+      function copyBizNo() {
+        navigator.clipboard.writeText("1248206965").then(() => {
+          document.getElementById("copyMsg").innerHTML =
+            "✅ 직장명이 복사되었습니다.";
+        });
+      }
 
-    navigator.clipboard.writeText('1248206965')
-    .then(()=>{
-        document.getElementById('copyMsg').innerHTML =
-            '✅ 직장명이 복사되었습니다.';
-    });
-}
-
-function moveLoan(){
-    window.location.href = targetLoanUrl;
-}
-</script>
-
-</body>
+      function moveLoan() {
+        window.location.href = targetLoanUrl;
+      }
+    </script>
+  </body>
 </html>
