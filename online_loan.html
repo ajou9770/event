@@ -155,6 +155,79 @@
         line-height: 1.5;
       }
 
+      /* 참조합원 자세히 보기 */
+      .rate-detail-wrap {
+        margin-top: 7px;
+      }
+
+      .rate-detail-wrap details {
+        border: 0;
+      }
+
+      .rate-detail-wrap summary {
+        list-style: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: #eef2ff;
+        color: #4338ca;
+        font-size: 0.73rem;
+        font-weight: 800;
+        user-select: none;
+        transition: 0.2s;
+      }
+
+      .rate-detail-wrap summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .rate-detail-wrap summary:hover {
+        background: #e0e7ff;
+      }
+
+      .rate-detail-wrap details[open] summary {
+        background: #4338ca;
+        color: #fff;
+      }
+
+      .rate-detail-box {
+        margin-top: 9px;
+        padding: 12px;
+        border: 1px solid #dbeafe;
+        border-radius: 14px;
+        background: #f8fbff;
+        color: #475569;
+        font-size: 0.76rem;
+        line-height: 1.65;
+      }
+
+      .rate-detail-title {
+        color: #1e3a8a;
+        font-size: 0.82rem;
+        font-weight: 900;
+        margin-bottom: 7px;
+      }
+
+      .rate-detail-schedule {
+        margin: 8px 0;
+        padding: 9px 10px;
+        border-radius: 10px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+      }
+
+      .rate-detail-schedule div + div {
+        margin-top: 4px;
+      }
+
+      .rate-detail-highlight {
+        color: #2563eb;
+        font-weight: 800;
+      }
+
       .loan-btn {
         width: 100%;
         border: none;
@@ -315,7 +388,7 @@
       <div class="rate-benefit">
         <div class="rate-benefit-head">
           <span>🎁 대출 우대금리 안내</span>
-          <strong>최대 1.6%p 우대</strong>
+          <strong>최대 1.1%p 우대</strong>
         </div>
 
         <div class="rate-benefit-list">
@@ -332,7 +405,53 @@
             <span class="rate-icon">⭐</span>
             <div>
               <b>참조합원(으뜸이) 선적용 신청</b>
-              <small>해당 조건으로 신청 시</small>
+              <small>으뜸이 등급을 먼저 적용받아 신청</small>
+
+              <div class="rate-detail-wrap">
+                <details>
+                  <summary>🔎자세히 보기/닫기</summary>
+
+                  <div class="rate-detail-box">
+                    <div class="rate-detail-title">
+                      ⭐ 참조합원(으뜸이) 선적용 안내
+                    </div>
+
+                    <div>
+                      신청 시 <b>으뜸이 우대금리 0.6%p</b>를 먼저 적용하며,
+                      신청분기 이후 정해진 일정에 따라 이용실적을 평가합니다.
+                    </div>
+
+                    <div class="rate-detail-schedule">
+                      <div>
+                        <b>1~3월 신청</b> → 7월 평가 →
+                        <span class="rate-detail-highlight">8월부터 적용</span>
+                      </div>
+                      <div>
+                        <b>4~6월 신청</b> → 10월 평가 →
+                        <span class="rate-detail-highlight">11월부터 적용</span>
+                      </div>
+                      <div>
+                        <b>7~9월 신청</b> → 익년 1월 평가 →
+                        <span class="rate-detail-highlight"
+                          >익년 2월부터 적용</span
+                        >
+                      </div>
+                      <div>
+                        <b>10~12월 신청</b> → 익년 4월 평가 →
+                        <span class="rate-detail-highlight"
+                          >익년 5월부터 적용</span
+                        >
+                      </div>
+                    </div>
+
+                    <div>
+                      재평가 결과가 <b>으뜸이</b>이면 선적용 금리가 그대로
+                      유지됩니다. 평가 결과가 다른 등급인 경우 해당 등급 기준에
+                      따라 금리가 조정될 수 있습니다.
+                    </div>
+                  </div>
+                </details>
+              </div>
             </div>
             <strong>-0.6%p</strong>
           </div>
@@ -341,7 +460,7 @@
             <span class="rate-icon">💰</span>
             <div>
               <b>급여이체 신청</b>
-              <small>급여를 신협으로 변경 신청 시</small>
+              <small>급여이체 변경 신청 시</small>
             </div>
             <strong>-0.4%p</strong>
           </div>
@@ -369,7 +488,7 @@
         <div class="icon-wrap icon1">💳</div>
         <div>
           <div class="loan-title">보통대출</div>
-          <div class="loan-desc">최저 4.3%~ / 최대 1억원 / 1년</div>
+          <div class="loan-desc">최저 4.8%~ / 최대 1억원 / 1년</div>
         </div>
       </button>
 
@@ -381,7 +500,7 @@
         <div class="icon-wrap icon2">📘</div>
         <div>
           <div class="loan-title">마이너스통장(대월)</div>
-          <div class="loan-desc">최저 4.8%~ / 최대 2,000만원 / 1년</div>
+          <div class="loan-desc">최저 5.3%~ / 최대 2,000만원 / 1년</div>
         </div>
       </button>
 
