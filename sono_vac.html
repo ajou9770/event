@@ -1,662 +1,863 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>⛺ 소노호텔&리조트 2026 동계 성수기 신청</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102a43">
+  <title>소노호텔&리조트 | 2026 동계 성수기 신청</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg1: #eef6ff;
-      --bg2: #f8fbff;
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --mint: #14b8a6;
-      --ink: #111827;
+      --navy: #102a43;
+      --blue: #2563eb;
+      --mint: #0e9e8e;
+      --text: #18283a;
       --muted: #64748b;
-      --line: rgba(148, 163, 184, .28);
-      --glass: rgba(255, 255, 255, .78);
-      --shadow: 0 24px 80px rgba(15, 23, 42, .14);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
+      --line: #e3eaf1;
+      --bg: #f5f8fb;
+      --white: #fff;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      min-height: 100vh;
       margin: 0;
-      color: var(--ink);
-      font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(37, 99, 235, .18), transparent 30%),
-        radial-gradient(circle at 95% 8%, rgba(20, 184, 166, .22), transparent 30%),
-        linear-gradient(145deg, var(--bg1), var(--bg2) 46%, #fff7ed);
-      padding: 18px 14px 110px;
+      background: var(--bg);
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    a { text-decoration: none; }
+    button, a { font: inherit; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; }
 
-    button, .btn {
+    .wrap {
+      max-width: 1080px;
+      margin: auto;
+      padding: 0 22px;
+    }
+
+    .topbar {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar .wrap {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -.06em;
+      font-size: 1.15rem;
+    }
+
+    .brand small {
+      font-weight: 600;
+      color: var(--muted);
+      font-size: .7rem;
+      display: block;
+      letter-spacing: 0;
+    }
+
+    .toplink {
+      font-size: .84rem;
       font-weight: 700;
-      border-radius: 999px;
-      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
-    }
-
-    button:hover, .btn:hover { transform: translateY(-1px); }
-
-    .app-shell {
-      width: min(100%, 980px);
-      margin: 0 auto;
+      color: #476077;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .75);
-      border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.62));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(22px);
-      padding: 24px 22px;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      right: -72px;
-      top: -82px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(37,99,235,.18), rgba(20,184,166,.20));
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 7px 12px;
-      border-radius: 999px;
-      color: var(--primary-dark);
-      background: rgba(37, 99, 235, .10);
-      font-size: .88rem;
-      font-weight: 800;
-      letter-spacing: -.01em;
-    }
-
-    .hero-title {
-      margin: 14px 0 8px;
-      font-size: clamp(1.45rem, 5vw, 2.25rem);
-      font-weight: 900;
-      letter-spacing: -.055em;
-      line-height: 1.18;
-    }
-
-    .hero-copy {
-      margin: 0;
-      color: var(--muted);
-      font-size: .98rem;
-      line-height: 1.65;
-      word-break: keep-all;
-    }
-
-    .hero-actions {
+      min-height: 450px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .btn-primary-soft {
-      border: 0;
+      align-items: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(8,31,54,.92),
+          rgba(8,31,54,.64) 57%,
+          rgba(8,31,54,.25)
+        ),
+        url('https://images.unsplash.com/photo-1517299321609-52687d1bc55a?auto=format&fit=crop&w=1800&q=85')
+        center / cover;
       color: #fff;
-      background: linear-gradient(135deg, var(--primary), #38bdf8);
-      box-shadow: 0 12px 24px rgba(37, 99, 235, .25);
-      padding: 12px 16px;
     }
 
-    .btn-light-soft {
-      border: 1px solid var(--line);
-      color: #334155;
-      background: rgba(255,255,255,.8);
-      padding: 12px 16px;
-    }
-
-    .notice-card {
-      display: none;
-      border: 1px solid rgba(96, 165, 250, .26);
-      border-radius: var(--radius-lg);
-      background: rgba(239, 246, 255, .88);
-      box-shadow: 0 14px 38px rgba(37, 99, 235, .12);
-      padding: 18px;
-      margin-top: 16px;
-      word-break: keep-all;
-    }
-
-    .notice-card h5 {
-      font-weight: 900;
-      margin-bottom: 12px;
-      letter-spacing: -.035em;
-    }
-
-    .content-card {
-      margin-top: 16px;
-      border: 1px solid rgba(255,255,255,.75);
-      border-radius: var(--radius-xl);
-      background: var(--glass);
-      box-shadow: var(--shadow);
-      padding: 10px;
-      backdrop-filter: blur(20px);
-    }
-
-    .iframe-toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 8px 8px 14px;
-    }
-
-    .iframe-label {
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 700;
-    }
-
-    #myIframe {
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding-top: 70px;
+      padding-bottom: 80px;
       width: 100%;
-      min-height: 720px;
-      border: 0;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: inset 0 0 0 1px rgba(148, 163, 184, .18);
     }
 
-    #confirmLinkButton { display: none; }
-
-    .floating-actions {
-      position: fixed;
-      left: 50%;
-      bottom: max(16px, env(safe-area-inset-bottom));
-      transform: translateX(-50%);
-      z-index: 1000;
-      width: min(calc(100% - 24px), 620px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,.78);
-      border-radius: 24px;
-      background: rgba(255,255,255,.82);
-      box-shadow: 0 18px 50px rgba(15, 23, 42, .20);
-      backdrop-filter: blur(18px);
+    .kicker {
+      display: inline-block;
+      border: 1px solid #ffffff70;
+      border-radius: 100px;
+      padding: 7px 13px;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .08em;
     }
 
-    #icon_call {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      border-radius: 18px;
-      color: #fff;
-      background: linear-gradient(135deg, #0f766e, var(--mint));
-      font-size: 1rem;
+    .hero h1 {
+      font-size: clamp(2.05rem, 5vw, 3.65rem);
+      line-height: 1.28;
+      letter-spacing: -.065em;
+      margin: 22px 0 15px;
       font-weight: 900;
-      cursor: pointer;
-      box-shadow: 0 12px 24px rgba(20, 184, 166, .23);
     }
 
-    #icon {
+    .hero p {
+      max-width: 590px;
+      color: #e4eef8;
+      margin: 0 0 25px;
+      font-size: 1rem;
+      word-break: keep-all;
+    }
+
+    .hero-actions, .actions {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      border-radius: 18px;
-      background: transparent;
-      box-shadow: none;
-      overflow: visible;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    /* Kakao SDK 기본 버튼이 이미 노란색/말풍선 형태를 만들기 때문에
-       바깥 div에는 배경을 주지 않아 겹쳐 보이는 현상을 방지합니다. */
-    #kakao-talk-channel-chat-button {
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 14px 22px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      max-width: 100%;
-    }
-
-    #kakao-talk-channel-chat-button iframe,
-    #kakao-talk-channel-chat-button img {
-      max-width: 100% !important;
-      border-radius: 999px !important;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, .14) !important;
-    }
-
-    .calendar-fab {
-      position: fixed;
-      right: 18px;
-      bottom: 104px;
-      z-index: 1001;
-      width: 56px;
-      height: 56px;
-      border: 0;
-      border-radius: 999px;
-      color: #fff;
-      background: linear-gradient(135deg, #4338ca, #2563eb);
-      box-shadow: 0 16px 34px rgba(37, 99, 235, .32);
-      font-size: 1.35rem;
-    }
-
-    #hideCalendar { display: none; }
-
-    #calendar-container {
-      position: fixed;
-      right: 18px;
-      bottom: 170px;
-      z-index: 1002;
-      display: none;
-      width: min(330px, calc(100% - 36px));
-      padding: 16px;
-      border: 1px solid rgba(255,255,255,.82);
-      border-radius: 24px;
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 24px 70px rgba(15, 23, 42, .23);
-      backdrop-filter: blur(18px);
-      text-align: center;
-    }
-
-    #calendar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       gap: 8px;
-      margin-bottom: 12px;
-      font-weight: 900;
+      font-weight: 800;
+      transition: .2s;
     }
 
-    #calendar-header button {
-      width: 38px;
-      height: 38px;
-      border: 0;
-      color: #334155;
-      background: #f1f5f9;
-      border-radius: 14px;
+    .btn:hover { transform: translateY(-2px); }
+    .btn-white { background: #fff; color: var(--navy); }
+
+    .btn-outline {
+      background: #ffffff17;
+      color: #fff;
+      border: 1px solid #ffffff80;
     }
 
-    #calendar {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-light { background: #edf4ff; color: #2052a8; }
+
+    .main {
+      padding-top: 30px;
+      padding-bottom: 130px;
     }
 
-    .day-header {
-      padding: 8px 0;
-      color: #64748b;
-      background: #f8fafc;
-      border-radius: 10px;
-      font-size: .72rem;
-      font-weight: 900;
-    }
-
-    #calendar-body {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 4px;
-    }
-
-    .day {
-      min-height: 36px;
+    .status {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 17px 22px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(226, 232, 240, .9);
-      border-radius: 10px;
-      background: #fff;
-      font-size: .82rem;
-      font-weight: 700;
+      justify-content: space-between;
+      gap: 15px;
+      box-shadow: 0 8px 25px #102a4309;
     }
 
-    #calendar .day-header:nth-child(1),
-    #calendar-body .day:nth-child(7n+1) { color: #dc2626; }
+    .status-left {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
 
-    #calendar .day-header:nth-child(7),
-    #calendar-body .day:nth-child(7n) { color: #2563eb; }
+    .status-dot {
+      height: 11px;
+      width: 11px;
+      border-radius: 50%;
+      background: #0ea77d;
+      box-shadow: 0 0 0 5px #d8f8ec;
+    }
 
-    #loading-overlay {
+    .status.closed .status-dot {
+      background: #f59e0b;
+      box-shadow: 0 0 0 5px #fef3c7;
+    }
+
+    .status strong { font-size: .98rem; }
+
+    .status p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .status-badge {
+      border-radius: 50px;
+      padding: 7px 12px;
+      background: #e8f9f2;
+      color: #087c5b;
+      font-size: .77rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .status.closed .status-badge {
+      background: #fff5dd;
+      color: #a3610b;
+    }
+
+    .section-heading { margin: 44px 0 20px; }
+
+    .section-heading .eyebrow {
+      color: var(--mint);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      letter-spacing: -.05em;
+      margin: 5px 0;
+      font-weight: 900;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin: 0;
+      font-size: .93rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 27px;
+      box-shadow: 0 9px 26px #102a4309;
+    }
+
+    .apply-card {
+      background: linear-gradient(145deg, #fff, #f1f8ff);
+    }
+
+    .card-icon {
+      height: 48px;
+      width: 48px;
+      border-radius: 15px;
+      background: #e6f0ff;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      letter-spacing: -.04em;
+      margin: 18px 0 9px;
+      font-weight: 900;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: .92rem;
+      margin: 0 0 20px;
+      word-break: keep-all;
+    }
+
+    .apply-card .btn {
+      width: 100%;
+      min-height: 56px;
+    }
+
+    .small-note {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0 0;
+    }
+
+    .mini-list li {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: .9rem;
+    }
+
+    .mini-list li:last-child { border: 0; }
+    .mini-list b { color: var(--mint); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 19px;
+      padding: 23px;
+    }
+
+    .step-num {
+      color: var(--blue);
+      font-size: .79rem;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      margin: 10px 0 7px;
+    }
+
+    .step p {
+      font-size: .85rem;
+      color: var(--muted);
+      margin: 0;
+      word-break: keep-all;
+    }
+
+    .notice {
+      background: #eaf3fc;
+      border: 1px solid #d8e7f7;
+      border-radius: 19px;
+      padding: 24px;
+    }
+
+    .notice h3 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+    }
+
+    .notice ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #40566d;
+      font-size: .89rem;
+    }
+
+    .notice li + li { margin-top: 7px; }
+
+    .footer {
+      text-align: center;
+      color: #7b8ca0;
+      font-size: .77rem;
+      padding: 28px 10px 10px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffffef;
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--line);
+      z-index: 50;
+      padding:
+        11px max(16px, env(safe-area-inset-right))
+        max(11px, env(safe-area-inset-bottom));
+    }
+
+    .bottom-inner {
+      max-width: 650px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.5fr;
+      gap: 9px;
+    }
+
+    .bottom-inner button,
+    .bottom-inner a {
+      border-radius: 12px;
+      padding: 12px 8px;
+      min-height: 49px;
+      font-size: .84rem;
+      font-weight: 900;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .bottom-inner .primary {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .modal-backdrop {
       position: fixed;
       inset: 0;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      background: #0c1e32a8;
+      z-index: 100;
+      display: none;
       align-items: center;
-      gap: 16px;
-      background: rgba(15, 23, 42, .58);
-      backdrop-filter: blur(8px);
+      justify-content: center;
+      padding: 18px;
     }
 
-    #loading-message {
-      color: white;
+    .modal-backdrop.open { display: flex; }
+
+    .dialog {
+      background: #fff;
+      border-radius: 22px;
+      padding: 23px;
+      width: min(100%, 390px);
+      box-shadow: 0 20px 70px #0003;
+    }
+
+    .dialog-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dialog h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .icon-btn {
+      border: 0;
+      background: #f0f4f8;
+      border-radius: 10px;
+      width: 34px;
+      height: 34px;
+    }
+
+    .calendar-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0 15px;
+    }
+
+    .calendar-head button {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      width: 38px;
+      height: 38px;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
       text-align: center;
-      font-size: .95rem;
+    }
+
+    .calendar-grid span {
+      padding: 9px 0;
+      border-radius: 9px;
+      font-size: .82rem;
+    }
+
+    .calendar-grid .weekday {
+      color: #8494a8;
+      font-size: .74rem;
+      font-weight: 800;
+    }
+
+    .calendar-grid .sun { color: #e35c5c; }
+    .calendar-grid .sat { color: #477ce8; }
+
+    .calendar-grid .today {
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 900;
+    }
+
+    .calendar-foot {
+      color: var(--muted);
+      font-size: .77rem;
+      margin-top: 16px;
+    }
+
+    .chat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 800;
+      color: #4c3b00;
+      background: #fee500;
+      border-radius: 11px;
+      padding: 10px 14px;
+    }
+
+    .closed-note {
+      display: none;
+      margin-top: 15px;
+      color: #a3610b;
       font-weight: 700;
-      line-height: 1.7;
+      font-size: .88rem;
     }
 
-    #loading-spinner {
-      width: 54px;
-      height: 54px;
-      border: 6px solid rgba(255,255,255,.28);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .85s linear infinite;
-    }
+    @media (max-width: 700px) {
+      .wrap { padding: 0 16px; }
+      .topbar .wrap { height: 62px; }
+      .hero { min-height: 400px; background-position: 60% center; }
+      .hero-inner { padding-top: 57px; padding-bottom: 65px; }
+      .hero h1 { font-size: 2.15rem; }
+      .hero p { font-size: .9rem; }
+      .main { padding-top: 18px; }
+      .feature-grid, .steps { grid-template-columns: 1fr; }
+      .card { padding: 23px; }
+      .section-heading { margin-top: 34px; }
+      .status { padding: 15px; }
+      .status-badge { font-size: .7rem; }
+      .bottom-inner { grid-template-columns: 1fr 1fr 1.3fr; }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+      .bottom-inner button,
+      .bottom-inner a {
+        font-size: .75rem;
+        padding: 10px 4px;
+      }
 
-    #welcomeModal .modal-dialog {
-      max-width: 80%;
-      height: 60vh;
-      margin: auto;
-    }
-
-    #detail, #close, #cal, #hideCal, #scrollToTopButton { display: none; }
-
-    @media (max-width: 576px) {
-      body { padding: 12px 10px 104px; }
-      .hero { padding: 20px 18px; }
-      .hero-actions .btn { width: 100%; }
-      .iframe-toolbar { align-items: flex-start; flex-direction: column; }
-      #myIframe { min-height: 680px; border-radius: 18px; }
-      .calendar-fab { right: 14px; bottom: 96px; }
-      #calendar-container { right: 12px; bottom: 160px; }
-      .floating-actions { grid-template-columns: 1fr 1fr; }
+      .hero-actions .btn { font-size: .88rem; }
     }
   </style>
-
-<!-- AjouCU shared event mobile UI -->
-<link rel="stylesheet" href="event-ui.css?v=20260814">
-<script src="event-ui.js?v=20260814" defer></script>
 </head>
+
 <body>
-  <main class="app-shell">
-    <section class="hero">
-      <!--<span class="eyebrow">✨ 평생어부바 신협 · 조합원 복지</span>-->
-      <h1 class="hero-title">소노호텔&리조트<br>2026 동계 성수기 신청</h1>
-      <p class="hero-copy">신청서를 작성해 주시면 접수 후 추첨 결과를 개별 알림톡으로 안내드립니다. 취소는 이용일 기준 7일 전까지 가능합니다.</p>
-      <div class="hero-actions">
-        <button type="button" class="btn btn-primary-soft" onclick="location.reload()">↩ 다시 작성하기</button>
-        <button id="confirmLinkButton" type="button" class="btn btn-light-soft">🚀 실시간 예약 안내 바로가기</button>
+
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        아주대의료원신협
+        <small>MEMBER BENEFITS · RESORT</small>
       </div>
+      <a class="toplink"
+         href="https://ajou9770.github.io/usertip/dm.html"
+         target="_blank" rel="noopener noreferrer">
+        상시 예약 안내 ↗
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <span class="kicker">WINTER SEASON · 2026</span>
+      <h1>신협 조합원의 겨울 여행<br>소노호텔&리조트</h1>
+      <p>
+        조합원과 함께하는 2026 동계 성수기 객실 신청.
+        설레는 겨울 여행을 준비해 보세요.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-white" id="heroApply" href="#apply">
+          신청 안내 확인 →
+        </a>
+        <button class="btn btn-outline" type="button" data-calendar>
+          📅 달력 보기
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap main">
+
+    <section id="status" class="status" aria-live="polite">
+      <div class="status-left">
+        <span class="status-dot"></span>
+        <div>
+          <strong id="statusTitle">신청 상태 확인 중</strong>
+          <p id="statusDesc">접수 일정을 확인하고 있습니다.</p>
+        </div>
+      </div>
+      <span id="statusBadge" class="status-badge">확인 중</span>
     </section>
 
-    <!--<section id="timeout" class="notice-card">
-      <h5>📌 2026 동계 성수기 신청마감 안내(💡잔여객실 없어요)</h5>
-      <p class="mb-2">2026 동계성수기 소노호텔앤리조트 신청이 <strong class="text-danger">마감되었으며 잔여객실은 없습니다.</strong> </p>
-      <p class="mb-2">🤷🏽‍♀️ <strong>추첨결과는 개별 알림톡으로 안내</strong>드렸습니다. 취소는 이용일 기준 7일 전까지 가능합니다.</p>
-      <p class="mb-0">⭐ 소노호텔앤리조트 <strong>실시간 예약</strong>은 안내 페이지에서 신청해 주시기 바랍니다.</p>
-    </section> -->
+    <div class="section-heading" id="apply">
+      <span class="eyebrow">RESERVATION</span>
+      <h2>동계 성수기 객실 신청</h2>
+      <p>신청서를 작성하면 추첨 결과를 개별 알림톡으로 안내해 드립니다.</p>
+    </div>
 
-    <section class="content-card">
-  <a
-    href="https://script.google.com/macros/s/AKfycbylYSRCKBcCKwtRR5ThQUA00yyPnEPW6mBD0PVveZcr1ANC0_xiG2bRSPztmFIe7tNd/exec"
-    target="_blank"
-    rel="noopener"
-    style="display:block;
-    padding:25px;
-    cursor:pointer;
-    text-decoration:none;
-    color:#526580;
-    position:relative;
-    z-index:10;">
-    📝 신청서 작성 화면
-  </a>
-</section>
+    <div class="feature-grid">
 
-  <div class="floating-actions" aria-label="상담 바로가기">
-    <div onclick="callon()" id="icon_call">📞 전화 상담</div>
-    <div id="icon">
-      <div
-        id="kakao-talk-channel-chat-button"
-        data-channel-public-id="_dfhkK"
-        data-title="consult"
-        data-size="small"
-        data-color="yellow"
-        data-shape="mobile"
-        data-support-multiple-densities="true"
-      ></div>
+      <article class="card apply-card">
+        <div class="card-icon">📝</div>
+        <h3>신청서 작성하기</h3>
+        <p>
+          별도 신청 화면에서 희망 일정과 필수 정보를 입력해 주세요.
+          제출 전 내용을 한 번 더 확인해 주세요.
+        </p>
+        <a id="applyButton"
+           class="btn btn-blue"
+           href="https://script.google.com/macros/s/AKfycbylYSRCKBcCKwtRR5ThQUA00yyPnEPW6mBD0PVveZcr1ANC0_xiG2bRSPztmFIe7tNd/exec"
+           target="_blank" rel="noopener noreferrer">
+          신청서 작성 화면 열기 ↗
+        </a>
+        <div id="closedNote" class="closed-note">
+          현재 신청기간이 종료되었습니다.
+          추가 접수 여부는 담당자에게 문의해 주세요.
+        </div>
+        <div class="small-note">
+          ※ Google 신청서가 새 창으로 열립니다.
+        </div>
+      </article>
+
+      <aside class="card">
+        <div class="card-icon">🏨</div>
+        <h3>예약 및 상담</h3>
+        <p>
+          동계 성수기 신청 외 일반 예약과 상담도 이용하실 수 있습니다.
+        </p>
+        <div class="actions">
+          <a class="btn btn-light"
+             href="https://ajou9770.github.io/usertip/dm.html"
+             target="_blank" rel="noopener noreferrer">
+            실시간 예약 안내 ↗
+          </a>
+          <a class="chat-link"
+             href="https://pf.kakao.com/_dfhkK/chat"
+             target="_blank" rel="noopener noreferrer">
+            💬 카카오 상담
+          </a>
+        </div>
+        <ul class="mini-list">
+          <li><b>☎</b><span>031-219-4939</span></li>
+          <li><b>◷</b><span>평일 08:30 ~ 17:00</span></li>
+        </ul>
+      </aside>
+
+    </div>
+
+    <div class="section-heading">
+      <span class="eyebrow">HOW IT WORKS</span>
+      <h2>신청부터 결과 안내까지</h2>
+    </div>
+
+    <section class="steps">
+      <article class="step">
+        <span class="step-num">STEP 01</span>
+        <h3>신청서 접수</h3>
+        <p>신청 화면에서 이용 희망 일정과 신청 정보를 제출합니다.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">STEP 02</span>
+        <h3>추첨 및 확인</h3>
+        <p>접수 내용을 기준으로 배정 절차가 진행됩니다.</p>
+      </article>
+      <article class="step">
+        <span class="step-num">STEP 03</span>
+        <h3>결과 알림톡</h3>
+        <p>추첨 결과는 신청자에게 개별 알림톡으로 안내합니다.</p>
+      </article>
+    </section>
+
+    <div class="section-heading">
+      <span class="eyebrow">IMPORTANT NOTICE</span>
+      <h2>신청 전 확인해 주세요</h2>
+    </div>
+
+    <section class="notice">
+      <h3>📌 이용 안내</h3>
+      <ul>
+        <li>성수기 객실 배정은 신청 후 추첨 방식으로 진행됩니다.</li>
+        <li>추첨 결과는 개별 알림톡으로 안내됩니다.</li>
+        <li>취소는 이용일 기준 7일 전까지 가능합니다.</li>
+        <li>예약 가능 객실 및 상세 조건은 별도 안내를 확인해 주세요.</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      © 아주대의료원신협 · 조합원 복지 서비스
+    </footer>
+  </main>
+
+  <nav class="bottom-nav" aria-label="빠른 메뉴">
+    <div class="bottom-inner">
+      <button type="button" data-calendar>📅 달력</button>
+      <a href="tel:0312194939">📞 전화 상담</a>
+      <a class="primary" id="bottomApply" href="#apply">📝 신청 안내</a>
+    </div>
+  </nav>
+
+  <<div class="modal-backdrop"
+       id="calendarModal"
+       role="dialog"
+       aria-modal="true"
+       aria-label="달력"
+       aria-hidden="true">
+    <div class="dialog">
+      <div class="dialog-top">
+        <h3>📅 월별 달력</h3>
+        <button class="icon-btn" id="closeCalendar" aria-label="닫기">✕</button>
+      </div>
+      <div class="calendar-head">
+        <button id="prevMonth" aria-label="이전 달">‹</button>
+        <strong id="monthLabel"></strong>
+        <button id="nextMonth" aria-label="다음 달">›</button>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <p class="calendar-foot">
+        ※ 날짜 확인용 달력이며 객실 예약 가능 여부를 표시하지 않습니다.
+      </p>
     </div>
   </div>
 
-  <button class="calendar-fab" id="showCalendar" onclick="showImg()" aria-label="달력 보기">📆</button>
-  <button class="calendar-fab" id="hideCalendar" onclick="imgClose()" aria-label="달력 닫기">✕</button>
-
-  <div id="calendar-container">
-    <div id="calendar-header">
-      <button id="prev-month" type="button">◀</button>
-      <span id="month-year"></span>
-      <button id="next-month" type="button">▶</button>
-    </div>
-    <div id="calendar">
-      <div class="day-header">Sun</div>
-      <div class="day-header">Mon</div>
-      <div class="day-header">Tue</div>
-      <div class="day-header">Wed</div>
-      <div class="day-header">Thu</div>
-      <div class="day-header">Fri</div>
-      <div class="day-header">Sat</div>
-      <div id="calendar-body"></div>
-    </div>
-  </div>
-
-  <div id="loading-overlay">
-    <div id="loading-spinner"></div>
-    <div id="loading-message">소노Resort 성수기 신청 로딩중입니다...<br><small>✨ 평생어부바 신협</small></div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!--모달창스크립-->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var modalEl = document.getElementById('welcomeModal');
-      if (!modalEl) return;
+    'use strict';
 
-      var welcomeModal = new bootstrap.Modal(modalEl);
-      var hasHideCookie = document.cookie
-        .split('; ')
-        .some(function (row) { return row.startsWith('sonoevent_hide=1'); });
+    const CONFIG = {
+      // null이면 마감 자동 전환을 사용하지 않습니다.
+      // 예: '2026-12-01T23:59:00+09:00'
+      applicationDeadline: null,
 
-      if (!hasHideCookie) {
-        welcomeModal.show();
-      }
-
-      var dontShowBtn = document.getElementById('dontShowAgain');
-      if (dontShowBtn) {
-        dontShowBtn.addEventListener('click', function () {
-          var d = new Date();
-          d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
-          document.cookie = "sonoevent_hide=1; expires=" + d.toUTCString() + "; path=/";
-          welcomeModal.hide();
-        });
-      }
-    });
-  </script>
-
-  <!-- 접수마감 JS-->
-  <script>
-    const targetTime = new Date('2026-06-19T23:59:00+09:00');
-
-    function updateVisibilityByTime() {
-      const now = new Date();
-      const timeoutEl = document.getElementById('timeout');
-      const buttonEl = document.getElementById('confirmLinkButton');
-      const iframeEl = document.getElementById('myIframe');
-
-      if (now >= targetTime) {
-        if (timeoutEl) timeoutEl.style.display = 'block';
-        if (buttonEl) buttonEl.style.display = 'inline-flex';
-        if (iframeEl) iframeEl.style.display = 'none';
-      } else {
-        if (timeoutEl) timeoutEl.style.display = 'none';
-        if (buttonEl) buttonEl.style.display = 'none';
-        if (iframeEl) iframeEl.style.display = 'block';
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      updateVisibilityByTime();
-      setInterval(updateVisibilityByTime, 60000);
-    });
-  </script>
-
-  <script>
-    function resizeIframe() {
-      var iframe = document.getElementById('myIframe');
-      if (!iframe) return;
-      var top = iframe.getBoundingClientRect().top + window.scrollY;
-      var available = window.innerHeight - Math.min(180, top) - 24;
-      iframe.style.height = Math.max(680, available) + 'px';
-    }
-    window.addEventListener('resize', resizeIframe);
-    window.addEventListener('load', resizeIframe);
-    document.addEventListener('DOMContentLoaded', resizeIframe);
-  </script>
-
-  <script>
-    document.getElementById('confirmLinkButton').addEventListener('click', function() {
-      var userConfirmed = confirm("⛺소노리조트 실시간 예약 안내 페이지로 이동하시겠습니까?");
-      if (userConfirmed) {
-        window.open("https://ajou9770.github.io/usertip/dm.html", "_blank");
-      }
-    });
-  </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const calendarBody = document.getElementById('calendar-body');
-      const monthYear = document.getElementById('month-year');
-      const prevMonth = document.getElementById('prev-month');
-      const nextMonth = document.getElementById('next-month');
-
-      let currentMonth = new Date().getMonth();
-      let currentYear = new Date().getFullYear();
-
-      const months = [
-          'January', 'February', 'March', 'April', 'May', 'June(6월)',
-          'July(7월)', 'August(8월)', 'Sep(9월)', 'Oct(10월)', 'Nov(11월)', 'Dec(12월)'
-      ];
-
-      function renderCalendar(month, year) {
-          calendarBody.innerHTML = '';
-          const firstDay = new Date(year, month, 1).getDay();
-          const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-          for (let i = 0; i < firstDay; i++) {
-              const emptyCell = document.createElement('div');
-              emptyCell.classList.add('day');
-              calendarBody.appendChild(emptyCell);
-          }
-
-          for (let day = 1; day <= daysInMonth; day++) {
-              const dayCell = document.createElement('div');
-              dayCell.classList.add('day');
-              dayCell.textContent = day;
-              calendarBody.appendChild(dayCell);
-          }
-
-          monthYear.textContent = `${months[month]} ${year}`;
-      }
-
-      prevMonth.addEventListener('click', () => {
-          currentMonth--;
-          if (currentMonth < 0) {
-              currentMonth = 11;
-              currentYear--;
-          }
-          renderCalendar(currentMonth, currentYear);
-      });
-
-      nextMonth.addEventListener('click', () => {
-          currentMonth++;
-          if (currentMonth > 11) {
-              currentMonth = 0;
-              currentYear++;
-          }
-          renderCalendar(currentMonth, currentYear);
-      });
-
-      renderCalendar(currentMonth, currentYear);
-    });
-
-    function showImg() {
-      document.getElementById('calendar-container').style.display = 'block';
-      document.getElementById('hideCalendar').style.display = 'block';
-      document.getElementById('showCalendar').style.display = 'none';
-    }
-    function imgClose() {
-      document.getElementById('calendar-container').style.display = 'none';
-      document.getElementById('showCalendar').style.display = 'block';
-      document.getElementById('hideCalendar').style.display = 'none';
-    }
-  </script>
-
-  <script>
-    window.addEventListener('load', function() {
-      var loadingOverlay = document.getElementById('loading-overlay');
-      if (loadingOverlay) loadingOverlay.style.display = 'none';
-    });
-  </script>
-
-  <script>
-    window.addEventListener('scroll', function() {
-      var scrollToTopButton = document.getElementById('scrollToTopButton');
-      if (!scrollToTopButton) return;
-      if (window.pageYOffset > 800) {
-        scrollToTopButton.style.display = 'block';
-      } else {
-        scrollToTopButton.style.display = 'none';
-      }
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
-
-  <script>
-    function callon() {
-      if (window.confirm("☏ 상담가능시간: 평일 8:30~17:00 📞전화앱으로 연결할까요?")) {
-        document.location.href = "tel:031-219-4939";
-      }
-    }
-  </script>
-
-  <script>
-    window.kakaoAsyncInit = function() {
-      Kakao.Channel.createChatButton({
-        container: '#kakao-talk-channel-chat-button',
-      });
+      applicationUrl:
+        'https://script.google.com/macros/s/AKfycbylYSRCKBcCKwtRR5ThQUA00yyPnEPW6mBD0PVveZcr1ANC0_xiG2bRSPztmFIe7tNd/exec'
     };
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    })(document, 'script', 'kakao-js-sdk');
+
+    const $ = id => document.getElementById(id);
+
+    function refreshStatus() {
+      const closed =
+        CONFIG.applicationDeadline !== null &&
+        Date.now() >= new Date(CONFIG.applicationDeadline).getTime();
+
+      $('status').classList.toggle('closed', closed);
+
+      $('statusTitle').textContent = closed
+        ? '동계 성수기 신청 마감'
+        : '동계 성수기 신청 안내';
+
+      $('statusDesc').textContent = closed
+        ? '신청기간이 종료되었습니다. 실시간 예약 안내를 확인해 주세요.'
+        : '신청서를 작성하고 접수 일정을 확인해 주세요.';
+
+      $('statusBadge').textContent = closed ? '접수 마감' : '신청 안내';
+
+      $('closedNote').style.display = closed ? 'block' : 'none';
+
+      $('applyButton').textContent = closed
+        ? '실시간 예약 안내 보기 ↗'
+        : '신청서 작성 화면 열기 ↗';
+
+      $('applyButton').href = closed
+        ? 'https://ajou9770.github.io/usertip/dm.html'
+        : CONFIG.applicationUrl;
+    }
+
+    refreshStatus();
+    setInterval(refreshStatus, 60000);
+
+    const modal = $('calendarModal');
+
+    function openCal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      $('closeCalendar').focus();
+    }
+
+    function closeCal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-calendar]').forEach(el => {
+      el.addEventListener('click', openCal);
+    });
+
+    $('closeCalendar').addEventListener('click', closeCal);
+
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeCal();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeCal();
+    });
+
+    let view = new Date();
+    view.setDate(1);
+
+    function renderCal() {
+      const y = view.getFullYear();
+      const m = view.getMonth();
+      const today = new Date();
+
+      $('monthLabel').textContent = `${y}년 ${m + 1}월`;
+
+      const grid = $('calendarGrid');
+      grid.innerHTML = '';
+
+      ['일', '월', '화', '수', '목', '금', '토'].forEach((w, i) => {
+        const el = document.createElement('span');
+        el.className =
+          'weekday ' + (i === 0 ? 'sun' : i === 6 ? 'sat' : '');
+        el.textContent = w;
+        grid.appendChild(el);
+      });
+
+      const first = new Date(y, m, 1).getDay();
+      const days = new Date(y, m + 1, 0).getDate();
+
+      for (let i = 0; i < first; i++) {
+        grid.appendChild(document.createElement('span'));
+      }
+
+      for (let d = 1; d <= days; d++) {
+        const el = document.createElement('span');
+        const day = new Date(y, m, d).getDay();
+
+        el.textContent = d;
+        el.className =
+          (day === 0 ? 'sun ' : day === 6 ? 'sat ' : '') +
+          (
+            today.getFullYear() === y &&
+            today.getMonth() === m &&
+            today.getDate() === d
+              ? 'today'
+              : ''
+          );
+
+        grid.appendChild(el);
+      }
+    }
+
+    $('prevMonth').addEventListener('click', () => {
+      view.setMonth(view.getMonth() - 1);
+      renderCal();
+    });
+
+    $('nextMonth').addEventListener('click', () => {
+      view.setMonth(view.getMonth() + 1);
+      renderCal();
+    });
+
+    renderCal();
   </script>
+
 </body>
 </html>
