@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,7 +23,6 @@
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -315,27 +313,7 @@
       font-size: .87rem;
     }
 
-    .form-toolbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 20px;
-      background: #fff;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .form-toolbar span {
-      font-size: .82rem;
-      color: var(--muted);
-    }
-
-    .form-toolbar a {
-      color: var(--blue);
-      font-size: .83rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
+    /* form-toolbar 영역 삭제 완료 */
 
     .iframe-container {
       width: 100%;
@@ -471,49 +449,6 @@
       padding: 28px 10px 10px;
     }
 
-    /* 하단 고정 메뉴 */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #ffffffef;
-      backdrop-filter: blur(16px);
-      border-top: 1px solid var(--line);
-      z-index: 50;
-      padding: 11px 16px max(11px, env(safe-area-inset-bottom));
-    }
-
-    .bottom-inner {
-      max-width: 650px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.5fr;
-      gap: 9px;
-    }
-
-    .bottom-inner button,
-    .bottom-inner a {
-      border-radius: 12px;
-      padding: 12px 8px;
-      min-height: 49px;
-      font-size: .84rem;
-      font-weight: 900;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--navy);
-    }
-
-    .bottom-inner .primary {
-      background: var(--blue);
-      color: #fff;
-      border-color: var(--blue);
-    }
-
     /* 달력 */
     .modal-backdrop {
       position: fixed;
@@ -625,17 +560,13 @@
         padding-bottom: 45px;
       }
 
-      .hero h1 {
-        font-size: 1.85rem;
-      }
-
+      .hero h1 { font-size: 1.85rem; }
       .hero p { font-size: .88rem; }
       .hero-actions .btn { font-size: .85rem; }
 
       .main { padding-top: 15px; }
 
       .section-heading { margin: 30px 0 15px; }
-
       .section-heading h2 { font-size: 1.42rem; }
       .section-heading p { font-size: .85rem; }
 
@@ -651,10 +582,6 @@
       .form-header h3 { font-size: 1.1rem; }
       .form-header p { font-size: .82rem; }
 
-      .form-toolbar { padding: 11px 13px; }
-      .form-toolbar span { font-size: .74rem; }
-      .form-toolbar a { font-size: .76rem; }
-
       .application-frame {
         width: 100%;
         height: 1050px;
@@ -665,16 +592,6 @@
 
       .support-grid, .steps {
         grid-template-columns: 1fr;
-      }
-
-      .bottom-inner {
-        grid-template-columns: 1fr 1fr 1.3fr;
-      }
-
-      .bottom-inner button,
-      .bottom-inner a {
-        font-size: .75rem;
-        padding: 10px 4px;
       }
 
       .notice { padding: 19px; }
@@ -761,7 +678,6 @@
     <section class="card form-card">
 
       <div class="form-header">
-       
         <h3>📝2026 동계성수기 신청서</h3>
         <p>
           성명, 휴대전화번호, 이용 희망 일정을 정확히 입력해 주세요.
@@ -769,15 +685,7 @@
         </p>
       </div>
 
-      <div class="form-toolbar">
-        <span>아래 화면에서 바로 작성할 수 있습니다.</span>
-        <a id="openExternal"
-           href="#"
-           target="_blank"
-           rel="noopener noreferrer">
-          새 창으로 열기 ↗
-        </a>
-      </div>
+      <!-- 안내 문구 및 새 창 버튼 영역 삭제 완료 -->
 
       <!-- iframe 신청서 삽입 -->
       <div id="iframeContainer" class="iframe-container">
@@ -805,6 +713,7 @@
       <div id="closedNote" class="closed-note">
         🔔 현재 신청기간이 종료되었습니다.<br>
         추가 접수 여부는 담당자에게 문의해 주세요.
+
         <div style="margin-top:15px;">
           <a class="btn btn-light"
              href="https://ajou9770.github.io/usertip/dm.html"
@@ -949,7 +858,7 @@
     const $ = id => document.getElementById(id);
 
     // 신청서 URL 설정
-    $('openExternal').href = CONFIG.applicationUrl;
+    // 삭제된 openExternal 참조 제거
     $('helpExternal').href = CONFIG.applicationUrl;
 
     // iframe 로드
@@ -992,8 +901,7 @@
       $('closedNote').style.display = closed ? 'block' : 'none';
       $('iframeContainer').style.display = closed ? 'none' : 'block';
 
-      document.querySelector('.form-toolbar').style.display =
-        closed ? 'none' : 'flex';
+      // 삭제된 form-toolbar 표시 제어 제거
 
       $('iframeHelp').style.display = closed ? 'none' : 'block';
 
