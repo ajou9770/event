@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -289,7 +290,7 @@
       word-break: keep-all;
     }
 
-    /* iframe 신청서 영역 */
+    /* 신청서 */
     .form-card {
       padding: 0;
       overflow: hidden;
@@ -313,8 +314,6 @@
       font-size: .87rem;
     }
 
-    /* form-toolbar 영역 삭제 완료 */
-
     .iframe-container {
       width: 100%;
       background: #fff;
@@ -328,6 +327,67 @@
       height: 900px;
       border: 0;
       background: #fff;
+    }
+
+    /* iframe 로딩 화면 */
+    .iframe-loading {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      min-height: 320px;
+      background: #fff;
+      text-align: center;
+      padding: 25px;
+      transition: opacity .3s ease;
+    }
+
+    .iframe-loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #e3eaf1;
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: iframeSpin .8s linear infinite;
+    }
+
+    @keyframes iframeSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .iframe-loading strong {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .iframe-loading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .85rem;
+      line-height: 1.8;
+    }
+
+    .iframe-loading a {
+      color: var(--blue);
+      font-weight: 800;
+      text-decoration: underline;
+      font-size: .88rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .loading-spinner {
+        animation-duration: 2s;
+      }
     }
 
     .iframe-help {
@@ -617,7 +677,8 @@
 
       <a class="toplink"
          href="https://ajou9770.github.io/usertip/dm.html"
-         target="_blank" rel="noopener noreferrer">
+         target="_blank"
+         rel="noopener noreferrer">
         상시 예약 안내 ↗
       </a>
     </div>
@@ -643,7 +704,9 @@
           📝 신청서 작성하기
         </a>
 
-        <button class="btn btn-outline" type="button" data-calendar>
+        <button class="btn btn-outline"
+                type="button"
+                data-calendar>
           📅 달력 보기
         </button>
       </div>
@@ -653,16 +716,22 @@
   <main class="wrap main">
 
     <!-- 신청 상태 -->
-    <section id="status" class="status" aria-live="polite">
+    <section id="status"
+             class="status"
+             aria-live="polite">
       <div class="status-left">
         <span class="status-dot"></span>
         <div>
           <strong id="statusTitle">신청 상태 확인 중</strong>
-          <p id="statusDesc">접수 일정을 확인하고 있습니다.</p>
+          <p id="statusDesc">
+            접수 일정을 확인하고 있습니다.
+          </p>
         </div>
       </div>
 
-      <span id="statusBadge" class="status-badge">확인 중</span>
+      <span id="statusBadge" class="status-badge">
+        확인 중
+      </span>
     </section>
 
     <!-- 신청서 -->
@@ -685,19 +754,46 @@
         </p>
       </div>
 
-      <!-- 안내 문구 및 새 창 버튼 영역 삭제 완료 -->
-
-      <!-- iframe 신청서 삽입 -->
+      <!-- iframe 신청서 -->
       <div id="iframeContainer" class="iframe-container">
+
+        <!-- 로딩 표시 -->
+        <div id="iframeLoading"
+             class="iframe-loading"
+             role="status"
+             aria-live="polite">
+
+          <div class="loading-spinner"
+               aria-hidden="true"></div>
+
+          <strong id="loadingTitle">
+            신청서를 불러오고 있습니다
+          </strong>
+
+          <p id="loadingDesc">
+            잠시만 기다려 주세요.<br>
+            네트워크 환경에 따라 몇 초 정도 소요될 수 있습니다.
+          </p>
+
+          <a id="loadingExternal"
+             href="#"
+             target="_blank"
+             rel="noopener noreferrer"
+             style="display:none;">
+            새 창에서 신청하기 ↗
+          </a>
+        </div>
+
         <iframe
           id="applicationFrame"
           class="application-frame"
           title="2026 동계 성수기 객실 신청서"
-          loading="lazy"
+          loading="eager"
           referrerpolicy="strict-origin-when-cross-origin"
           allow="clipboard-write"
           src="about:blank">
         </iframe>
+
       </div>
 
       <div id="iframeHelp" class="iframe-help">
@@ -717,7 +813,8 @@
         <div style="margin-top:15px;">
           <a class="btn btn-light"
              href="https://ajou9770.github.io/usertip/dm.html"
-             target="_blank" rel="noopener noreferrer">
+             target="_blank"
+             rel="noopener noreferrer">
             상시 예약 안내 보기
           </a>
         </div>
@@ -732,15 +829,18 @@
     </div>
 
     <section class="support-grid">
+
       <article class="card">
         <div class="card-icon">🏨</div>
         <h3>실시간 예약 안내</h3>
         <p>
           동계 성수기 신청 외 일반 예약도 이용하실 수 있습니다.
         </p>
+
         <a class="btn btn-light"
            href="https://ajou9770.github.io/usertip/dm.html"
-           target="_blank" rel="noopener noreferrer">
+           target="_blank"
+           rel="noopener noreferrer">
           실시간 예약 안내 ↗
         </a>
       </article>
@@ -754,15 +854,23 @@
 
         <a class="chat-link"
            href="https://pf.kakao.com/_dfhkK/chat"
-           target="_blank" rel="noopener noreferrer">
+           target="_blank"
+           rel="noopener noreferrer">
           💬 카카오 상담
         </a>
 
         <ul class="mini-list">
-          <li><b>☎</b><span>031-219-4939</span></li>
-          <li><b>◷</b><span>평일 08:30 ~ 17:00</span></li>
+          <li>
+            <b>☎</b>
+            <span>031-219-4939</span>
+          </li>
+          <li>
+            <b>◷</b>
+            <span>평일 08:30 ~ 17:00</span>
+          </li>
         </ul>
       </article>
+
     </section>
 
     <!-- 신청 절차 -->
@@ -775,19 +883,25 @@
       <article class="step">
         <span class="step-num">STEP 01</span>
         <h3>신청서 접수</h3>
-        <p>이용 희망 일정과 신청 정보를 입력하고 제출합니다.</p>
+        <p>
+          이용 희망 일정과 신청 정보를 입력하고 제출합니다.
+        </p>
       </article>
 
       <article class="step">
         <span class="step-num">STEP 02</span>
         <h3>추첨 및 확인</h3>
-        <p>접수된 신청 내용을 기준으로 배정 절차가 진행됩니다.</p>
+        <p>
+          접수된 신청 내용을 기준으로 배정 절차가 진행됩니다.
+        </p>
       </article>
 
       <article class="step">
         <span class="step-num">STEP 03</span>
         <h3>결과 알림톡</h3>
-        <p>당첨된 조합원에게는 개별 알림톡으로 안내합니다.</p>
+        <p>
+          당첨된 조합원에게는 개별 알림톡으로 안내합니다.
+        </p>
       </article>
     </section>
 
@@ -800,10 +914,18 @@
     <section class="notice">
       <h3>📌 이용 안내</h3>
       <ul>
-        <li>성수기 객실 배정은 신청 후 추첨 방식으로 진행됩니다.</li>
-        <li>추첨 결과는 개별 알림톡으로 안내됩니다.</li>
-        <li>취소는 이용일 기준 7일 전까지 가능합니다.</li>
-        <li>예약 가능 객실 및 상세 조건은 별도 안내를 확인해 주세요.</li>
+        <li>
+          성수기 객실 배정은 신청 후 추첨 방식으로 진행됩니다.
+        </li>
+        <li>
+          추첨 결과는 개별 알림톡으로 안내됩니다.
+        </li>
+        <li>
+          취소는 이용일 기준 7일 전까지 가능합니다.
+        </li>
+        <li>
+          예약 가능 객실 및 상세 조건은 별도 안내를 확인해 주세요.
+        </li>
       </ul>
     </section>
 
@@ -822,63 +944,151 @@
        aria-hidden="true">
 
     <div class="dialog">
+
       <div class="dialog-top">
         <h3>📅 월별 달력</h3>
-        <button class="icon-btn" id="closeCalendar"
-                type="button" aria-label="닫기">✕</button>
+
+        <button class="icon-btn"
+                id="closeCalendar"
+                type="button"
+                aria-label="닫기">
+          ✕
+        </button>
       </div>
 
       <div class="calendar-head">
-        <button id="prevMonth" type="button" aria-label="이전 달">‹</button>
+        <button id="prevMonth"
+                type="button"
+                aria-label="이전 달">
+          ‹
+        </button>
+
         <strong id="monthLabel"></strong>
-        <button id="nextMonth" type="button" aria-label="다음 달">›</button>
+
+        <button id="nextMonth"
+                type="button"
+                aria-label="다음 달">
+          ›
+        </button>
       </div>
 
-      <div class="calendar-grid" id="calendarGrid"></div>
+      <div class="calendar-grid"
+           id="calendarGrid"></div>
 
       <p class="calendar-foot">
         ※ 날짜 확인용 달력이며 객실 예약 가능 여부를 표시하지 않습니다.
       </p>
+
     </div>
   </div>
 
   <script>
     'use strict';
 
+    /* 기본 설정 */
     const CONFIG = {
       // null이면 자동 마감 기능을 사용하지 않습니다.
       // 예: '2026-12-01T23:59:00+09:00'
       applicationDeadline: null,
 
-      // 기존 Google Apps Script 신청서 URL
+      // Google Apps Script 신청서 URL
       applicationUrl:
         'https://script.google.com/macros/s/AKfycbylYSRCKBcCKwtRR5ThQUA00yyPnEPW6mBD0PVveZcr1ANC0_xiG2bRSPztmFIe7tNd/exec'
     };
 
     const $ = id => document.getElementById(id);
 
-    // 신청서 URL 설정
-    // 삭제된 openExternal 참조 제거
+    /* 신청서 URL 설정 */
     $('helpExternal').href = CONFIG.applicationUrl;
+    $('loadingExternal').href = CONFIG.applicationUrl;
 
-    // iframe 로드
+    /* iframe 로딩 관리 */
     let frameLoaded = false;
+    let loadingTimer = null;
+    let loadingSafetyTimer = null;
 
-    function loadApplicationFrame() {
-      const frame = $('applicationFrame');
+    function hideIframeLoading() {
+      clearTimeout(loadingTimer);
+      clearTimeout(loadingSafetyTimer);
 
-      if (!frameLoaded) {
-        frame.src = CONFIG.applicationUrl;
-        frameLoaded = true;
-      }
+      const loading = $('iframeLoading');
+
+      loading.classList.add('hidden');
+
+      setTimeout(() => {
+        if (loading.classList.contains('hidden')) {
+          loading.style.display = 'none';
+        }
+      }, 300);
     }
 
-    // 신청 상태
+    function loadApplicationFrame() {
+      if (frameLoaded) return;
+
+      const frame = $('applicationFrame');
+      const loading = $('iframeLoading');
+
+      frameLoaded = true;
+
+      // 로딩 화면 초기화
+      loading.style.display = 'flex';
+      loading.classList.remove('hidden');
+
+      $('loadingTitle').textContent =
+        '신청서를 불러오고 있습니다';
+
+      $('loadingDesc').innerHTML =
+        '잠시만 기다려 주세요.<br>' +
+        '네트워크 환경에 따라 몇 초 정도 소요될 수 있습니다.';
+
+      $('loadingExternal').style.display = 'none';
+
+      // iframe 로드 완료 시 로딩 화면 제거
+      frame.addEventListener('load', () => {
+        hideIframeLoading();
+      }, { once: true });
+
+      // 10초 이상 지연
+      loadingTimer = setTimeout(() => {
+        if (loading.classList.contains('hidden')) return;
+
+        $('loadingTitle').textContent =
+          '신청서를 불러오는 중입니다';
+
+        $('loadingDesc').innerHTML =
+          '연결이 평소보다 지연되고 있습니다.<br>' +
+          '잠시만 더 기다려 주세요.';
+
+        $('loadingExternal').style.display = 'inline-block';
+      }, 10000);
+
+      // 30초 이상 지연
+      loadingSafetyTimer = setTimeout(() => {
+        if (loading.classList.contains('hidden')) return;
+
+        $('loadingTitle').textContent =
+          '신청서 연결이 지연되고 있습니다';
+
+        $('loadingDesc').innerHTML =
+          '신청서가 표시되지 않는 경우<br>' +
+          '아래 링크를 이용해 주세요.';
+
+        $('loadingExternal').style.display = 'inline-block';
+      }, 30000);
+
+      // 실제 신청서 로드
+      frame.src = CONFIG.applicationUrl;
+    }
+
+    /* 신청 마감 상태 */
     function isClosed() {
       if (!CONFIG.applicationDeadline) return false;
 
-      const deadline = new Date(CONFIG.applicationDeadline).getTime();
-      return Number.isFinite(deadline) && Date.now() >= deadline;
+      const deadline =
+        new Date(CONFIG.applicationDeadline).getTime();
+
+      return Number.isFinite(deadline) &&
+             Date.now() >= deadline;
     }
 
     function refreshStatus() {
@@ -898,27 +1108,35 @@
         ? '접수 마감'
         : '신청 안내';
 
-      $('closedNote').style.display = closed ? 'block' : 'none';
-      $('iframeContainer').style.display = closed ? 'none' : 'block';
+      $('closedNote').style.display =
+        closed ? 'block' : 'none';
 
-      // 삭제된 form-toolbar 표시 제어 제거
+      $('iframeContainer').style.display =
+        closed ? 'none' : 'block';
 
-      $('iframeHelp').style.display = closed ? 'none' : 'block';
+      $('iframeHelp').style.display =
+        closed ? 'none' : 'block';
 
-      if (!closed) loadApplicationFrame();
+      if (!closed) {
+        loadApplicationFrame();
+      }
     }
 
     refreshStatus();
+
+    // 1분마다 신청 마감 여부 확인
     setInterval(refreshStatus, 60000);
 
-    // 달력 모달
+    /* 달력 모달 */
     const modal = $('calendarModal');
     let lastFocused = null;
 
     function openCal() {
       lastFocused = document.activeElement;
+
       modal.classList.add('open');
       modal.setAttribute('aria-hidden', 'false');
+
       $('closeCalendar').focus();
     }
 
@@ -926,7 +1144,10 @@
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
 
-      if (lastFocused && typeof lastFocused.focus === 'function') {
+      if (
+        lastFocused &&
+        typeof lastFocused.focus === 'function'
+      ) {
         lastFocused.focus();
       }
     }
@@ -938,16 +1159,21 @@
     $('closeCalendar').addEventListener('click', closeCal);
 
     modal.addEventListener('click', e => {
-      if (e.target === modal) closeCal();
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) {
+      if (e.target === modal) {
         closeCal();
       }
     });
 
-    // 달력 출력
+    document.addEventListener('keydown', e => {
+      if (
+        e.key === 'Escape' &&
+        modal.classList.contains('open')
+      ) {
+        closeCal();
+      }
+    });
+
+    /* 달력 출력 */
     let view = new Date();
     view.setDate(1);
 
@@ -956,15 +1182,22 @@
       const m = view.getMonth();
       const today = new Date();
 
-      $('monthLabel').textContent = `${y}년 ${m + 1}월`;
+      $('monthLabel').textContent =
+        `${y}년 ${m + 1}월`;
 
       const grid = $('calendarGrid');
       grid.innerHTML = '';
 
-      ['일', '월', '화', '수', '목', '금', '토'].forEach((w, i) => {
+      const weekdays =
+        ['일', '월', '화', '수', '목', '금', '토'];
+
+      weekdays.forEach((w, i) => {
         const el = document.createElement('span');
+
         el.className =
-          'weekday ' + (i === 0 ? 'sun' : i === 6 ? 'sat' : '');
+          'weekday ' +
+          (i === 0 ? 'sun' : i === 6 ? 'sat' : '');
+
         el.textContent = w;
         grid.appendChild(el);
       });
@@ -973,7 +1206,9 @@
       const days = new Date(y, m + 1, 0).getDate();
 
       for (let i = 0; i < first; i++) {
-        grid.appendChild(document.createElement('span'));
+        grid.appendChild(
+          document.createElement('span')
+        );
       }
 
       for (let d = 1; d <= days; d++) {
